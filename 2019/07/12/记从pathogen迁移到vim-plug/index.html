@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Silevilence&#39;s Blogs</title>
+  <title>记从pathogen迁移到vim-plug | Silevilence&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nil">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Silevilence&#39;s Blogs">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="起因今天早上开始整理自己的vim插件。当年开始学vim的时候还太年轻，git也没学好，就装了个pathogen手动管理所有插件。按理说用submodule也不会太累，可惜当初学艺不精，也没做长久考虑，插件都是用到一个装一个，装的时候还是直接clone的。时间一久，插件就会越积越多了。">
+<meta name="keywords" content="vim,pathogen,vim-plug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记从pathogen迁移到vim-plug">
+<meta property="og:url" content="http://yoursite.com/2019/07/12/记从pathogen迁移到vim-plug/index.html">
 <meta property="og:site_name" content="Silevilence&#39;s Blogs">
-<meta property="og:description" content="nil">
+<meta property="og:description" content="起因今天早上开始整理自己的vim插件。当年开始学vim的时候还太年轻，git也没学好，就装了个pathogen手动管理所有插件。按理说用submodule也不会太累，可惜当初学艺不精，也没做长久考虑，插件都是用到一个装一个，装的时候还是直接clone的。时间一久，插件就会越积越多了。">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-07-12T07:26:33.957Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Silevilence&#39;s Blogs">
-<meta name="twitter:description" content="nil">
+<meta name="twitter:title" content="记从pathogen迁移到vim-plug">
+<meta name="twitter:description" content="起因今天早上开始整理自己的vim插件。当年开始学vim的时候还太年轻，git也没学好，就装了个pathogen手动管理所有插件。按理说用submodule也不会太累，可惜当初学艺不精，也没做长久考虑，插件都是用到一个装一个，装的时候还是直接clone的。时间一久，插件就会越积越多了。">
   
     <link rel="alternative" href="/atom.xml" title="Silevilence&#39;s Blogs" type="application/atom+xml">
   
@@ -153,16 +155,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-记从pathogen迁移到vim-plug" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-记从pathogen迁移到vim-plug" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/12/记从pathogen迁移到vim-plug/">记从pathogen迁移到vim-plug</a>
+    <h1 class="article-title" itemprop="name">
+      记从pathogen迁移到vim-plug
     </h1>
   
 
@@ -176,11 +176,84 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>今天早上开始整理自己的vim插件。当年开始学vim的时候还太年轻，git也没学好，就装了个pathogen手动管理所有插件。按理说用submodule也不会太累，可惜当初学艺不精，也没做长久考虑，插件都是用到一个装一个，装的时候还是直接clone的。时间一久，插件就会越积越多了。</p>
-        
-          <a class="article-more-a" href="/2019/07/12/记从pathogen迁移到vim-plug/#more">more >></a>
-        
+<a id="more"></a>
+
+<p>然后就会遇到另一个问题，更新。因为是直接clone安装的，要更新就只能一个一个pull过去了。一开始想着写个脚本解决，但是因为懒也放弃了。而且当年不是所有插件都有git的，有些是直接下载解压出来的，这些基本就已经放弃希望了。所以以前插件的更新都是在哪个闲得发慌的午后，用上小半天一个一个做过去的。可想而知，很累。</p>
+<p>第三个问题就是，慢。插件装得多了，vim的启动自然就慢了。删插件是不可能删插件的，这辈子都不可能删插件的。除非是实在调教不出来老有严重bug的，不然总觉得这玩意日后要用舍不得删。后来我用了vscode后也有这毛病，但是它有一个很有用的功能就是平时可以禁用插件，然后只对工作区开放。这样就能对不同的项目需求使用不同的插件了。</p>
+<p>然后今天早上又一次整理插件的时候，我终于是忍不了了，决心趁着这次来个大扫除，彻底整改一番。</p>
+<h1 id="vim-plug"><a href="#vim-plug" class="headerlink" title="vim-plug"></a>vim-plug</h1><p>至于为什么选vim-plug，因为它比较新。以前我也试过vundle，但是报了奇怪的错误，留下了不太好的印象，而且在WINDOWS上配置好像还很麻烦，所以pass。而且在找vim-plug的资料的时候，发现它能根据情况加载插件，这点我就很喜欢了。</p>
+<p>在安装前，要想办法把原来的插件用vim-plug来管理。好在以前为了管理插件，我把所有安装的插件写了个markdown文档，里面有插件的github地址，可以直接处理那个文档来得到插件的配置。有了计划就可以动手了。</p>
+<h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><p>动手前为了以防万一（血泪的教训），要先备份现在的插件，效果能达到过会儿雪崩了能回到以前的样子就好了。</p>
+<p>要备份的地方有两处：插件文件夹和pathogen插件本身。</p>
+<p>插件文件夹（vimfiles/bundle）直接压缩归档一下就好了，pathogen插件（vimfiles/autoload/pathogen.vim）则复制一份改个后缀名防止被加载。</p>
+<h2 id="生成插件配置"><a href="#生成插件配置" class="headerlink" title="生成插件配置"></a>生成插件配置</h2><p>找到自己以前写的md文档，掐头去尾后剩下的有效部分大概是像这样的：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">* </span>[<span class="string">asyncrun.vim</span>](<span class="link">https://github.com/skywind3000/asyncrun.vim</span>)</span><br><span class="line"><span class="bullet">* </span>\*[<span class="string">authorinfo</span>](<span class="link">https://github.com/dantezhu/authorinfo</span>)</span><br><span class="line"><span class="bullet">* </span>[<span class="string">auto-pairs</span>](<span class="link">https://github.com/jiangmiao/auto-pairs</span>)</span><br><span class="line"><span class="bullet">* </span>[<span class="string">autohotkey.vim</span>](<span class="link">https://github.com/mmikeww/autohotkey.vim</span>)</span><br><span class="line"><span class="bullet">* </span>[<span class="string">bufferhint</span>](<span class="link">https://github.com/bsdelf/bufferhint</span>)</span><br><span class="line"><span class="bullet">* </span>\*[<span class="string">calendar-vim</span>](<span class="link">http://www.vim.org/scripts/script.php?script_id=52</span>)</span><br><span class="line"><span class="bullet">* </span>~~[<span class="string">calendar.vim</span>](<span class="link">https://github.com/itchyny/calendar.vim</span>)~~</span><br><span class="line"><span class="bullet">* </span>\!~~[<span class="string">jshint.vim</span>](<span class="link">https://github.com/walm/jshint.vim</span>)~~</span><br><span class="line"><span class="bullet">* </span>[<span class="string">lua.vim</span>](<span class="link">https://github.com/vim-scripts/lua.vim</span>)</span><br><span class="line"><span class="bullet">* </span>\![<span class="string">lushtags</span>](<span class="link">https://github.com/bitc/lushtags</span>)</span><br><span class="line"><span class="bullet">* </span>~~\!\+[<span class="string">omnisharp-vim</span>](<span class="link">https://github.com/OmniSharp/omnisharp-vim</span>)~~</span><br><span class="line"><span class="bullet">* </span>\+[<span class="string">vim-latex</span>](<span class="link">https://github.com/vim-latex/vim-latex</span>)</span><br></pre></td></tr></table></figure>
+
+<p>上面只是部分，但是已经把有的情况列得差不多了。</p>
+<p>claendar-vim这个我在github上找到一个还在维护的，直接替换进去了。</p>
+<pre><code>注意：下面的操作中，文本搜索的正则我都是先用/做上一遍确保无误后，在命令中直接&lt;C-R&gt;+/来输入的。</code></pre><p>其中被删除线划掉的是已经删了的插件，这些需要首先去除：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:g/\v\~\~/d</span><br></pre></td></tr></table></figure>
+
+<p>前面有像是*!+这样的符号的是我自己做的标记，也要去掉：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/\v\\.//</span><br></pre></td></tr></table></figure>
+
+<p>这样处理完之后剩下的模式就统一了，可以进行统一的格式变换。具体还是用全局的s来做：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/\v\* \[.+\]\((.+)\)/Plug &apos;\1&apos;</span><br></pre></td></tr></table></figure>
+
+<p>这样处理完之后，剩下的都是像这样的东西了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Plug &apos;https://github.com/chrisbra/csv.vim&apos;</span><br><span class="line">Plug &apos;https://github.com/ctrlpvim/ctrlp.vim&apos;</span><br><span class="line">Plug &apos;https://github.com/iamcco/dict.vim&apos;</span><br><span class="line">Plug &apos;https://github.com/editorconfig/editorconfig-vim&apos;</span><br><span class="line">Plug &apos;https://github.com/mattn/emmet-vim&apos;</span><br><span class="line">Plug &apos;https://github.com/Konfekt/FastFold&apos;</span><br><span class="line">Plug &apos;http://git.oschina.net/qiuchangjie/ShaderHighLight&apos;</span><br></pre></td></tr></table></figure>
+
+<p>这样的格式已经可以直接给vim-plug用了。但是对于github上的插件，vim-plug可以使用简写（一般像这么管理的都可以），所以还要进行一步转换：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/\vhttps:\/\/github.com\/([^&apos;]+)/\1</span><br></pre></td></tr></table></figure>
+
+<p>这么一来，像上面的那段就会变成下面那样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Plug &apos;chrisbra/csv.vim&apos;</span><br><span class="line">Plug &apos;ctrlpvim/ctrlp.vim&apos;</span><br><span class="line">Plug &apos;iamcco/dict.vim&apos;</span><br><span class="line">Plug &apos;editorconfig/editorconfig-vim&apos;</span><br><span class="line">Plug &apos;mattn/emmet-vim&apos;</span><br><span class="line">Plug &apos;Konfekt/FastFold&apos;</span><br><span class="line">Plug &apos;http://git.oschina.net/qiuchangjie/ShaderHighLight&apos;</span><br></pre></td></tr></table></figure>
+
+<p>至此，得到的结果已经可以在vim-plug的配置中使用，并且足够简洁了。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>从网上下载vim-plug的插件本体并放到autoload下，这没啥好说的了。</p>
+<p>放好后，在_vimrc中写入下面的东西：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot; vim-plug settings &#123;&#123;&#123;</span><br><span class="line">call plug#begin(&apos;$VIM/vimfiles/bundle&apos;)</span><br><span class="line"></span><br><span class="line">call plug#end()</span><br><span class="line">&quot; &#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>并且在中间的空行里把刚才转换好的插件配置粘贴进去。</p>
+<p>做好后，把原来pathogen的配置注释掉，并删除pathogen插件。</p>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>重启vim，使用<code>:PlugInstall</code>安装插件。因为我是直接安装在以前的文件夹里面的，如果以前就是用git直接clone下来的，它会智能跳过。</p>
+<p>由于有一些早期的插件我是直接压缩包解压出来的，这次我找了github库来统一管理。这些插件会在安装中出错，因为git clone不能clone到一个有内容的文件夹中去。看一下哪几个出错了，删了对应的文件夹，再运行一遍指令就好了。</p>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>使用<code>:PlugUpdate</code>来更新插件（如果要更新vim-plug本身的话要用<code>:PlugUpgrade</code>，就有一股很apt的感觉）。就我的经验来看，这个阶段出现的错误90%都是因为网不好，换个网络或用下魔法再跑一遍就好了，一遍不行就再来一遍。剩下的10%是因为以前自己乱改插件的源文件导致merge出错了，删了插件重新安装就好了。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总之这次彻底解决一下vim的插件问题，剩下的还有插件部分运行的配置，这个我要去研究一下vim-plug的教程，日后再说了。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -208,16 +281,65 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/12/记从pathogen迁移到vim-plug/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/12/记从pathogen迁移到vim-plug/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -232,13 +354,48 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#起因"><span class="toc-number">1.</span> <span class="toc-text">起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim-plug"><span class="toc-number">2.</span> <span class="toc-text">vim-plug</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#备份"><span class="toc-number">2.1.</span> <span class="toc-text">备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成插件配置"><span class="toc-number">2.2.</span> <span class="toc-text">生成插件配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.3.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行"><span class="toc-number">2.4.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-number">2.5.</span> <span class="toc-text">更新</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
 
 
+  
+  
+  
 
   
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2019/07/12/记从pathogen迁移到vim-plug/",
+  owner: 'Silevilence',
+  repo: 'Gcomment',
+  oauth: {
+    client_id: '9b6e6caa75984e6e2676',
+    client_secret: 'e69bab36b3457339e78115ea431cdeafd36fce6d',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -261,8 +418,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
