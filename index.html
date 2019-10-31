@@ -175,13 +175,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>对于现在的vim来说，python支持要用的地方还是比较多的。<br>我的gvim是下的<a href="https://tuxproject.de/projects/vim/" target="_blank" rel="noopener">别人编译好的版本</a>，各种功能的支持比较全面，但是都需要自己找动态库。<br>那天在知乎上看到一篇<a href="https://zhuanlan.zhihu.com/p/89243293" target="_blank" rel="noopener">文章</a>，猛然想起更新了一次vim的版本之后就没有调整python了。<br>打开gvim试了一下，果然不行，python2能找到（因为path里有别的程序带了，其实还是不行），python3找不到。</p>
-<p>我的python是用anaconda来管理的，所以这种时候当然先是用conda来装了。<br>装好3.8和2.7两个版本，都加进path之后，用has总算出1了。</p>
-<p>接下来就是print一个看看了。<br>然而，直接py会报e887，具体信息是 “Python’s site module …”。<br>用py3就更狠了，直接闪退了。</p>
-<p>上网找了一圈，基本没有win下出这个问题的。<br>好不容易找到了<a href="https://blog.csdn.net/qq_40946834/article/details/80443926" target="_blank" rel="noopener">一篇</a>，说是一定要用2.7.9才行。<br>于是又装了个2.7.9的试试，还是不行，而且也解释不了py3闪退的事。</p>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>仔细看了下文章，他不是从conda装的python。<br>从python的官网下了python的2.7和3.8两个版本装上并替换到path里，成功了。</p>
-<p>也不知道anaconda的python为什么不行，但反正能用了，我也懒得想了。</p>
-
+        <p>对于现在的vim来说，python支持要用的地方还是比较多的。我的gvim是下的<a href="https://tuxproject.de/projects/vim/" target="_blank" rel="noopener">别人编译好的版本</a>，各种功能的支持比较全面，但是都需要自己找动态库。那天在知乎上看到一篇<a href="https://zhuanlan.zhihu.com/p/89243293" target="_blank" rel="noopener">文章</a>，猛然想起更新了一次vim的版本之后就没有调整python了。打开gvim试了一下，果然不行，python2能找到（因为path里有别的程序带了，其实还是不行），python3找不到。</p>
+        
+          <a class="article-more-a" href="/2019/10/31/Windows下gvim与Python的配置问题记录/#more">more >></a>
+        
       
 
       
@@ -441,15 +438,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pathogen</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim-plug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
             
             <div class="clearfix"></div>
