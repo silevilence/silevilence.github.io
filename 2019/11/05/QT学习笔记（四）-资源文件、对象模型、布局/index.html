@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Silevilence&#39;s Blogs</title>
+  <title>QT学习笔记（四）--资源文件、对象模型、布局 | Silevilence&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nil">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Silevilence&#39;s Blogs">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="主要是布局，另外两个没什么好说的，快速过一下就好了。">
+<meta name="keywords" content="QT,C++,CLion">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QT学习笔记（四）--资源文件、对象模型、布局">
+<meta property="og:url" content="http://yoursite.com/2019/11/05/QT学习笔记（四）-资源文件、对象模型、布局/index.html">
 <meta property="og:site_name" content="Silevilence&#39;s Blogs">
-<meta property="og:description" content="nil">
+<meta property="og:description" content="主要是布局，另外两个没什么好说的，快速过一下就好了。">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-11-05T11:22:24.813Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Silevilence&#39;s Blogs">
-<meta name="twitter:description" content="nil">
+<meta name="twitter:title" content="QT学习笔记（四）--资源文件、对象模型、布局">
+<meta name="twitter:description" content="主要是布局，另外两个没什么好说的，快速过一下就好了。">
   
     <link rel="alternative" href="/atom.xml" title="Silevilence&#39;s Blogs" type="application/atom+xml">
   
@@ -153,16 +155,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-QT学习笔记（四）-资源文件、对象模型、布局" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-QT学习笔记（四）-资源文件、对象模型、布局" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/05/QT学习笔记（四）-资源文件、对象模型、布局/">QT学习笔记（四）--资源文件、对象模型、布局</a>
+    <h1 class="article-title" itemprop="name">
+      QT学习笔记（四）--资源文件、对象模型、布局
     </h1>
   
 
@@ -176,11 +176,59 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>主要是布局，另外两个没什么好说的，快速过一下就好了。</p>
-        
-          <a class="article-more-a" href="/2019/11/05/QT学习笔记（四）-资源文件、对象模型、布局/#more">more >></a>
-        
+<a id="more"></a>
+
+<h1 id="资源文件与对象模型"><a href="#资源文件与对象模型" class="headerlink" title="资源文件与对象模型"></a>资源文件与对象模型</h1><p>资源文件就是前面提到的qrc文件了。需要了解的建议直接看<a href="https://www.devbean.net/2012/08/qt-study-road-2-resource-files/" target="_blank" rel="noopener">教程原文</a>，也没什么好补充的。要注意的就是关于国际化的内容建议看评论区的补充。一般来说推荐使用工具生成qrc文件。</p>
+<p>对象模型就是moc程序了。moc是Qt在C++的预处理之前进行的一次预处理，主要用于对C++的语法进行扩展。像是之前的<code>Q_OBJECT</code>，<code>signal</code>，<code>slot</code>等标准C++中没有，却能编译通过的东西，都是因为moc进行了处理。此外，之前将qrc文件加入到编译列表中，moc也会对其处理生成cpp文件。这些生成的确文件在生成的目录下可以找到。如我现在可以在<code>cmake-build-debug/qthw_autogen/EWIEGA46WW</code>目录下找到一个<code>qrc_res.cpp</code>，这就是moc对<code>res.qrc</code>处理后生成的，其内容如下（因为这篇内容少就用这个凑篇幅了）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/****************************************************************************</span></span><br><span class="line"><span class="comment">** Resource object code</span></span><br><span class="line"><span class="comment">**</span></span><br><span class="line"><span class="comment">** Created by: The Resource Compiler for Qt version 5.12.5</span></span><br><span class="line"><span class="comment">**</span></span><br><span class="line"><span class="comment">** WARNING! All changes made in this file will be lost!</span></span><br><span class="line"><span class="comment">*****************************************************************************/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> qt_resource_data[] = &#123;</span><br><span class="line">  <span class="comment">// F:/ico/Folders/Explorer.ico</span></span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0xc1</span>,<span class="number">0x50</span>,</span><br><span class="line">  <span class="number">0x0</span>,</span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0x0</span>,<span class="number">0xc</span>,<span class="number">0x0</span>,<span class="number">0x20</span>,<span class="number">0x20</span>,<span class="number">0x10</span>,<span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0x0</span>,<span class="number">0x4</span>,<span class="number">0x0</span>,<span class="number">0xe8</span>,<span class="number">0x2</span>,<span class="number">0x0</span>,</span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0xc6</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x10</span>,<span class="number">0x10</span>,<span class="number">0x10</span>,<span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0x0</span>,<span class="number">0x4</span>,<span class="number">0x0</span>,<span class="number">0x28</span>,<span class="number">0x1</span>,<span class="number">0x0</span>,</span><br><span class="line"><span class="comment">// 这里省略了中间的一大堆内容（约7000来行），不然长度就炸了</span></span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,<span class="number">0x0</span>,</span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,<span class="number">0x80</span>,<span class="number">0x1</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,<span class="number">0xc0</span>,<span class="number">0x3</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,<span class="number">0xe0</span>,<span class="number">0x7</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> qt_resource_name[] = &#123;</span><br><span class="line">  <span class="comment">// images</span></span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x6</span>,</span><br><span class="line">  <span class="number">0x7</span>,<span class="number">0x3</span>,<span class="number">0x7d</span>,<span class="number">0xc3</span>,</span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x69</span>,</span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x6d</span>,<span class="number">0x0</span>,<span class="number">0x61</span>,<span class="number">0x0</span>,<span class="number">0x67</span>,<span class="number">0x0</span>,<span class="number">0x65</span>,<span class="number">0x0</span>,<span class="number">0x73</span>,</span><br><span class="line">    <span class="comment">// doc-open</span></span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x8</span>,</span><br><span class="line">  <span class="number">0x5</span>,<span class="number">0x64</span>,<span class="number">0x6b</span>,<span class="number">0xde</span>,</span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x64</span>,</span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x6f</span>,<span class="number">0x0</span>,<span class="number">0x63</span>,<span class="number">0x0</span>,<span class="number">0x2d</span>,<span class="number">0x0</span>,<span class="number">0x6f</span>,<span class="number">0x0</span>,<span class="number">0x70</span>,<span class="number">0x0</span>,<span class="number">0x65</span>,<span class="number">0x0</span>,<span class="number">0x6e</span>,</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> qt_resource_struct[] = &#123;</span><br><span class="line">  <span class="comment">// :</span></span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x2</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x1</span>,</span><br><span class="line"><span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,</span><br><span class="line">  <span class="comment">// :/images</span></span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x2</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x2</span>,</span><br><span class="line"><span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,</span><br><span class="line">  <span class="comment">// :/images/doc-open</span></span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x12</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,</span><br><span class="line"><span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0x5c</span>,<span class="number">0xdf</span>,<span class="number">0xb6</span>,<span class="number">0x6b</span>,<span class="number">0x98</span>,</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> QT_NAMESPACE</span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> QT_RCC_PREPEND_NAMESPACE(name) ::QT_NAMESPACE::name</span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> QT_RCC_MANGLE_NAMESPACE0(x) x</span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> QT_RCC_MANGLE_NAMESPACE1(a, b) a##_##b</span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> QT_RCC_MANGLE_NAMESPACE2(a, b) QT_RCC_MANGLE_NAMESPACE1(a,b)</span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> QT_RCC_MANGLE_NAMESPACE(name) QT_RCC_MANGLE_NAMESPACE2( \</span></span><br><span class="line">        QT_RCC_MANGLE_NAMESPACE0(name), QT_RCC_MANGLE_NAMESPACE0(QT_NAMESPACE))</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#   <span class="meta-keyword">define</span> QT_RCC_PREPEND_NAMESPACE(name) name</span></span><br><span class="line"><span class="meta">#   <span class="meta-keyword">define</span> QT_RCC_MANGLE_NAMESPACE(name) name</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> QT_NAMESPACE</span></span><br><span class="line"><span class="keyword">namespace</span> QT_NAMESPACE &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">qRegisterResourceData</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *, <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *, <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">qUnregisterResourceData</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *, <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *, <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> QT_NAMESPACE</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QT_RCC_MANGLE_NAMESPACE</span><span class="params">(qInitResources_res)</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QT_RCC_MANGLE_NAMESPACE</span><span class="params">(qInitResources_res)</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    QT_RCC_PREPEND_NAMESPACE(qRegisterResourceData)</span><br><span class="line">        (<span class="number">0x2</span>, qt_resource_struct, qt_resource_name, qt_resource_data);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QT_RCC_MANGLE_NAMESPACE</span><span class="params">(qCleanupResources_res)</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QT_RCC_MANGLE_NAMESPACE</span><span class="params">(qCleanupResources_res)</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    QT_RCC_PREPEND_NAMESPACE(qUnregisterResourceData)</span><br><span class="line">       (<span class="number">0x2</span>, qt_resource_struct, qt_resource_name, qt_resource_data);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> &#123;</span><br><span class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">initializer</span> &#123;</span></span><br><span class="line">       initializer() &#123; QT_RCC_MANGLE_NAMESPACE(qInitResources_res)(); &#125;</span><br><span class="line">       ~initializer() &#123; QT_RCC_MANGLE_NAMESPACE(qCleanupResources_res)(); &#125;</span><br><span class="line">   &#125; dummy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出来，Qt用一种粗暴的方式把资源文件活生生编码成了C++代码。</p>
+<p>关于moc的理论知识以及Qt使用对象树带来的一些问题，请直接看<a href="https://www.devbean.net/2012/09/qt-study-road-2-objects-model/" target="_blank" rel="noopener">原文</a>。</p>
+<p>在CLion中，通过cmake配置中的几个AUTO配置，CLion会生成一个<code>_autogen</code>的运行配置。这个配置会在编译前运行，执行Qt的预处理工作。</p>
+<h1 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h1><p>如果学过如Java、C#的GUI的话，应该就能知道布局是什么了。简单来说布局就是规定好了组件的放法，这样窗口变化的时候就能按照规定的方法变化组件的位置和大小了。Qt中当然也是有布局的，而且当然也叫Layout。</p>
+<p>把main函数替换成以下内容，注意自己加上几个include。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    QWidget window;</span><br><span class="line">    window.setWindowTitle(<span class="string">"Enter your age"</span>);</span><br><span class="line"></span><br><span class="line">    QSpinBox *spinBox = <span class="keyword">new</span> QSpinBox(&amp;window);</span><br><span class="line">    QSlider *slider = <span class="keyword">new</span> QSlider(Qt::Horizontal, &amp;window);</span><br><span class="line">    spinBox-&gt;setRange(<span class="number">0</span>, <span class="number">130</span>);</span><br><span class="line">    slider-&gt;setRange(<span class="number">0</span>, <span class="number">130</span>);</span><br><span class="line"></span><br><span class="line">    QObject::connect(slider, &amp;QSlider::valueChanged, spinBox, &amp;QSpinBox::setValue);</span><br><span class="line">    <span class="keyword">void</span> (QSpinBox:: *spinBoxSignal)(<span class="keyword">int</span>) = &amp;QSpinBox::valueChanged;</span><br><span class="line">    QObject::connect(spinBox, spinBoxSignal, slider, &amp;QSlider::setValue);</span><br><span class="line">    spinBox-&gt;setValue(<span class="number">35</span>);</span><br><span class="line"></span><br><span class="line">    QHBoxLayout *layout = <span class="keyword">new</span> QHBoxLayout;</span><br><span class="line">    layout-&gt;addWidget(spinBox);</span><br><span class="line">    layout-&gt;addWidget(slider);</span><br><span class="line">    window.setLayout(layout);</span><br><span class="line"></span><br><span class="line">    window.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>具体效果就不放图了（懒）。可以注意到，当我们调整窗口的大小时，两个组件会自动适应。竖拉时会居中，横拉时滑动条会变长变短。这就是<code>HBoxLayout</code>，也就是水平布局的作用了。关于常用的几种布局，请去看Qt的手册。</p>
+<p>上面的代码中有几个需要注意的点：</p>
+<ol>
+<li><code>QSpinBox::valueChanged</code>信号使用了函数指针的方式来传递，这是因为这个函数有两个重载，不用函数指针指定一下的话编译器不知道选哪个。</li>
+<li>虽然代码中进行了双向的绑定，但这是因为Qt自带的组件经过了良好的设计。如果是自己写的组件的话，在这么用之前要考虑一下无限循环的问题。</li>
+</ol>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>很惭愧，只做了一点微小的工作<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -223,16 +271,75 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/05/QT学习笔记（四）-资源文件、对象模型、布局/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/05/QT学习笔记（四）-资源文件、对象模型、布局/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/04/QT学习笔记（三）-MainWindow与动作/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">QT学习笔记（三）--MainWindow与动作</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -247,497 +354,48 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-QT学习笔记（三）-MainWindow与动作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/04/QT学习笔记（三）-MainWindow与动作/">QT学习笔记（三）--MainWindow与动作</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/04/QT学习笔记（三）-MainWindow与动作/" class="archive-article-date">
-  	<time datetime="2019-11-04T07:09:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>中间略过了一篇QT的模块介绍。因为没有什么可以总结的内容，需要的直接看<a href="https://www.devbean.net/2012/08/qt-study-road-2-modules/" target="_blank" rel="noopener">原文</a>就好了。</p>
-        
-          <a class="article-more-a" href="/2019/11/04/QT学习笔记（三）-MainWindow与动作/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">QT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/04/QT学习笔记（三）-MainWindow与动作/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#资源文件与对象模型"><span class="toc-number">1.</span> <span class="toc-text">资源文件与对象模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#布局"><span class="toc-number">2.</span> <span class="toc-text">布局</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-QT学习笔记（二）-信号槽" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/01/QT学习笔记（二）-信号槽/">QT学习笔记（二）--信号槽</a>
-    </h1>
   
 
-        
-        <a href="/2019/11/01/QT学习笔记（二）-信号槽/" class="archive-article-date">
-  	<time datetime="2019-11-01T06:09:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>昨晚除了配环境以外还找了下教程，虽然找到的是用QT Creator的，不过将就着用好了。</p>
-<p>找到了<a href="http://c.biancheng.net/view/1792.html" target="_blank" rel="noopener">这篇</a>和<a href="https://www.devbean.net/2012/08/qt-study-road-2-catelog/" target="_blank" rel="noopener">这篇</a>。相比起来第二个教程更合我个人的口味，之后就以那个为主了。另外按这个教程前几章来看应该是用不到工具了，都是直接上代码的。</p>
-        
-          <a class="article-more-a" href="/2019/11/01/QT学习笔记（二）-信号槽/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">QT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/01/QT学习笔记（二）-信号槽/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-QT学习笔记（一）-CLion配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/31/QT学习笔记（一）-CLion配置/">QT学习笔记（一）--CLion配置</a>
-    </h1>
   
 
-        
-        <a href="/2019/10/31/QT学习笔记（一）-CLion配置/" class="archive-article-date">
-  	<time datetime="2019-10-31T12:25:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>总之由于各种复杂的原因，需要拿C++做个界面。说起这个，现在肯定就想到的是QT了。但是我没用过QT，只在以前稍微看过一点pyQT的内容，也早忘光了。只好从头学起了。</p>
-        
-          <a class="article-more-a" href="/2019/10/31/QT学习笔记（一）-CLion配置/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">QT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/31/QT学习笔记（一）-CLion配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-Windows下gvim与Python的配置问题记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/31/Windows下gvim与Python的配置问题记录/">Windows下gvim与Python的配置问题记录</a>
-    </h1>
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'silevilence'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
   
 
-        
-        <a href="/2019/10/31/Windows下gvim与Python的配置问题记录/" class="archive-article-date">
-  	<time datetime="2019-10-31T07:52:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对于现在的vim来说，python支持要用的地方还是比较多的。我的gvim是下的<a href="https://tuxproject.de/projects/vim/" target="_blank" rel="noopener">别人编译好的版本</a>，各种功能的支持比较全面，但是都需要自己找动态库。那天在知乎上看到一篇<a href="https://zhuanlan.zhihu.com/p/89243293" target="_blank" rel="noopener">文章</a>，猛然想起更新了一次vim的版本之后就没有调整python了。打开gvim试了一下，果然不行，python2能找到（因为path里有别的程序带了，其实还是不行），python3找不到。</p>
-        
-          <a class="article-more-a" href="/2019/10/31/Windows下gvim与Python的配置问题记录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/31/Windows下gvim与Python的配置问题记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-记从pathogen迁移到vim-plug" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/12/记从pathogen迁移到vim-plug/">记从pathogen迁移到vim-plug</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/12/记从pathogen迁移到vim-plug/" class="archive-article-date">
-  	<time datetime="2019-07-12T07:05:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>今天早上开始整理自己的vim插件。当年开始学vim的时候还太年轻，git也没学好，就装了个pathogen手动管理所有插件。按理说用submodule也不会太累，可惜当初学艺不精，也没做长久考虑，插件都是用到一个装一个，装的时候还是直接clone的。时间一久，插件就会越积越多了。</p>
-        
-          <a class="article-more-a" href="/2019/07/12/记从pathogen迁移到vim-plug/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pathogen</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim-plug</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/12/记从pathogen迁移到vim-plug/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -760,8 +418,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
