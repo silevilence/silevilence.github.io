@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/08/MVBqMR.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/08/MVyFy9.gif">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/08/MVOCE6.gif">
-<meta property="og:updated_time" content="2019-11-08T08:12:07.373Z">
+<meta property="og:updated_time" content="2019-11-09T01:22:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QT学习笔记（五）--对话框">
 <meta name="twitter:description" content="关于菜单栏、工具栏和状态栏，我就不补充什么了。直接开始对话框的内容。">
@@ -228,7 +228,7 @@
 
 <p>我们新建了一个<code>mydialog</code>类，用来定义一个对话框。这个对话框有两个纵向排列的按钮，上面是确认，下面是取消。运行结果如下图所示，注意控制台的输出。</p>
 <p><img src="https://s2.ax1x.com/2019/11/08/MVOCE6.gif" alt="模态对话演示"></p>
-<h2 id="非模态对话框"><a href="#非模态对话框" class="headerlink" title="非模态对话框"></a>非模态对话框</h2><p>非模态对话框不会阻塞进程，因此我们需要用信号槽来传递数据。要传递数据需要自己定义新的信号（这对于模态对话框也是一样的），因为很麻烦我就不做了，直接用上面的对话框演示做法就好了。至于数据传递的演示建议直接看<a href="https://www.devbean.net/2012/09/qt-study-road-2-data-between-dialogs/" target="_blank" rel="noopener">教程</a>。</p>
+<h2 id="非模态对话框"><a href="#非模态对话框" class="headerlink" title="非模态对话框"></a>非模态对话框</h2><p>非模态对话框不会阻塞进程，因此我们需要用信号槽来传递数据。要传递数据需要自己定义新的信号（<del>这对于模态对话框也是一样的</del>更正一下，模态对话框直接设置变量然后读取就好了），因为很麻烦我就不做了，直接用上面的对话框演示做法就好了。至于数据传递的演示建议直接看<a href="https://www.devbean.net/2012/09/qt-study-road-2-data-between-dialogs/" target="_blank" rel="noopener">教程</a>。</p>
 <p>修改<code>mainwindow.cpp</code>中的相应内容，头文件的相应更新请自理。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> MainWindow::open() &#123;</span><br><span class="line">    mydialog *dialog = <span class="keyword">new</span> mydialog;</span><br><span class="line"></span><br><span class="line">    dialog-&gt;setAttribute(Qt::WA_DeleteOnClose);</span><br><span class="line">    connect(dialog, &amp;QDialog::accepted, <span class="keyword">this</span>, &amp;MainWindow::dataAccept);</span><br><span class="line">    connect(dialog, &amp;QDialog::rejected, <span class="keyword">this</span>, &amp;MainWindow::dataReject);</span><br><span class="line">    dialog-&gt;show();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> MainWindow::dataAccept() &#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"accepted"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> MainWindow::dataReject()&#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"rejected"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
