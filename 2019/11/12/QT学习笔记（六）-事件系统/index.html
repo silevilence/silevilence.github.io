@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Silevilence&#39;s Blogs</title>
+  <title>QT学习笔记（六）--事件系统 | Silevilence&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nil">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Silevilence&#39;s Blogs">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="上次留下的几个标准对话框没啥好说的，直接看文档都能明白。 虽然Qt的触发主要通过信号槽来实现，但Qt也是有事件事件系统的。默认情况下，Qt的事件会发出相应的信号，而我们只要通过信号槽来使用这些信号就好了。事件系统占据了教程的18~23共6节。">
+<meta name="keywords" content="QT,C++,CLion">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QT学习笔记（六）--事件系统">
+<meta property="og:url" content="http://yoursite.com/2019/11/12/QT学习笔记（六）-事件系统/index.html">
 <meta property="og:site_name" content="Silevilence&#39;s Blogs">
-<meta property="og:description" content="nil">
+<meta property="og:description" content="上次留下的几个标准对话框没啥好说的，直接看文档都能明白。 虽然Qt的触发主要通过信号槽来实现，但Qt也是有事件事件系统的。默认情况下，Qt的事件会发出相应的信号，而我们只要通过信号槽来使用这些信号就好了。事件系统占据了教程的18~23共6节。">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/12/M1Tkad.gif">
+<meta property="og:updated_time" content="2019-11-12T12:00:16.388Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Silevilence&#39;s Blogs">
-<meta name="twitter:description" content="nil">
+<meta name="twitter:title" content="QT学习笔记（六）--事件系统">
+<meta name="twitter:description" content="上次留下的几个标准对话框没啥好说的，直接看文档都能明白。 虽然Qt的触发主要通过信号槽来实现，但Qt也是有事件事件系统的。默认情况下，Qt的事件会发出相应的信号，而我们只要通过信号槽来使用这些信号就好了。事件系统占据了教程的18~23共6节。">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/12/M1Tkad.gif">
   
     <link rel="alternative" href="/atom.xml" title="Silevilence&#39;s Blogs" type="application/atom+xml">
   
@@ -153,36 +157,120 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-QT学习笔记（六）-事件系统" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      QT学习笔记（六）--事件系统
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/12/QT学习笔记（六）-事件系统/" class="archive-article-date">
+
+        
+        <a href="/2019/11/12/QT学习笔记（六）-事件系统/" class="archive-article-date">
   	<time datetime="2019-11-12T01:33:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-12</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/12/QT学习笔记（六）-事件系统/">QT学习笔记（六）--事件系统</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上次留下的几个标准对话框没啥好说的，直接看文档都能明白。</p>
+<p>虽然Qt的触发主要通过信号槽来实现，但Qt也是有事件事件系统的。默认情况下，Qt的事件会发出相应的信号，而我们只要通过信号槽来使用这些信号就好了。事件系统占据了<a href="https://www.devbean.net/2012/08/qt-study-road-2-catelog/" target="_blank" rel="noopener">教程</a>的18~23共6节。</p>
+<a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
+<h1 id="事件系统简介"><a href="#事件系统简介" class="headerlink" title="事件系统简介"></a>事件系统简介</h1><p>简单来说跟别的GUI框架差不多。比如在swing中我们使用ActionListener，之前我说Qt中的事件系统就是信号槽，现在看来信号是由事件的监听器发出的。在Qt中，要响应事件要重写事件的响应函数，一般是<code>xxxEvent</code>这样的格式。</p>
+<p>我们在main函数中使用<code>QCoreApplication</code>的<code>exec()</code>来开启事件循环。当发生事件时，Qt将创建一个<code>QEvent</code>对象，并将其传递给<code>QObject</code>的<code>event()</code>函数。<code>event()</code>函数负责事件的分发，将事件派发给相应的监听器。</p>
+<p><strong>一般来说，我们在使用组件时，直接使用信号槽；在自定义组件时，使用事件系统。</strong></p>
+<p>所有的事件处理函数都定义在<code>QWidget</code>中，因为这是所有组件的父类。下面我们定义一个自己的Label来实验一下事件系统。因为没有用到信号槽等机制，这里没有添加<code>Q_OBJECT</code>宏，也就不用分开在几个文件里写，但在实际应用中强烈<strong>不</strong>推荐这么做。以后代码出现相同的问题不再提醒。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMouseEvent&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventLabel</span> :</span> <span class="keyword">public</span> QLabel &#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mouseMoveEvent</span><span class="params">(QMouseEvent *event)</span> override</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mousePressEvent</span><span class="params">(QMouseEvent *event)</span> override</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mouseReleaseEvent</span><span class="params">(QMouseEvent *event)</span> override</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> EventLabel::mouseMoveEvent(QMouseEvent *event) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;setText(QString(<span class="string">"&lt;center&gt;&lt;h1&gt;Move: (%1, %2)&lt;/h1&gt;&lt;/center&gt;"</span>)</span><br><span class="line">                          .arg(QString::number(event-&gt;x()), QString::number(event-&gt;y())));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> EventLabel::mousePressEvent(QMouseEvent *event) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;setText(QString(<span class="string">"&lt;center&gt;&lt;h1&gt;Press: (%1, %2)&lt;/h1&gt;&lt;/center&gt;"</span>)</span><br><span class="line">                          .arg(QString::number(event-&gt;x()), QString::number(event-&gt;y())));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> EventLabel::mouseReleaseEvent(QMouseEvent *event) &#123;</span><br><span class="line">    QString msg;</span><br><span class="line">    msg.<span class="built_in">sprintf</span>(<span class="string">"&lt;center&gt;&lt;h1&gt;Release: (%d, %d)&lt;/h1&gt;&lt;/center&gt;"</span>,</span><br><span class="line">                event-&gt;x(), event-&gt;y());</span><br><span class="line">    <span class="keyword">this</span>-&gt;setText(msg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> *label = <span class="keyword">new</span> EventLabel;</span><br><span class="line">    label-&gt;setWindowTitle(<span class="string">"MouseEvent Demo"</span>);</span><br><span class="line">    label-&gt;resize(<span class="number">300</span>, <span class="number">200</span>);</span><br><span class="line">    label-&gt;setMouseTracking(<span class="literal">true</span>);</span><br><span class="line">    label-&gt;show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码就不解释了，需要注意的是第37行。组件对鼠标的追踪是需要开启的，如果不手动设置的话，就要先在Label上点击一个才能自动开启它了。运行效果如下图。</p>
+<p><img src="https://s2.ax1x.com/2019/11/12/M1Tkad.gif" alt="鼠标事件演示"></p>
+<h1 id="事件的接受与忽略"><a href="#事件的接受与忽略" class="headerlink" title="事件的接受与忽略"></a>事件的接受与忽略</h1><p>事件可以选择接受或者忽略。首先我们上一段代码，这是用信号槽写的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CustomButton.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> QTHW_CUSTOMBUTTON_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> QTHW_CUSTOMBUTTON_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomButton</span> :</span> <span class="keyword">public</span> QPushButton &#123;</span><br><span class="line">Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    CustomButton(QWidget *parent = <span class="literal">nullptr</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onButtonClicked</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">//QTHW_CUSTOMBUTTON_H</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// CustomButton.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"CustomButton.h"</span></span></span><br><span class="line"></span><br><span class="line">CustomButton::CustomButton(QWidget *parent)</span><br><span class="line">        : QPushButton(parent) &#123;</span><br><span class="line">    connect(<span class="keyword">this</span>, &amp;CustomButton::clicked, <span class="keyword">this</span>, &amp;CustomButton::onButtonClicked);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> CustomButton::onButtonClicked() &#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"You clicked this!"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"CustomButton.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    CustomButton btn;</span><br><span class="line">    btn.setText(<span class="string">"This is a Button!"</span>);</span><br><span class="line">    btn.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码不做解释了，结果就是点一次按钮在控制台输出一次。下面我们给它添加事件系统的处理，代码只列出了发生变化的部分。</p>
+<p><del>发生了点糟心的事，心情很差，下面可能会写得比较随便</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CustomButton.h</span></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mousePressEvent</span><span class="params">(QMouseEvent *e)</span> override</span>;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// CustomButton.cpp</span></span><br><span class="line"><span class="keyword">void</span> CustomButton::mousePressEvent(QMouseEvent *e) &#123;</span><br><span class="line">    <span class="keyword">if</span>(e-&gt;button() == Qt::LeftButton) &#123;</span><br><span class="line">        qDebug() &lt;&lt; <span class="string">"left"</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        QPushButton::mousePressEvent(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意我们只是添加（或者说重载）了事件处理函数，并没有删除原来信号槽相关的代码。运行程序并点击按钮，会发现控制台只输出了<code>left</code>，这说明信号没有被触发。由此可见信号的发送是在父类的事件处理函数中手动进行的，<strong>在继承重写组件的时候要注意调用一下父类的函数</strong>。</p>
+<p>Qt的事件对象有<code>accept()</code>和<code>ignore()</code>两个函数，分别用来表示组件处理或是忽略了该事件。当一个事件已经被某组件处理时，Qt会停止向其<strong>父节点</strong>传递该事件，否则该事件会被继续传递下去。要注意事件默认是accept的，只有<code>QWidget</code>中的事件处理函数是ignore的。也就是说，我们一般不会直接调用<code>accept()</code>或<code>ignore()</code>，而是交由父类来调用；而当我们想要忽略一个事件时，可以不调用父类的处理函数而是直接调用<code>QWidget</code>的处理函数。这么做的好处是我们可以不用关心父类中已经写好的鸡毛蒜皮的小操作，只关心自己的逻辑。</p>
+<p>关于直接使用<code>accept()</code>或<code>ignore()</code>而不是调用父类方法的危险性，教程里有一个例子，也不难懂，看看就好了。</p>
+<h2 id="特殊情况"><a href="#特殊情况" class="headerlink" title="特殊情况"></a>特殊情况</h2><p>虽然上面这么说了，但是在一种特殊情况下我们是要手动调用这两个函数的，那就是在处理窗口关闭事件<code>QCloseEvent</code>时。此时，使用<code>accept()</code>意味着事件处理完毕，窗口关闭；而使用<code>ignore()</code>则会让事件继续传播，窗口就不会关闭了。这一点在关闭窗口时的确认对话框中要大量使用，下面是一个例子。我们在mainwindow类中添加关闭事件的处理函数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> MainWindow::closeEvent(QCloseEvent *event) &#123;</span><br><span class="line">    <span class="keyword">bool</span> <span class="built_in">exit</span> = QMessageBox::question(<span class="keyword">this</span>,</span><br><span class="line">                                      tr(<span class="string">"Quit"</span>),</span><br><span class="line">                                      tr(<span class="string">"Are you sure to quit this application?"</span>),</span><br><span class="line">                                      QMessageBox::Yes | QMessageBox::No,</span><br><span class="line">                                      QMessageBox::No) == QMessageBox::Yes;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">exit</span>) &#123;</span><br><span class="line">        event-&gt;accept();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        event-&gt;ignore();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>少的代码就自己写吧。记得修改主函数让其显示MainWindow。现在我们关闭主窗口时就会有对话框弹出来，选否（No）的话窗口就不会关闭了。</p>
+<h1 id="event"><a href="#event" class="headerlink" title="event()"></a>event()</h1><p>前面提到过一次，<code>event()</code>函数在<code>QObject</code>中，负责事件的分发工作。虽然这里在讲<code>event()</code>函数的相关内容，但是在实际应用中请注意不到万不得已绝对不要动这个函数，以免发生意外。</p>
+<p>详细内容请直接看教程，这里简单总结一下。</p>
+<p>参数：<code>event()</code>函数接受一个<code>QEvent</code>参数，这是要被转发的事件对象。</p>
+<p>返回值：返回一个布尔值，<code>true</code>表示事件已被处理。当返回<code>true</code>且事件被<code>accept</code>的时候，事件的传递停止。在<code>event()</code>函数中使用<code>accept()</code>或<code>ignore()</code>是无效的。</p>
+<p>例子请直接看教程。</p>
+<p><code>QEvent</code>的<code>type()</code>函数可以获取事件的类型。事件与处理函数的对应是在Qt的源码中使用<code>switch</code>和<code>case</code>定义的，具体请去教程看部分源码。<strong>因此重写这个函数是相当危险的行为，绝对不要做。</strong></p>
+<p>相比使用事件处理器，直接重写<code>event()</code>函数可以将事件处理代码压缩在一起，而且能实现屏蔽不想关心的事件的功能。但是前者可以直接重载事件处理器来实现，后者则能通过马上要讲的事件过滤器来实现，而且重载这个函数伴随着很大的风险，因此正常情况下绝对不要这么做。</p>
+<p>其实还有一个更加危险的函数<code>QCoreApplication::notify()</code>，这里不做介绍。</p>
+<h1 id="事件过滤器"><a href="#事件过滤器" class="headerlink" title="事件过滤器"></a>事件过滤器</h1><p>前面我们提到，重载<code>event()</code>函数可以实现拦截事件的功能。由于这种操作的危险性，我们使用事件过滤器来实现事件的拦截。</p>
+<p>事件过滤器即<code>QObject</code>类的<code>eventFilter()</code>函数，其签名如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">bool</span> QObject::eventFilter ( QObject * watched, QEvent * event );</span><br></pre></td></tr></table></figure>
+
+<p>事件过滤器会在<code>watched</code>接收到<code>event</code>之前被调用，返回值是一个布尔值，表示该事件是否被过滤。被过滤的事件就不会再进行传播了。也就是说，当返回<code>true</code>时，事件会被拦截下来。</p>
+<p>事件过滤器需要进行添加，其机制与swing中的Listener相似，即使用<code>installEventFilter</code>来添加一个事件过滤器对象。具体可以看教程中的例子。</p>
+<p>一个对象上可以安装多个过滤器，并且最后安装的会最先执行。</p>
+<p>另外，如果在过滤器中<code>delete</code>了组件，务必将返回值设为<code>true</code>，不然Qt会将事件发送给已经被delete的组件而导致程序崩溃。</p>
+<p>此外，过滤器与安装过滤器的组件必须处于同一个线程上，否则过滤器无效。</p>
+<p>关于事件中这么多函数的调用顺序，可以看<a href="https://www.devbean.net/2012/10/qt-study-road-2-event-summary/" target="_blank" rel="noopener">教程这里</a>给出的例子。</p>
+<h1 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h1><p>我们可以定义自己的事件。定义事件时要注意设置事件的type。设置时type的值（type是一个int）要在<code>QEvent::User</code>和<code>QEvent::MaxUser</code>之间，其它的值已经被系统的事件占用了，如果重复会发生不好的事情。为了避免这个值的重复，特别是几个自定义事件之间的重复，可以用<code>registerEventType()</code>来注册自定义事件。其签名如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> QEvent::registerEventType ( <span class="keyword">int</span> hint = <span class="number">-1</span> );</span><br></pre></td></tr></table></figure>
+
+<p>这个函数接收一个int值，表示你想要注册的type值。返回值也是一个int，表示最后注册的type值。如果hint值可用，则会直接注册hint值并返回；否则会由系统自动分配一个合法的值。</p>
+<p>发送事件有两个方式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">bool</span> QCoreApplication::sendEvent(QObject *receiver, QEvent *event);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> QCoreApplication::postEvent(QObject *receiver, QEvent *event);</span><br></pre></td></tr></table></figure>
+
+<p>send方式是同步进行的，它会通过<code>notify</code>函数直接发送事件并等待返回，一般可以直接在栈上建立事件对象。post方式是异步的，它把事件对象加入到事件队列中，并在post出去后自动delete，必须在堆上建立事件对象。</p>
+<p>Qt还提供了一些辅助用的函数，可以在教程中查看。</p>
+<p>自定义事件通过<code>customEvent()</code>来进行处理。</p>
+<p><del>后面越写越仓促了，一方面是内容真的多要写不完了，另一方面是中途碰上点糟心事没心情写了，就凑合着看吧。</del></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>很惭愧，只做了一点微小的工作<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -202,7 +290,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -219,432 +307,133 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/12/QT学习笔记（六）-事件系统/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/08/QT学习笔记（五）-对话框/" class="archive-article-date">
-  	<time datetime="2019-11-08T05:53:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/08/QT学习笔记（五）-对话框/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">QT学习笔记（五）--对话框</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/08/QT学习笔记（五）-对话框/">QT学习笔记（五）--对话框</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">QT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#事件系统简介"><span class="toc-number">1.</span> <span class="toc-text">事件系统简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#事件的接受与忽略"><span class="toc-number">2.</span> <span class="toc-text">事件的接受与忽略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊情况"><span class="toc-number">2.1.</span> <span class="toc-text">特殊情况</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#event"><span class="toc-number">3.</span> <span class="toc-text">event()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#事件过滤器"><span class="toc-number">4.</span> <span class="toc-text">事件过滤器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义事件"><span class="toc-number">5.</span> <span class="toc-text">自定义事件</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/05/QT学习笔记（四）-资源文件、对象模型、布局/" class="archive-article-date">
-  	<time datetime="2019-11-05T10:41:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/05/QT学习笔记（四）-资源文件、对象模型、布局/">QT学习笔记（四）--资源文件、对象模型、布局</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">QT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/04/QT学习笔记（三）-MainWindow与动作/" class="archive-article-date">
-  	<time datetime="2019-11-04T07:09:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/04/QT学习笔记（三）-MainWindow与动作/">QT学习笔记（三）--MainWindow与动作</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">QT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/01/QT学习笔记（二）-信号槽/" class="archive-article-date">
-  	<time datetime="2019-11-01T06:09:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/01/QT学习笔记（二）-信号槽/">QT学习笔记（二）--信号槽</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">QT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/31/QT学习笔记（一）-CLion配置/" class="archive-article-date">
-  	<time datetime="2019-10-31T12:25:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/31/QT学习笔记（一）-CLion配置/">QT学习笔记（一）--CLion配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">QT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/31/Windows下gvim与Python的配置问题记录/" class="archive-article-date">
-  	<time datetime="2019-10-31T07:52:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/31/Windows下gvim与Python的配置问题记录/">Windows下gvim与Python的配置问题记录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/12/记从pathogen迁移到vim-plug/" class="archive-article-date">
-  	<time datetime="2019-07-12T07:05:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/12/记从pathogen迁移到vim-plug/">记从pathogen迁移到vim-plug</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pathogen</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim-plug</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机//" class="article-tag-list-link color4">计算机</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'silevilence'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
+
+  
 
 
           </div>
@@ -667,8 +456,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
