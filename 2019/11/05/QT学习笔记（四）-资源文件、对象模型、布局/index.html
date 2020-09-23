@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>QT学习笔记（四）--资源文件、对象模型、布局 | Silevilence&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="主要是布局，另外两个没什么好说的，快速过一下就好了。">
-<meta name="keywords" content="QT,C++,CLion">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QT学习笔记（四）--资源文件、对象模型、布局">
-<meta property="og:url" content="http://yoursite.com/2019/11/05/QT学习笔记（四）-资源文件、对象模型、布局/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/11/05/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89-%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E3%80%81%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%81%E5%B8%83%E5%B1%80/index.html">
 <meta property="og:site_name" content="Silevilence&#39;s Blogs">
 <meta property="og:description" content="主要是布局，另外两个没什么好说的，快速过一下就好了。">
-<meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-11-05T11:22:24.813Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-05T10:41:51.000Z">
+<meta property="article:modified_time" content="2019-11-05T11:22:24.813Z">
+<meta property="article:author" content="Silevilence">
+<meta property="article:tag" content="QT">
+<meta property="article:tag" content="CLion">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QT学习笔记（四）--资源文件、对象模型、布局">
-<meta name="twitter:description" content="主要是布局，另外两个没什么好说的，快速过一下就好了。">
   
     <link rel="alternative" href="/atom.xml" title="Silevilence&#39;s Blogs" type="application/atom+xml">
   
@@ -37,8 +39,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -51,7 +53,7 @@
 			<img src="/img/avater.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Silevilence</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -60,7 +62,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -109,7 +111,7 @@
 				<img src="/img/avater.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Silevilence</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -140,7 +142,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -167,7 +169,7 @@
   
 
         
-        <a href="/2019/11/05/QT学习笔记（四）-资源文件、对象模型、布局/" class="archive-article-date">
+        <a href="/2019/11/05/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89-%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E3%80%81%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%81%E5%B8%83%E5%B1%80/" class="archive-article-date">
   	<time datetime="2019-11-05T10:41:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-05</time>
 </a>
         
@@ -178,16 +180,16 @@
         <p>主要是布局，另外两个没什么好说的，快速过一下就好了。</p>
 <a id="more"></a>
 
-<h1 id="资源文件与对象模型"><a href="#资源文件与对象模型" class="headerlink" title="资源文件与对象模型"></a>资源文件与对象模型</h1><p>资源文件就是前面提到的qrc文件了。需要了解的建议直接看<a href="https://www.devbean.net/2012/08/qt-study-road-2-resource-files/" target="_blank" rel="noopener">教程原文</a>，也没什么好补充的。要注意的就是关于国际化的内容建议看评论区的补充。一般来说推荐使用工具生成qrc文件。</p>
+<h1 id="资源文件与对象模型"><a href="#资源文件与对象模型" class="headerlink" title="资源文件与对象模型"></a>资源文件与对象模型</h1><p>资源文件就是前面提到的qrc文件了。需要了解的建议直接看<a target="_blank" rel="noopener" href="https://www.devbean.net/2012/08/qt-study-road-2-resource-files/">教程原文</a>，也没什么好补充的。要注意的就是关于国际化的内容建议看评论区的补充。一般来说推荐使用工具生成qrc文件。</p>
 <p>对象模型就是moc程序了。moc是Qt在C++的预处理之前进行的一次预处理，主要用于对C++的语法进行扩展。像是之前的<code>Q_OBJECT</code>，<code>signal</code>，<code>slot</code>等标准C++中没有，却能编译通过的东西，都是因为moc进行了处理。此外，之前将qrc文件加入到编译列表中，moc也会对其处理生成cpp文件。这些生成的确文件在生成的目录下可以找到。如我现在可以在<code>cmake-build-debug/qthw_autogen/EWIEGA46WW</code>目录下找到一个<code>qrc_res.cpp</code>，这就是moc对<code>res.qrc</code>处理后生成的，其内容如下（因为这篇内容少就用这个凑篇幅了）。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/****************************************************************************</span></span><br><span class="line"><span class="comment">** Resource object code</span></span><br><span class="line"><span class="comment">**</span></span><br><span class="line"><span class="comment">** Created by: The Resource Compiler for Qt version 5.12.5</span></span><br><span class="line"><span class="comment">**</span></span><br><span class="line"><span class="comment">** WARNING! All changes made in this file will be lost!</span></span><br><span class="line"><span class="comment">*****************************************************************************/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> qt_resource_data[] = &#123;</span><br><span class="line">  <span class="comment">// F:/ico/Folders/Explorer.ico</span></span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0xc1</span>,<span class="number">0x50</span>,</span><br><span class="line">  <span class="number">0x0</span>,</span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0x0</span>,<span class="number">0xc</span>,<span class="number">0x0</span>,<span class="number">0x20</span>,<span class="number">0x20</span>,<span class="number">0x10</span>,<span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0x0</span>,<span class="number">0x4</span>,<span class="number">0x0</span>,<span class="number">0xe8</span>,<span class="number">0x2</span>,<span class="number">0x0</span>,</span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0xc6</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x10</span>,<span class="number">0x10</span>,<span class="number">0x10</span>,<span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0x0</span>,<span class="number">0x4</span>,<span class="number">0x0</span>,<span class="number">0x28</span>,<span class="number">0x1</span>,<span class="number">0x0</span>,</span><br><span class="line"><span class="comment">// 这里省略了中间的一大堆内容（约7000来行），不然长度就炸了</span></span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,<span class="number">0x0</span>,</span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,<span class="number">0x80</span>,<span class="number">0x1</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,<span class="number">0xc0</span>,<span class="number">0x3</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,<span class="number">0xe0</span>,<span class="number">0x7</span>,<span class="number">0xac</span>,<span class="number">0x41</span>,</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> qt_resource_name[] = &#123;</span><br><span class="line">  <span class="comment">// images</span></span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x6</span>,</span><br><span class="line">  <span class="number">0x7</span>,<span class="number">0x3</span>,<span class="number">0x7d</span>,<span class="number">0xc3</span>,</span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x69</span>,</span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x6d</span>,<span class="number">0x0</span>,<span class="number">0x61</span>,<span class="number">0x0</span>,<span class="number">0x67</span>,<span class="number">0x0</span>,<span class="number">0x65</span>,<span class="number">0x0</span>,<span class="number">0x73</span>,</span><br><span class="line">    <span class="comment">// doc-open</span></span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x8</span>,</span><br><span class="line">  <span class="number">0x5</span>,<span class="number">0x64</span>,<span class="number">0x6b</span>,<span class="number">0xde</span>,</span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x64</span>,</span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x6f</span>,<span class="number">0x0</span>,<span class="number">0x63</span>,<span class="number">0x0</span>,<span class="number">0x2d</span>,<span class="number">0x0</span>,<span class="number">0x6f</span>,<span class="number">0x0</span>,<span class="number">0x70</span>,<span class="number">0x0</span>,<span class="number">0x65</span>,<span class="number">0x0</span>,<span class="number">0x6e</span>,</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> qt_resource_struct[] = &#123;</span><br><span class="line">  <span class="comment">// :</span></span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x2</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x1</span>,</span><br><span class="line"><span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,</span><br><span class="line">  <span class="comment">// :/images</span></span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x2</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x2</span>,</span><br><span class="line"><span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,</span><br><span class="line">  <span class="comment">// :/images/doc-open</span></span><br><span class="line">  <span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x12</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x0</span>,</span><br><span class="line"><span class="number">0x0</span>,<span class="number">0x0</span>,<span class="number">0x1</span>,<span class="number">0x5c</span>,<span class="number">0xdf</span>,<span class="number">0xb6</span>,<span class="number">0x6b</span>,<span class="number">0x98</span>,</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> QT_NAMESPACE</span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> QT_RCC_PREPEND_NAMESPACE(name) ::QT_NAMESPACE::name</span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> QT_RCC_MANGLE_NAMESPACE0(x) x</span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> QT_RCC_MANGLE_NAMESPACE1(a, b) a##_##b</span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> QT_RCC_MANGLE_NAMESPACE2(a, b) QT_RCC_MANGLE_NAMESPACE1(a,b)</span></span><br><span class="line"><span class="meta">#  <span class="meta-keyword">define</span> QT_RCC_MANGLE_NAMESPACE(name) QT_RCC_MANGLE_NAMESPACE2( \</span></span><br><span class="line">        QT_RCC_MANGLE_NAMESPACE0(name), QT_RCC_MANGLE_NAMESPACE0(QT_NAMESPACE))</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#   <span class="meta-keyword">define</span> QT_RCC_PREPEND_NAMESPACE(name) name</span></span><br><span class="line"><span class="meta">#   <span class="meta-keyword">define</span> QT_RCC_MANGLE_NAMESPACE(name) name</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> QT_NAMESPACE</span></span><br><span class="line"><span class="keyword">namespace</span> QT_NAMESPACE &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">qRegisterResourceData</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *, <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *, <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">qUnregisterResourceData</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *, <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *, <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> QT_NAMESPACE</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QT_RCC_MANGLE_NAMESPACE</span><span class="params">(qInitResources_res)</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QT_RCC_MANGLE_NAMESPACE</span><span class="params">(qInitResources_res)</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    QT_RCC_PREPEND_NAMESPACE(qRegisterResourceData)</span><br><span class="line">        (<span class="number">0x2</span>, qt_resource_struct, qt_resource_name, qt_resource_data);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QT_RCC_MANGLE_NAMESPACE</span><span class="params">(qCleanupResources_res)</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">QT_RCC_MANGLE_NAMESPACE</span><span class="params">(qCleanupResources_res)</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    QT_RCC_PREPEND_NAMESPACE(qUnregisterResourceData)</span><br><span class="line">       (<span class="number">0x2</span>, qt_resource_struct, qt_resource_name, qt_resource_data);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> &#123;</span><br><span class="line">   <span class="class"><span class="keyword">struct</span> <span class="title">initializer</span> &#123;</span></span><br><span class="line">       initializer() &#123; QT_RCC_MANGLE_NAMESPACE(qInitResources_res)(); &#125;</span><br><span class="line">       ~initializer() &#123; QT_RCC_MANGLE_NAMESPACE(qCleanupResources_res)(); &#125;</span><br><span class="line">   &#125; dummy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>可以看出来，Qt用一种粗暴的方式把资源文件活生生编码成了C++代码。</p>
-<p>关于moc的理论知识以及Qt使用对象树带来的一些问题，请直接看<a href="https://www.devbean.net/2012/09/qt-study-road-2-objects-model/" target="_blank" rel="noopener">原文</a>。</p>
+<p>关于moc的理论知识以及Qt使用对象树带来的一些问题，请直接看<a target="_blank" rel="noopener" href="https://www.devbean.net/2012/09/qt-study-road-2-objects-model/">原文</a>。</p>
 <p>在CLion中，通过cmake配置中的几个AUTO配置，CLion会生成一个<code>_autogen</code>的运行配置。这个配置会在编译前运行，执行Qt的预处理工作。</p>
 <h1 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h1><p>如果学过如Java、C#的GUI的话，应该就能知道布局是什么了。简单来说布局就是规定好了组件的放法，这样窗口变化的时候就能按照规定的方法变化组件的位置和大小了。Qt中当然也是有布局的，而且当然也叫Layout。</p>
 <p>把main函数替换成以下内容，注意自己加上几个include。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    QWidget window;</span><br><span class="line">    window.setWindowTitle(<span class="string">"Enter your age"</span>);</span><br><span class="line"></span><br><span class="line">    QSpinBox *spinBox = <span class="keyword">new</span> QSpinBox(&amp;window);</span><br><span class="line">    QSlider *slider = <span class="keyword">new</span> QSlider(Qt::Horizontal, &amp;window);</span><br><span class="line">    spinBox-&gt;setRange(<span class="number">0</span>, <span class="number">130</span>);</span><br><span class="line">    slider-&gt;setRange(<span class="number">0</span>, <span class="number">130</span>);</span><br><span class="line"></span><br><span class="line">    QObject::connect(slider, &amp;QSlider::valueChanged, spinBox, &amp;QSpinBox::setValue);</span><br><span class="line">    <span class="keyword">void</span> (QSpinBox:: *spinBoxSignal)(<span class="keyword">int</span>) = &amp;QSpinBox::valueChanged;</span><br><span class="line">    QObject::connect(spinBox, spinBoxSignal, slider, &amp;QSlider::setValue);</span><br><span class="line">    spinBox-&gt;setValue(<span class="number">35</span>);</span><br><span class="line"></span><br><span class="line">    QHBoxLayout *layout = <span class="keyword">new</span> QHBoxLayout;</span><br><span class="line">    layout-&gt;addWidget(spinBox);</span><br><span class="line">    layout-&gt;addWidget(slider);</span><br><span class="line">    window.setLayout(layout);</span><br><span class="line"></span><br><span class="line">    window.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    QWidget window;</span><br><span class="line">    window.setWindowTitle(<span class="string">&quot;Enter your age&quot;</span>);</span><br><span class="line"></span><br><span class="line">    QSpinBox *spinBox = <span class="keyword">new</span> QSpinBox(&amp;window);</span><br><span class="line">    QSlider *slider = <span class="keyword">new</span> QSlider(Qt::Horizontal, &amp;window);</span><br><span class="line">    spinBox-&gt;setRange(<span class="number">0</span>, <span class="number">130</span>);</span><br><span class="line">    slider-&gt;setRange(<span class="number">0</span>, <span class="number">130</span>);</span><br><span class="line"></span><br><span class="line">    QObject::connect(slider, &amp;QSlider::valueChanged, spinBox, &amp;QSpinBox::setValue);</span><br><span class="line">    <span class="keyword">void</span> (QSpinBox:: *spinBoxSignal)(<span class="keyword">int</span>) = &amp;QSpinBox::valueChanged;</span><br><span class="line">    QObject::connect(spinBox, spinBoxSignal, slider, &amp;QSlider::setValue);</span><br><span class="line">    spinBox-&gt;setValue(<span class="number">35</span>);</span><br><span class="line"></span><br><span class="line">    QHBoxLayout *layout = <span class="keyword">new</span> QHBoxLayout;</span><br><span class="line">    layout-&gt;addWidget(spinBox);</span><br><span class="line">    layout-&gt;addWidget(slider);</span><br><span class="line">    window.setLayout(layout);</span><br><span class="line"></span><br><span class="line">    window.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>具体效果就不放图了（懒）。可以注意到，当我们调整窗口的大小时，两个组件会自动适应。竖拉时会居中，横拉时滑动条会变长变短。这就是<code>HBoxLayout</code>，也就是水平布局的作用了。关于常用的几种布局，请去看Qt的手册。</p>
 <p>上面的代码中有几个需要注意的点：</p>
@@ -243,11 +245,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		
 		</ul>
@@ -318,7 +320,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/05/QT学习笔记（四）-资源文件、对象模型、布局/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/05/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89-%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E3%80%81%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%81%E5%B8%83%E5%B1%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -332,7 +334,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/11/08/QT学习笔记（五）-对话框/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/08/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89-%E5%AF%B9%E8%AF%9D%E6%A1%86/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -342,7 +344,7 @@
     </a>
   
   
-    <a href="/2019/11/04/QT学习笔记（三）-MainWindow与动作/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/11/04/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89-MainWindow%E4%B8%8E%E5%8A%A8%E4%BD%9C/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">QT学习笔记（三）--MainWindow与动作</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -370,7 +372,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#资源文件与对象模型"><span class="toc-number">1.</span> <span class="toc-text">资源文件与对象模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#布局"><span class="toc-number">2.</span> <span class="toc-text">布局</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E4%B8%8E%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">资源文件与对象模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%83%E5%B1%80"><span class="toc-number">2.</span> <span class="toc-text">布局</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -401,7 +403,7 @@
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
       </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </section>
   
 
@@ -498,18 +500,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">QT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CLion</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
@@ -522,11 +512,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color3">QT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">CLion</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,6 +537,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OpenSeaDragon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
             
             <div class="clearfix"></div>

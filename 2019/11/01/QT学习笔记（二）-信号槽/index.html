@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>QT学习笔记（二）--信号槽 | Silevilence&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="昨晚除了配环境以外还找了下教程，虽然找到的是用QT Creator的，不过将就着用好了。 找到了这篇和这篇。相比起来第二个教程更合我个人的口味，之后就以那个为主了。另外按这个教程前几章来看应该是用不到工具了，都是直接上代码的。">
-<meta name="keywords" content="QT,C++,CLion">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QT学习笔记（二）--信号槽">
-<meta property="og:url" content="http://yoursite.com/2019/11/01/QT学习笔记（二）-信号槽/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/11/01/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89-%E4%BF%A1%E5%8F%B7%E6%A7%BD/index.html">
 <meta property="og:site_name" content="Silevilence&#39;s Blogs">
 <meta property="og:description" content="昨晚除了配环境以外还找了下教程，虽然找到的是用QT Creator的，不过将就着用好了。 找到了这篇和这篇。相比起来第二个教程更合我个人的口味，之后就以那个为主了。另外按这个教程前几章来看应该是用不到工具了，都是直接上代码的。">
-<meta property="og:locale" content="zh-cn">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/01/K7TzVI.png">
-<meta property="og:updated_time" content="2019-11-04T07:16:51.250Z">
+<meta property="article:published_time" content="2019-11-01T06:09:42.000Z">
+<meta property="article:modified_time" content="2019-11-04T07:16:51.250Z">
+<meta property="article:author" content="Silevilence">
+<meta property="article:tag" content="QT">
+<meta property="article:tag" content="CLion">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QT学习笔记（二）--信号槽">
-<meta name="twitter:description" content="昨晚除了配环境以外还找了下教程，虽然找到的是用QT Creator的，不过将就着用好了。 找到了这篇和这篇。相比起来第二个教程更合我个人的口味，之后就以那个为主了。另外按这个教程前几章来看应该是用不到工具了，都是直接上代码的。">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/11/01/K7TzVI.png">
   
     <link rel="alternative" href="/atom.xml" title="Silevilence&#39;s Blogs" type="application/atom+xml">
@@ -39,8 +41,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -53,7 +55,7 @@
 			<img src="/img/avater.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Silevilence</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -62,7 +64,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -111,7 +113,7 @@
 				<img src="/img/avater.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Silevilence</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -142,7 +144,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -169,7 +171,7 @@
   
 
         
-        <a href="/2019/11/01/QT学习笔记（二）-信号槽/" class="archive-article-date">
+        <a href="/2019/11/01/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89-%E4%BF%A1%E5%8F%B7%E6%A7%BD/" class="archive-article-date">
   	<time datetime="2019-11-01T06:09:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
 </a>
         
@@ -178,12 +180,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>昨晚除了配环境以外还找了下教程，虽然找到的是用QT Creator的，不过将就着用好了。</p>
-<p>找到了<a href="http://c.biancheng.net/view/1792.html" target="_blank" rel="noopener">这篇</a>和<a href="https://www.devbean.net/2012/08/qt-study-road-2-catelog/" target="_blank" rel="noopener">这篇</a>。相比起来第二个教程更合我个人的口味，之后就以那个为主了。另外按这个教程前几章来看应该是用不到工具了，都是直接上代码的。</p>
+<p>找到了<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/1792.html">这篇</a>和<a target="_blank" rel="noopener" href="https://www.devbean.net/2012/08/qt-study-road-2-catelog/">这篇</a>。相比起来第二个教程更合我个人的口味，之后就以那个为主了。另外按这个教程前几章来看应该是用不到工具了，都是直接上代码的。</p>
 <a id="more"></a>
 
 <h1 id="信号槽"><a href="#信号槽" class="headerlink" title="信号槽"></a>信号槽</h1><p>信号槽是Qt里类似事件系统的东西，用设计模式来说的话就是观察者模式。个人对它的第一印象是类似于ActionListener之类的东西。</p>
 <p>发生事件时组件会产生（广播）一个信号(signal)，感兴趣的组件会用自己的槽(slot)来处理这个信号。要进行监听，要把信号连接到槽中，所以要用connect函数。用一段代码来演示一下这个机制。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">QPushButton <span class="title">button</span><span class="params">(<span class="string">"Quit"</span>)</span></span>;</span><br><span class="line">    QObject::connect(&amp;button, &amp;QPushButton::clicked, &amp;QApplication::quit);</span><br><span class="line">    button.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">QPushButton <span class="title">button</span><span class="params">(<span class="string">&quot;Quit&quot;</span>)</span></span>;</span><br><span class="line">    QObject::connect(&amp;button, &amp;QPushButton::clicked, &amp;QApplication::quit);</span><br><span class="line">    button.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果就是一个按钮，点了就会退出程序。</p>
 <h1 id="connect函数"><a href="#connect函数" class="headerlink" title="connect函数"></a>connect函数</h1><p>在Qt中，connect函数一共有6种重载（教程里说5种，但是我用IDE看有六种），如图所示。</p>
@@ -193,11 +195,11 @@
 
 <p>简单来说就是把谁的什么信号连到谁的哪个槽里去。而重载中缺少receiver的则是把this指针作为receiver，所以slot被写为member，表示slot是this的成员。而教程里提到的<code>Functor</code>则是没有，可能是随着更新舍去了。</p>
 <h2 id="使用Lambda表达式"><a href="#使用Lambda表达式" class="headerlink" title="使用Lambda表达式"></a>使用Lambda表达式</h2><p>由于connect函数接收的是函数指针，可以使用Lambda表达式作为slot。（我觉得理论上作signal也行，但是没有意义）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">QPushButton <span class="title">button</span><span class="params">(<span class="string">"Quit"</span>)</span></span>;</span><br><span class="line">    QObject::connect(&amp;button, &amp;QPushButton::clicked, [](<span class="keyword">bool</span>)&#123;</span><br><span class="line">        qDebug() &lt;&lt; <span class="string">"You clicked me!"</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    button.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">QPushButton <span class="title">button</span><span class="params">(<span class="string">&quot;Quit&quot;</span>)</span></span>;</span><br><span class="line">    QObject::connect(&amp;button, &amp;QPushButton::clicked, [](<span class="keyword">bool</span>)&#123;</span><br><span class="line">        qDebug() &lt;&lt; <span class="string">&quot;You clicked me!&quot;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    button.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>跟上一段代码相比，用一个Lambda表达式代替了slot的位置。这里用到了<code>qDebug</code>，就跟名字一样是用来输出调试信息的。（就是不知道为什么是个函数）现在点击按钮不会退出了，会在控制台输出一行<code>You clicked me!</code>。</p>
 <h1 id="自定义信号槽"><a href="#自定义信号槽" class="headerlink" title="自定义信号槽"></a>自定义信号槽</h1><p>信号槽不是GUI模块的功能，就算只是控制台程序也能使用，可以用来模拟观察者模式。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QObject&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QCoreApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">////////// newspaper.h</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Newspaper</span> :</span> <span class="keyword">public</span> QObject</span><br><span class="line">&#123;</span><br><span class="line">Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Newspaper(<span class="keyword">const</span> QString &amp; name) :</span><br><span class="line">            m_name(name)</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">send</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="function">emit <span class="title">newPaper</span><span class="params">(m_name)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">signals:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">newPaper</span><span class="params">(<span class="keyword">const</span> QString &amp;name)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    QString m_name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">////////// reader.h</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Reader</span> :</span> <span class="keyword">public</span> QObject</span><br><span class="line">&#123;</span><br><span class="line">Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Reader() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">receiveNewspaper</span><span class="params">(<span class="keyword">const</span> QString &amp; name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        qDebug() &lt;&lt; <span class="string">"Receives Newspaper: "</span> &lt;&lt; name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">////////// main.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"main.moc"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">QCoreApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Newspaper <span class="title">newspaper</span><span class="params">(<span class="string">"Newspaper A"</span>)</span></span>;</span><br><span class="line">    Reader reader;</span><br><span class="line">    QObject::connect(&amp;newspaper, &amp;Newspaper::newPaper,</span><br><span class="line">                     &amp;reader,    &amp;Reader::receiveNewspaper);</span><br><span class="line">    newspaper.send();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QObject&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QCoreApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">////////// newspaper.h</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Newspaper</span> :</span> <span class="keyword">public</span> QObject</span><br><span class="line">&#123;</span><br><span class="line">Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Newspaper(<span class="keyword">const</span> QString &amp; name) :</span><br><span class="line">            m_name(name)</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">send</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="function">emit <span class="title">newPaper</span><span class="params">(m_name)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">signals:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">newPaper</span><span class="params">(<span class="keyword">const</span> QString &amp;name)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    QString m_name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">////////// reader.h</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Reader</span> :</span> <span class="keyword">public</span> QObject</span><br><span class="line">&#123;</span><br><span class="line">Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Reader() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">receiveNewspaper</span><span class="params">(<span class="keyword">const</span> QString &amp; name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        qDebug() &lt;&lt; <span class="string">&quot;Receives Newspaper: &quot;</span> &lt;&lt; name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">////////// main.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;main.moc&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">QCoreApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Newspaper <span class="title">newspaper</span><span class="params">(<span class="string">&quot;Newspaper A&quot;</span>)</span></span>;</span><br><span class="line">    Reader reader;</span><br><span class="line">    QObject::connect(&amp;newspaper, &amp;Newspaper::newPaper,</span><br><span class="line">                     &amp;reader,    &amp;Reader::receiveNewspaper);</span><br><span class="line">    newspaper.send();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这里是把教程的代码整合到一个文件的写法，整合方法与教程里的有点不一样。按教程里的先用moc处理然后include处理结果还是会报错，信息提示包含<code>main.moc</code>文件。加入后原来的include又报错了，把它删了发现编译通过。这说明现在已经不用手动moc处理了，只要记得在main前include一个就好了。当然也不排除是IDE做了自动处理。</p>
 <p>虽然这么说处理起来还是有点麻烦，如果是正式写项目还是建议全部分开来写。</p>
@@ -251,11 +253,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		
 		</ul>
@@ -326,7 +328,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/01/QT学习笔记（二）-信号槽/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/01/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89-%E4%BF%A1%E5%8F%B7%E6%A7%BD/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -340,7 +342,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/11/04/QT学习笔记（三）-MainWindow与动作/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/04/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89-MainWindow%E4%B8%8E%E5%8A%A8%E4%BD%9C/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -350,7 +352,7 @@
     </a>
   
   
-    <a href="/2019/10/31/QT学习笔记（一）-CLion配置/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/10/31/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89-CLion%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">QT学习笔记（一）--CLion配置</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -378,7 +380,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#信号槽"><span class="toc-number">1.</span> <span class="toc-text">信号槽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#connect函数"><span class="toc-number">2.</span> <span class="toc-text">connect函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Lambda表达式"><span class="toc-number">2.1.</span> <span class="toc-text">使用Lambda表达式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义信号槽"><span class="toc-number">3.</span> <span class="toc-text">自定义信号槽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E6%A7%BD"><span class="toc-number">1.</span> <span class="toc-text">信号槽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#connect%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">connect函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">使用Lambda表达式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%A1%E5%8F%B7%E6%A7%BD"><span class="toc-number">3.</span> <span class="toc-text">自定义信号槽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -409,7 +411,7 @@
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
       </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </section>
   
 
@@ -506,18 +508,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">QT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CLion</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
@@ -530,11 +520,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color3">QT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">CLion</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,6 +545,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OpenSeaDragon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
             
             <div class="clearfix"></div>

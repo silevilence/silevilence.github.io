@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>记从pathogen迁移到vim-plug | Silevilence&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="起因今天早上开始整理自己的vim插件。当年开始学vim的时候还太年轻，git也没学好，就装了个pathogen手动管理所有插件。按理说用submodule也不会太累，可惜当初学艺不精，也没做长久考虑，插件都是用到一个装一个，装的时候还是直接clone的。时间一久，插件就会越积越多了。">
-<meta name="keywords" content="vim,pathogen,vim-plug">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记从pathogen迁移到vim-plug">
-<meta property="og:url" content="http://yoursite.com/2019/07/12/记从pathogen迁移到vim-plug/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/07/12/%E8%AE%B0%E4%BB%8Epathogen%E8%BF%81%E7%A7%BB%E5%88%B0vim-plug/index.html">
 <meta property="og:site_name" content="Silevilence&#39;s Blogs">
 <meta property="og:description" content="起因今天早上开始整理自己的vim插件。当年开始学vim的时候还太年轻，git也没学好，就装了个pathogen手动管理所有插件。按理说用submodule也不会太累，可惜当初学艺不精，也没做长久考虑，插件都是用到一个装一个，装的时候还是直接clone的。时间一久，插件就会越积越多了。">
-<meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-07-12T13:29:51.381Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-12T07:05:49.000Z">
+<meta property="article:modified_time" content="2019-07-12T13:29:51.381Z">
+<meta property="article:author" content="Silevilence">
+<meta property="article:tag" content="vim">
+<meta property="article:tag" content="pathogen">
+<meta property="article:tag" content="vim-plug">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记从pathogen迁移到vim-plug">
-<meta name="twitter:description" content="起因今天早上开始整理自己的vim插件。当年开始学vim的时候还太年轻，git也没学好，就装了个pathogen手动管理所有插件。按理说用submodule也不会太累，可惜当初学艺不精，也没做长久考虑，插件都是用到一个装一个，装的时候还是直接clone的。时间一久，插件就会越积越多了。">
   
     <link rel="alternative" href="/atom.xml" title="Silevilence&#39;s Blogs" type="application/atom+xml">
   
@@ -37,8 +39,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -51,7 +53,7 @@
 			<img src="/img/avater.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Silevilence</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -60,7 +62,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -109,7 +111,7 @@
 				<img src="/img/avater.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Silevilence</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -140,7 +142,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -167,7 +169,7 @@
   
 
         
-        <a href="/2019/07/12/记从pathogen迁移到vim-plug/" class="archive-article-date">
+        <a href="/2019/07/12/%E8%AE%B0%E4%BB%8Epathogen%E8%BF%81%E7%A7%BB%E5%88%B0vim-plug/" class="archive-article-date">
   	<time datetime="2019-07-12T07:05:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-12</time>
 </a>
         
@@ -187,32 +189,32 @@
 <p>要备份的地方有两处：插件文件夹和pathogen插件本身。</p>
 <p>插件文件夹（vimfiles/bundle）直接压缩归档一下就好了，pathogen插件（vimfiles/autoload/pathogen.vim）则复制一份改个后缀名防止被加载。</p>
 <h2 id="生成插件配置"><a href="#生成插件配置" class="headerlink" title="生成插件配置"></a>生成插件配置</h2><p>找到自己以前写的md文档，掐头去尾后剩下的有效部分大概是像这样的：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">* </span>[<span class="string">asyncrun.vim</span>](<span class="link">https://github.com/skywind3000/asyncrun.vim</span>)</span><br><span class="line"><span class="bullet">* </span>\*[<span class="string">authorinfo</span>](<span class="link">https://github.com/dantezhu/authorinfo</span>)</span><br><span class="line"><span class="bullet">* </span>[<span class="string">auto-pairs</span>](<span class="link">https://github.com/jiangmiao/auto-pairs</span>)</span><br><span class="line"><span class="bullet">* </span>[<span class="string">autohotkey.vim</span>](<span class="link">https://github.com/mmikeww/autohotkey.vim</span>)</span><br><span class="line"><span class="bullet">* </span>[<span class="string">bufferhint</span>](<span class="link">https://github.com/bsdelf/bufferhint</span>)</span><br><span class="line"><span class="bullet">* </span>\*[<span class="string">calendar-vim</span>](<span class="link">http://www.vim.org/scripts/script.php?script_id=52</span>)</span><br><span class="line"><span class="bullet">* </span>~~[<span class="string">calendar.vim</span>](<span class="link">https://github.com/itchyny/calendar.vim</span>)~~</span><br><span class="line"><span class="bullet">* </span>\!~~[<span class="string">jshint.vim</span>](<span class="link">https://github.com/walm/jshint.vim</span>)~~</span><br><span class="line"><span class="bullet">* </span>[<span class="string">lua.vim</span>](<span class="link">https://github.com/vim-scripts/lua.vim</span>)</span><br><span class="line"><span class="bullet">* </span>\![<span class="string">lushtags</span>](<span class="link">https://github.com/bitc/lushtags</span>)</span><br><span class="line"><span class="bullet">* </span>~~\!\+[<span class="string">omnisharp-vim</span>](<span class="link">https://github.com/OmniSharp/omnisharp-vim</span>)~~</span><br><span class="line"><span class="bullet">* </span>\+[<span class="string">vim-latex</span>](<span class="link">https://github.com/vim-latex/vim-latex</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> [<span class="string">asyncrun.vim</span>](<span class="link">https://github.com/skywind3000/asyncrun.vim</span>)</span><br><span class="line"><span class="bullet">*</span> \<span class="emphasis">*[<span class="string">authorinfo</span>](<span class="link">https://github.com/dantezhu/authorinfo</span>)</span></span><br><span class="line"><span class="emphasis">*</span> [<span class="string">auto-pairs</span>](<span class="link">https://github.com/jiangmiao/auto-pairs</span>)</span><br><span class="line"><span class="bullet">*</span> [<span class="string">autohotkey.vim</span>](<span class="link">https://github.com/mmikeww/autohotkey.vim</span>)</span><br><span class="line"><span class="bullet">*</span> [<span class="string">bufferhint</span>](<span class="link">https://github.com/bsdelf/bufferhint</span>)</span><br><span class="line"><span class="bullet">*</span> \<span class="emphasis">*[<span class="string">calendar-vim</span>](<span class="link">http://www.vim.org/scripts/script.php?script_id=52</span>)</span></span><br><span class="line"><span class="emphasis">*</span> ~~[<span class="string">calendar.vim</span>](<span class="link">https://github.com/itchyny/calendar.vim</span>)~~</span><br><span class="line"><span class="bullet">*</span> \!~~[<span class="string">jshint.vim</span>](<span class="link">https://github.com/walm/jshint.vim</span>)~~</span><br><span class="line"><span class="bullet">*</span> [<span class="string">lua.vim</span>](<span class="link">https://github.com/vim-scripts/lua.vim</span>)</span><br><span class="line"><span class="bullet">*</span> \![<span class="string">lushtags</span>](<span class="link">https://github.com/bitc/lushtags</span>)</span><br><span class="line"><span class="bullet">*</span> ~~\!\+[<span class="string">omnisharp-vim</span>](<span class="link">https://github.com/OmniSharp/omnisharp-vim</span>)~~</span><br><span class="line"><span class="bullet">*</span> \+[<span class="string">vim-latex</span>](<span class="link">https://github.com/vim-latex/vim-latex</span>)</span><br></pre></td></tr></table></figure>
 
 <p>上面只是部分，但是已经把有的情况列得差不多了。</p>
 <p>claendar-vim这个我在github上找到一个还在维护的，直接替换进去了。</p>
 <pre><code>注意：下面的操作中，文本搜索的正则我都是先用/做上一遍确保无误后，在命令中直接&lt;C-R&gt;+/来输入的。</code></pre><p>其中被删除线划掉的是已经删了的插件，这些需要首先去除：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:g/\v\~\~/d</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:g&#x2F;\v\~\~&#x2F;d</span><br></pre></td></tr></table></figure>
 
 <p>前面有像是*!+这样的符号的是我自己做的标记，也要去掉：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/\v\\.//</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s&#x2F;\v\\.&#x2F;&#x2F;</span><br></pre></td></tr></table></figure>
 
 <p>这样处理完之后剩下的模式就统一了，可以进行统一的格式变换。具体还是用全局的s来做：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/\v\* \[.+\]\((.+)\)/Plug &apos;\1&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s&#x2F;\v\* \[.+\]\((.+)\)&#x2F;Plug &#39;\1&#39;</span><br></pre></td></tr></table></figure>
 
 <p>这样处理完之后，剩下的都是像这样的东西了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Plug &apos;https://github.com/chrisbra/csv.vim&apos;</span><br><span class="line">Plug &apos;https://github.com/ctrlpvim/ctrlp.vim&apos;</span><br><span class="line">Plug &apos;https://github.com/iamcco/dict.vim&apos;</span><br><span class="line">Plug &apos;https://github.com/editorconfig/editorconfig-vim&apos;</span><br><span class="line">Plug &apos;https://github.com/mattn/emmet-vim&apos;</span><br><span class="line">Plug &apos;https://github.com/Konfekt/FastFold&apos;</span><br><span class="line">Plug &apos;http://git.oschina.net/qiuchangjie/ShaderHighLight&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Plug &#x27;https://github.com/chrisbra/csv.vim&#x27;</span><br><span class="line">Plug &#x27;https://github.com/ctrlpvim/ctrlp.vim&#x27;</span><br><span class="line">Plug &#x27;https://github.com/iamcco/dict.vim&#x27;</span><br><span class="line">Plug &#x27;https://github.com/editorconfig/editorconfig-vim&#x27;</span><br><span class="line">Plug &#x27;https://github.com/mattn/emmet-vim&#x27;</span><br><span class="line">Plug &#x27;https://github.com/Konfekt/FastFold&#x27;</span><br><span class="line">Plug &#x27;http://git.oschina.net/qiuchangjie/ShaderHighLight&#x27;</span><br></pre></td></tr></table></figure>
 
 <p>这样的格式已经可以直接给vim-plug用了。但是对于github上的插件，vim-plug可以使用简写（一般像这么管理的都可以），所以还要进行一步转换：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/\vhttps:\/\/github.com\/([^&apos;]+)/\1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s&#x2F;\vhttps:\&#x2F;\&#x2F;github.com\&#x2F;([^&#39;]+)&#x2F;\1</span><br></pre></td></tr></table></figure>
 
 <p>这么一来，像上面的那段就会变成下面那样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Plug &apos;chrisbra/csv.vim&apos;</span><br><span class="line">Plug &apos;ctrlpvim/ctrlp.vim&apos;</span><br><span class="line">Plug &apos;iamcco/dict.vim&apos;</span><br><span class="line">Plug &apos;editorconfig/editorconfig-vim&apos;</span><br><span class="line">Plug &apos;mattn/emmet-vim&apos;</span><br><span class="line">Plug &apos;Konfekt/FastFold&apos;</span><br><span class="line">Plug &apos;http://git.oschina.net/qiuchangjie/ShaderHighLight&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Plug &#x27;chrisbra/csv.vim&#x27;</span><br><span class="line">Plug &#x27;ctrlpvim/ctrlp.vim&#x27;</span><br><span class="line">Plug &#x27;iamcco/dict.vim&#x27;</span><br><span class="line">Plug &#x27;editorconfig/editorconfig-vim&#x27;</span><br><span class="line">Plug &#x27;mattn/emmet-vim&#x27;</span><br><span class="line">Plug &#x27;Konfekt/FastFold&#x27;</span><br><span class="line">Plug &#x27;http://git.oschina.net/qiuchangjie/ShaderHighLight&#x27;</span><br></pre></td></tr></table></figure>
 
 <p>至此，得到的结果已经可以在vim-plug的配置中使用，并且足够简洁了。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>从网上下载vim-plug的插件本体并放到autoload下，这没啥好说的了。</p>
 <p>放好后，在_vimrc中写入下面的东西：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot; vim-plug settings &#123;&#123;&#123;</span><br><span class="line">call plug#begin(&apos;$VIM/vimfiles/bundle&apos;)</span><br><span class="line"></span><br><span class="line">call plug#end()</span><br><span class="line">&quot; &#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot; vim-plug settings &#123;&#123;&#123;</span><br><span class="line">call plug#begin(&#39;$VIM&#x2F;vimfiles&#x2F;bundle&#39;)</span><br><span class="line"></span><br><span class="line">call plug#end()</span><br><span class="line">&quot; &#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
 
 <p>并且在中间的空行里把刚才转换好的插件配置粘贴进去。</p>
 <p>做好后，把原来pathogen的配置注释掉，并删除pathogen插件。</p>
@@ -339,7 +341,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/12/记从pathogen迁移到vim-plug/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/12/%E8%AE%B0%E4%BB%8Epathogen%E8%BF%81%E7%A7%BB%E5%88%B0vim-plug/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -353,7 +355,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/10/31/Windows下gvim与Python的配置问题记录/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/10/31/Windows%E4%B8%8Bgvim%E4%B8%8EPython%E7%9A%84%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -386,7 +388,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#起因"><span class="toc-number">1.</span> <span class="toc-text">起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim-plug"><span class="toc-number">2.</span> <span class="toc-text">vim-plug</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#备份"><span class="toc-number">2.1.</span> <span class="toc-text">备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成插件配置"><span class="toc-number">2.2.</span> <span class="toc-text">生成插件配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.3.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行"><span class="toc-number">2.4.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新"><span class="toc-number">2.5.</span> <span class="toc-text">更新</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="toc-number">1.</span> <span class="toc-text">起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim-plug"><span class="toc-number">2.</span> <span class="toc-text">vim-plug</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%87%E4%BB%BD"><span class="toc-number">2.1.</span> <span class="toc-text">备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">生成插件配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.3.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C"><span class="toc-number">2.4.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0"><span class="toc-number">2.5.</span> <span class="toc-text">更新</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -417,7 +419,7 @@
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
       </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </section>
   
 
@@ -514,18 +516,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">QT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CLion</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
@@ -538,11 +528,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color3">QT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">CLion</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,6 +553,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OpenSeaDragon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
             
             <div class="clearfix"></div>

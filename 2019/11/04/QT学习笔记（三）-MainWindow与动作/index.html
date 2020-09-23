@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>QT学习笔记（三）--MainWindow与动作 | Silevilence&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="中间略过了一篇QT的模块介绍。因为没有什么可以总结的内容，需要的直接看原文就好了。">
-<meta name="keywords" content="QT,C++,CLion">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QT学习笔记（三）--MainWindow与动作">
-<meta property="og:url" content="http://yoursite.com/2019/11/04/QT学习笔记（三）-MainWindow与动作/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/11/04/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89-MainWindow%E4%B8%8E%E5%8A%A8%E4%BD%9C/index.html">
 <meta property="og:site_name" content="Silevilence&#39;s Blogs">
 <meta property="og:description" content="中间略过了一篇QT的模块介绍。因为没有什么可以总结的内容，需要的直接看原文就好了。">
-<meta property="og:locale" content="zh-cn">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/04/KxoXyq.png">
-<meta property="og:updated_time" content="2019-11-04T11:12:09.427Z">
+<meta property="article:published_time" content="2019-11-04T07:09:39.000Z">
+<meta property="article:modified_time" content="2019-11-04T11:12:09.427Z">
+<meta property="article:author" content="Silevilence">
+<meta property="article:tag" content="QT">
+<meta property="article:tag" content="CLion">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QT学习笔记（三）--MainWindow与动作">
-<meta name="twitter:description" content="中间略过了一篇QT的模块介绍。因为没有什么可以总结的内容，需要的直接看原文就好了。">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/11/04/KxoXyq.png">
   
     <link rel="alternative" href="/atom.xml" title="Silevilence&#39;s Blogs" type="application/atom+xml">
@@ -39,8 +41,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -53,7 +55,7 @@
 			<img src="/img/avater.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Silevilence</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -62,7 +64,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -111,7 +113,7 @@
 				<img src="/img/avater.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Silevilence</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -142,7 +144,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -169,7 +171,7 @@
   
 
         
-        <a href="/2019/11/04/QT学习笔记（三）-MainWindow与动作/" class="archive-article-date">
+        <a href="/2019/11/04/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89-MainWindow%E4%B8%8E%E5%8A%A8%E4%BD%9C/" class="archive-article-date">
   	<time datetime="2019-11-04T07:09:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-04</time>
 </a>
         
@@ -177,7 +179,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>中间略过了一篇QT的模块介绍。因为没有什么可以总结的内容，需要的直接看<a href="https://www.devbean.net/2012/08/qt-study-road-2-modules/" target="_blank" rel="noopener">原文</a>就好了。</p>
+        <p>中间略过了一篇QT的模块介绍。因为没有什么可以总结的内容，需要的直接看<a target="_blank" rel="noopener" href="https://www.devbean.net/2012/08/qt-study-road-2-modules/">原文</a>就好了。</p>
 <a id="more"></a>
 
 <h1 id="MainWindow"><a href="#MainWindow" class="headerlink" title="MainWindow"></a>MainWindow</h1><p>MainWindow里能总结的东西也不多，就简单复述一下好了。主要还是下面需要用到这里的代码作为前置。</p>
@@ -186,23 +188,23 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> QTHW_MAINWINDOW_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> QTHW_MAINWINDOW_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMainWindow&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span> :</span> <span class="keyword">public</span> QMainWindow &#123;</span><br><span class="line">Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    MainWindow(QWidget *parent = <span class="literal">nullptr</span>);</span><br><span class="line"></span><br><span class="line">    ~MainWindow();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">//QTHW_MAINWINDOW_H</span></span></span><br></pre></td></tr></table></figure>
 
 <p>同时修改<code>mainwindow.cpp</code>为以下内容。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent) :</span><br><span class="line">        QMainWindow(parent) &#123;</span><br><span class="line">    setWindowTitle(tr(<span class="string">"Main Window"</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow() &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mainwindow.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent) :</span><br><span class="line">        QMainWindow(parent) &#123;</span><br><span class="line">    setWindowTitle(tr(<span class="string">&quot;Main Window&quot;</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow() &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>可以看出主要是清理了不需要的代码。虽然加了句设置标题的代码，但不设也没什么所谓。</p>
 <p>现在修改<code>main.cpp</code>，让它显示这个窗口。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    MainWindow window;</span><br><span class="line">    window.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mainwindow.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    MainWindow window;</span><br><span class="line">    window.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>要注意的是使用的是<code>QApplication</code>，而不是之前的<code>QCoreApplication</code>。</p>
-<p>这里的效果并不如教程里那么明显，只是个很小的窗口。关于窗口的分区可以直接看教程的<a href="https://www.devbean.net/2012/08/qt-study-road-2-mainwindow/" target="_blank" rel="noopener">原文</a>。</p>
+<p>这里的效果并不如教程里那么明显，只是个很小的窗口。关于窗口的分区可以直接看教程的<a target="_blank" rel="noopener" href="https://www.devbean.net/2012/08/qt-study-road-2-mainwindow/">原文</a>。</p>
 <p>上面<code>main.cpp</code>中直接使用<code>QMainWindow</code>的对象来做窗口效果是一样的，这里这么写是为了下一章方便添加东西。</p>
 <h1 id="动作"><a href="#动作" class="headerlink" title="动作"></a>动作</h1><p>Qt中将菜单项、工具栏按钮等统一抽象为<code>QAction</code>类。一个<code>QAction</code>类对象代表了对点击菜单项、点击工具栏按钮、按下快捷键之类的动作做出的反应。</p>
 <p><code>QAction</code>有图标、菜单文字、快捷键、状态栏文字、浮动帮助等属性。Qt可以根据我们添加<code>QAction</code>对象的具体位置（如菜单、工具栏等）来自动选择需要的属性。而且如果将一个<code>QAction</code>对象同时添加到不同位置（如同时加到菜单和工具栏中），Qt也能同步更新两处的显示效果。</p>
 <p>下面是使用<code>QAction</code>的一个示例，自行根据注释分割代码。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mainwindow.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> QTHW_MAINWINDOW_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> QTHW_MAINWINDOW_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMainWindow&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span> :</span> <span class="keyword">public</span> QMainWindow &#123;</span><br><span class="line">Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    MainWindow(QWidget *parent = <span class="literal">nullptr</span>);</span><br><span class="line"></span><br><span class="line">    ~MainWindow();</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">open</span><span class="params">()</span></span>;</span><br><span class="line">    QAction *openAction;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">//QTHW_MAINWINDOW_H</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// mainwindow.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QAction&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMenuBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMessageBox&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QStatusBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QToolBar&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent) :</span><br><span class="line">        QMainWindow(parent) &#123;</span><br><span class="line">    setWindowTitle(tr(<span class="string">"Main Window"</span>));</span><br><span class="line"></span><br><span class="line">    openAction = <span class="keyword">new</span> QAction(QIcon(<span class="string">":/images/doc-open"</span>), tr(<span class="string">"&amp;Open..."</span>), <span class="keyword">this</span>);</span><br><span class="line">    openAction-&gt;setShortcuts(QKeySequence::Open);</span><br><span class="line">    openAction-&gt;setStatusTip(<span class="string">"Open an existing file"</span>);</span><br><span class="line">    connect(openAction, &amp;QAction::triggered, <span class="keyword">this</span>, &amp;MainWindow::open);</span><br><span class="line"></span><br><span class="line">    QMenu *file = menuBar()-&gt;addMenu(tr(<span class="string">"&amp;File"</span>));</span><br><span class="line">    file-&gt;addAction(openAction);</span><br><span class="line"></span><br><span class="line">    QToolBar *toolBar = addToolBar(tr(<span class="string">"&amp;File"</span>));</span><br><span class="line">    toolBar-&gt;addAction(openAction);</span><br><span class="line"></span><br><span class="line">    statusBar();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow() &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> MainWindow::open() &#123;</span><br><span class="line">    QMessageBox::information(<span class="keyword">this</span>, tr(<span class="string">"Information"</span>), tr(<span class="string">"Open"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mainwindow.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> QTHW_MAINWINDOW_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> QTHW_MAINWINDOW_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMainWindow&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span> :</span> <span class="keyword">public</span> QMainWindow &#123;</span><br><span class="line">Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    MainWindow(QWidget *parent = <span class="literal">nullptr</span>);</span><br><span class="line"></span><br><span class="line">    ~MainWindow();</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">open</span><span class="params">()</span></span>;</span><br><span class="line">    QAction *openAction;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">//QTHW_MAINWINDOW_H</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// mainwindow.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QAction&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMenuBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMessageBox&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QStatusBar&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QToolBar&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mainwindow.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent) :</span><br><span class="line">        QMainWindow(parent) &#123;</span><br><span class="line">    setWindowTitle(tr(<span class="string">&quot;Main Window&quot;</span>));</span><br><span class="line"></span><br><span class="line">    openAction = <span class="keyword">new</span> QAction(QIcon(<span class="string">&quot;:/images/doc-open&quot;</span>), tr(<span class="string">&quot;&amp;Open...&quot;</span>), <span class="keyword">this</span>);</span><br><span class="line">    openAction-&gt;setShortcuts(QKeySequence::Open);</span><br><span class="line">    openAction-&gt;setStatusTip(<span class="string">&quot;Open an existing file&quot;</span>);</span><br><span class="line">    connect(openAction, &amp;QAction::triggered, <span class="keyword">this</span>, &amp;MainWindow::open);</span><br><span class="line"></span><br><span class="line">    QMenu *file = menuBar()-&gt;addMenu(tr(<span class="string">&quot;&amp;File&quot;</span>));</span><br><span class="line">    file-&gt;addAction(openAction);</span><br><span class="line"></span><br><span class="line">    QToolBar *toolBar = addToolBar(tr(<span class="string">&quot;&amp;File&quot;</span>));</span><br><span class="line">    toolBar-&gt;addAction(openAction);</span><br><span class="line"></span><br><span class="line">    statusBar();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow() &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MainWindow::open</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    QMessageBox::information(<span class="keyword">this</span>, tr(<span class="string">&quot;Information&quot;</span>), tr(<span class="string">&quot;Open&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>上述代码此时已经可以运行，但图标还无法正常显示。为了能找到图标，需要建立资源文件。</p>
 <p>新建一个文件，名为<code>res.qrc</code>。输入以下内容。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RCC</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">qresource</span> <span class="attr">prefix</span>=<span class="string">"/images"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">file</span> <span class="attr">alias</span>=<span class="string">"doc-open"</span>&gt;</span>F:/ico/Folders/Explorer.ico<span class="tag">&lt;/<span class="name">file</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">qresource</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RCC</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RCC</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">qresource</span> <span class="attr">prefix</span>=<span class="string">&quot;/images&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">file</span> <span class="attr">alias</span>=<span class="string">&quot;doc-open&quot;</span>&gt;</span>F:/ico/Folders/Explorer.ico<span class="tag">&lt;/<span class="name">file</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">qresource</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RCC</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>其中，图片的地址请在自己电脑上找一张替代。这个文件是用QTCreator工具生成的，具体过程暂时不赘述，以后说不说不一定。该工具也可以整合到CLion中，过程跟之前的差不多，这里不多说了。</p>
 <p>光是有资源文件还不够，还要将其加入编译的目标中。在cmake配置的<code>add_executable</code>命令中加入qrc文件，现在这条命令看起来是这样的。</p>
@@ -211,7 +213,7 @@
 <p>运行程序就能看到结果了，如下图。</p>
 <p><img src="https://s2.ax1x.com/2019/11/04/KxoXyq.png" alt="运行结果"></p>
 <p>点击按钮或是菜单项就能看到弹出框。</p>
-<p>关于代码的详细解释请去<a href="https://www.devbean.net/2012/08/qt-study-road-2-action/" target="_blank" rel="noopener">教程</a>里看，我懒得写了。</p>
+<p>关于代码的详细解释请去<a target="_blank" rel="noopener" href="https://www.devbean.net/2012/08/qt-study-road-2-action/">教程</a>里看，我懒得写了。</p>
 
       
 
@@ -260,11 +262,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		
 		</ul>
@@ -335,7 +337,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/04/QT学习笔记（三）-MainWindow与动作/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/04/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89-MainWindow%E4%B8%8E%E5%8A%A8%E4%BD%9C/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -349,7 +351,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/11/05/QT学习笔记（四）-资源文件、对象模型、布局/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/05/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89-%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E3%80%81%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%81%E5%B8%83%E5%B1%80/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -359,7 +361,7 @@
     </a>
   
   
-    <a href="/2019/11/01/QT学习笔记（二）-信号槽/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/11/01/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89-%E4%BF%A1%E5%8F%B7%E6%A7%BD/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">QT学习笔记（二）--信号槽</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -387,7 +389,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MainWindow"><span class="toc-number">1.</span> <span class="toc-text">MainWindow</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动作"><span class="toc-number">2.</span> <span class="toc-text">动作</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MainWindow"><span class="toc-number">1.</span> <span class="toc-text">MainWindow</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">动作</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -418,7 +420,7 @@
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
       </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </section>
   
 
@@ -515,18 +517,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">QT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CLion</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
@@ -539,11 +529,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color3">QT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">CLion</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,6 +554,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OpenSeaDragon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
             
             <div class="clearfix"></div>

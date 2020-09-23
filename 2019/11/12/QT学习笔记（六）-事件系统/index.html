@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>QT学习笔记（六）--事件系统 | Silevilence&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="上次留下的几个标准对话框没啥好说的，直接看文档都能明白。 虽然Qt的触发主要通过信号槽来实现，但Qt也是有事件事件系统的。默认情况下，Qt的事件会发出相应的信号，而我们只要通过信号槽来使用这些信号就好了。事件系统占据了教程的18~23共6节。">
-<meta name="keywords" content="QT,C++,CLion">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QT学习笔记（六）--事件系统">
-<meta property="og:url" content="http://yoursite.com/2019/11/12/QT学习笔记（六）-事件系统/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/11/12/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89-%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="Silevilence&#39;s Blogs">
 <meta property="og:description" content="上次留下的几个标准对话框没啥好说的，直接看文档都能明白。 虽然Qt的触发主要通过信号槽来实现，但Qt也是有事件事件系统的。默认情况下，Qt的事件会发出相应的信号，而我们只要通过信号槽来使用这些信号就好了。事件系统占据了教程的18~23共6节。">
-<meta property="og:locale" content="zh-cn">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/12/M1Tkad.gif">
-<meta property="og:updated_time" content="2019-11-12T12:00:16.388Z">
+<meta property="article:published_time" content="2019-11-12T01:33:48.000Z">
+<meta property="article:modified_time" content="2019-11-12T12:00:16.388Z">
+<meta property="article:author" content="Silevilence">
+<meta property="article:tag" content="QT">
+<meta property="article:tag" content="CLion">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QT学习笔记（六）--事件系统">
-<meta name="twitter:description" content="上次留下的几个标准对话框没啥好说的，直接看文档都能明白。 虽然Qt的触发主要通过信号槽来实现，但Qt也是有事件事件系统的。默认情况下，Qt的事件会发出相应的信号，而我们只要通过信号槽来使用这些信号就好了。事件系统占据了教程的18~23共6节。">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/11/12/M1Tkad.gif">
   
     <link rel="alternative" href="/atom.xml" title="Silevilence&#39;s Blogs" type="application/atom+xml">
@@ -39,8 +41,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -53,7 +55,7 @@
 			<img src="/img/avater.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Silevilence</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 		
 
@@ -62,7 +64,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -111,7 +113,7 @@
 				<img src="/img/avater.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Silevilence</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
 			
 			
@@ -142,7 +144,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -169,7 +171,7 @@
   
 
         
-        <a href="/2019/11/12/QT学习笔记（六）-事件系统/" class="archive-article-date">
+        <a href="/2019/11/12/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89-%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
   	<time datetime="2019-11-12T01:33:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-12</time>
 </a>
         
@@ -178,29 +180,29 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>上次留下的几个标准对话框没啥好说的，直接看文档都能明白。</p>
-<p>虽然Qt的触发主要通过信号槽来实现，但Qt也是有事件事件系统的。默认情况下，Qt的事件会发出相应的信号，而我们只要通过信号槽来使用这些信号就好了。事件系统占据了<a href="https://www.devbean.net/2012/08/qt-study-road-2-catelog/" target="_blank" rel="noopener">教程</a>的18~23共6节。</p>
+<p>虽然Qt的触发主要通过信号槽来实现，但Qt也是有事件事件系统的。默认情况下，Qt的事件会发出相应的信号，而我们只要通过信号槽来使用这些信号就好了。事件系统占据了<a target="_blank" rel="noopener" href="https://www.devbean.net/2012/08/qt-study-road-2-catelog/">教程</a>的18~23共6节。</p>
 <a id="more"></a>
 
 <h1 id="事件系统简介"><a href="#事件系统简介" class="headerlink" title="事件系统简介"></a>事件系统简介</h1><p>简单来说跟别的GUI框架差不多。比如在swing中我们使用ActionListener，之前我说Qt中的事件系统就是信号槽，现在看来信号是由事件的监听器发出的。在Qt中，要响应事件要重写事件的响应函数，一般是<code>xxxEvent</code>这样的格式。</p>
 <p>我们在main函数中使用<code>QCoreApplication</code>的<code>exec()</code>来开启事件循环。当发生事件时，Qt将创建一个<code>QEvent</code>对象，并将其传递给<code>QObject</code>的<code>event()</code>函数。<code>event()</code>函数负责事件的分发，将事件派发给相应的监听器。</p>
 <p><strong>一般来说，我们在使用组件时，直接使用信号槽；在自定义组件时，使用事件系统。</strong></p>
 <p>所有的事件处理函数都定义在<code>QWidget</code>中，因为这是所有组件的父类。下面我们定义一个自己的Label来实验一下事件系统。因为没有用到信号槽等机制，这里没有添加<code>Q_OBJECT</code>宏，也就不用分开在几个文件里写，但在实际应用中强烈<strong>不</strong>推荐这么做。以后代码出现相同的问题不再提醒。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMouseEvent&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventLabel</span> :</span> <span class="keyword">public</span> QLabel &#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mouseMoveEvent</span><span class="params">(QMouseEvent *event)</span> override</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mousePressEvent</span><span class="params">(QMouseEvent *event)</span> override</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mouseReleaseEvent</span><span class="params">(QMouseEvent *event)</span> override</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> EventLabel::mouseMoveEvent(QMouseEvent *event) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;setText(QString(<span class="string">"&lt;center&gt;&lt;h1&gt;Move: (%1, %2)&lt;/h1&gt;&lt;/center&gt;"</span>)</span><br><span class="line">                          .arg(QString::number(event-&gt;x()), QString::number(event-&gt;y())));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> EventLabel::mousePressEvent(QMouseEvent *event) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;setText(QString(<span class="string">"&lt;center&gt;&lt;h1&gt;Press: (%1, %2)&lt;/h1&gt;&lt;/center&gt;"</span>)</span><br><span class="line">                          .arg(QString::number(event-&gt;x()), QString::number(event-&gt;y())));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> EventLabel::mouseReleaseEvent(QMouseEvent *event) &#123;</span><br><span class="line">    QString msg;</span><br><span class="line">    msg.<span class="built_in">sprintf</span>(<span class="string">"&lt;center&gt;&lt;h1&gt;Release: (%d, %d)&lt;/h1&gt;&lt;/center&gt;"</span>,</span><br><span class="line">                event-&gt;x(), event-&gt;y());</span><br><span class="line">    <span class="keyword">this</span>-&gt;setText(msg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> *label = <span class="keyword">new</span> EventLabel;</span><br><span class="line">    label-&gt;setWindowTitle(<span class="string">"MouseEvent Demo"</span>);</span><br><span class="line">    label-&gt;resize(<span class="number">300</span>, <span class="number">200</span>);</span><br><span class="line">    label-&gt;setMouseTracking(<span class="literal">true</span>);</span><br><span class="line">    label-&gt;show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMouseEvent&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventLabel</span> :</span> <span class="keyword">public</span> QLabel &#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mouseMoveEvent</span><span class="params">(QMouseEvent *event)</span> <span class="keyword">override</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mousePressEvent</span><span class="params">(QMouseEvent *event)</span> <span class="keyword">override</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mouseReleaseEvent</span><span class="params">(QMouseEvent *event)</span> <span class="keyword">override</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">EventLabel::mouseMoveEvent</span><span class="params">(QMouseEvent *event)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;setText(QString(<span class="string">&quot;&lt;center&gt;&lt;h1&gt;Move: (%1, %2)&lt;/h1&gt;&lt;/center&gt;&quot;</span>)</span><br><span class="line">                          .arg(QString::number(event-&gt;x()), QString::number(event-&gt;y())));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">EventLabel::mousePressEvent</span><span class="params">(QMouseEvent *event)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;setText(QString(<span class="string">&quot;&lt;center&gt;&lt;h1&gt;Press: (%1, %2)&lt;/h1&gt;&lt;/center&gt;&quot;</span>)</span><br><span class="line">                          .arg(QString::number(event-&gt;x()), QString::number(event-&gt;y())));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">EventLabel::mouseReleaseEvent</span><span class="params">(QMouseEvent *event)</span> </span>&#123;</span><br><span class="line">    QString msg;</span><br><span class="line">    msg.<span class="built_in">sprintf</span>(<span class="string">&quot;&lt;center&gt;&lt;h1&gt;Release: (%d, %d)&lt;/h1&gt;&lt;/center&gt;&quot;</span>,</span><br><span class="line">                event-&gt;x(), event-&gt;y());</span><br><span class="line">    <span class="keyword">this</span>-&gt;setText(msg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> *label = <span class="keyword">new</span> EventLabel;</span><br><span class="line">    label-&gt;setWindowTitle(<span class="string">&quot;MouseEvent Demo&quot;</span>);</span><br><span class="line">    label-&gt;resize(<span class="number">300</span>, <span class="number">200</span>);</span><br><span class="line">    label-&gt;setMouseTracking(<span class="literal">true</span>);</span><br><span class="line">    label-&gt;show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>代码就不解释了，需要注意的是第37行。组件对鼠标的追踪是需要开启的，如果不手动设置的话，就要先在Label上点击一个才能自动开启它了。运行效果如下图。</p>
 <p><img src="https://s2.ax1x.com/2019/11/12/M1Tkad.gif" alt="鼠标事件演示"></p>
 <h1 id="事件的接受与忽略"><a href="#事件的接受与忽略" class="headerlink" title="事件的接受与忽略"></a>事件的接受与忽略</h1><p>事件可以选择接受或者忽略。首先我们上一段代码，这是用信号槽写的。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CustomButton.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> QTHW_CUSTOMBUTTON_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> QTHW_CUSTOMBUTTON_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomButton</span> :</span> <span class="keyword">public</span> QPushButton &#123;</span><br><span class="line">Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    CustomButton(QWidget *parent = <span class="literal">nullptr</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onButtonClicked</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">//QTHW_CUSTOMBUTTON_H</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// CustomButton.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"CustomButton.h"</span></span></span><br><span class="line"></span><br><span class="line">CustomButton::CustomButton(QWidget *parent)</span><br><span class="line">        : QPushButton(parent) &#123;</span><br><span class="line">    connect(<span class="keyword">this</span>, &amp;CustomButton::clicked, <span class="keyword">this</span>, &amp;CustomButton::onButtonClicked);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> CustomButton::onButtonClicked() &#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"You clicked this!"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"CustomButton.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    CustomButton btn;</span><br><span class="line">    btn.setText(<span class="string">"This is a Button!"</span>);</span><br><span class="line">    btn.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CustomButton.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> QTHW_CUSTOMBUTTON_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> QTHW_CUSTOMBUTTON_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QPushButton&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomButton</span> :</span> <span class="keyword">public</span> QPushButton &#123;</span><br><span class="line">Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    CustomButton(QWidget *parent = <span class="literal">nullptr</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onButtonClicked</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">//QTHW_CUSTOMBUTTON_H</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// CustomButton.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;CustomButton.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">CustomButton::CustomButton(QWidget *parent)</span><br><span class="line">        : QPushButton(parent) &#123;</span><br><span class="line">    connect(<span class="keyword">this</span>, &amp;CustomButton::clicked, <span class="keyword">this</span>, &amp;CustomButton::onButtonClicked);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CustomButton::onButtonClicked</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">&quot;You clicked this!&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;CustomButton.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    CustomButton btn;</span><br><span class="line">    btn.setText(<span class="string">&quot;This is a Button!&quot;</span>);</span><br><span class="line">    btn.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>代码不做解释了，结果就是点一次按钮在控制台输出一次。下面我们给它添加事件系统的处理，代码只列出了发生变化的部分。</p>
 <p><del>发生了点糟心的事，心情很差，下面可能会写得比较随便</del></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CustomButton.h</span></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mousePressEvent</span><span class="params">(QMouseEvent *e)</span> override</span>;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// CustomButton.cpp</span></span><br><span class="line"><span class="keyword">void</span> CustomButton::mousePressEvent(QMouseEvent *e) &#123;</span><br><span class="line">    <span class="keyword">if</span>(e-&gt;button() == Qt::LeftButton) &#123;</span><br><span class="line">        qDebug() &lt;&lt; <span class="string">"left"</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        QPushButton::mousePressEvent(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CustomButton.h</span></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mousePressEvent</span><span class="params">(QMouseEvent *e)</span> <span class="keyword">override</span></span>;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// CustomButton.cpp</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CustomButton::mousePressEvent</span><span class="params">(QMouseEvent *e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(e-&gt;button() == Qt::LeftButton) &#123;</span><br><span class="line">        qDebug() &lt;&lt; <span class="string">&quot;left&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        QPushButton::mousePressEvent(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>注意我们只是添加（或者说重载）了事件处理函数，并没有删除原来信号槽相关的代码。运行程序并点击按钮，会发现控制台只输出了<code>left</code>，这说明信号没有被触发。由此可见信号的发送是在父类的事件处理函数中手动进行的，<strong>在继承重写组件的时候要注意调用一下父类的函数</strong>。</p>
 <p>Qt的事件对象有<code>accept()</code>和<code>ignore()</code>两个函数，分别用来表示组件处理或是忽略了该事件。当一个事件已经被某组件处理时，Qt会停止向其<strong>父节点</strong>传递该事件，否则该事件会被继续传递下去。要注意事件默认是accept的，只有<code>QWidget</code>中的事件处理函数是ignore的。也就是说，我们一般不会直接调用<code>accept()</code>或<code>ignore()</code>，而是交由父类来调用；而当我们想要忽略一个事件时，可以不调用父类的处理函数而是直接调用<code>QWidget</code>的处理函数。这么做的好处是我们可以不用关心父类中已经写好的鸡毛蒜皮的小操作，只关心自己的逻辑。</p>
 <p>关于直接使用<code>accept()</code>或<code>ignore()</code>而不是调用父类方法的危险性，教程里有一个例子，也不难懂，看看就好了。</p>
 <h2 id="特殊情况"><a href="#特殊情况" class="headerlink" title="特殊情况"></a>特殊情况</h2><p>虽然上面这么说了，但是在一种特殊情况下我们是要手动调用这两个函数的，那就是在处理窗口关闭事件<code>QCloseEvent</code>时。此时，使用<code>accept()</code>意味着事件处理完毕，窗口关闭；而使用<code>ignore()</code>则会让事件继续传播，窗口就不会关闭了。这一点在关闭窗口时的确认对话框中要大量使用，下面是一个例子。我们在mainwindow类中添加关闭事件的处理函数。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> MainWindow::closeEvent(QCloseEvent *event) &#123;</span><br><span class="line">    <span class="keyword">bool</span> <span class="built_in">exit</span> = QMessageBox::question(<span class="keyword">this</span>,</span><br><span class="line">                                      tr(<span class="string">"Quit"</span>),</span><br><span class="line">                                      tr(<span class="string">"Are you sure to quit this application?"</span>),</span><br><span class="line">                                      QMessageBox::Yes | QMessageBox::No,</span><br><span class="line">                                      QMessageBox::No) == QMessageBox::Yes;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">exit</span>) &#123;</span><br><span class="line">        event-&gt;accept();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        event-&gt;ignore();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MainWindow::closeEvent</span><span class="params">(QCloseEvent *event)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> <span class="built_in">exit</span> = QMessageBox::question(<span class="keyword">this</span>,</span><br><span class="line">                                      tr(<span class="string">&quot;Quit&quot;</span>),</span><br><span class="line">                                      tr(<span class="string">&quot;Are you sure to quit this application?&quot;</span>),</span><br><span class="line">                                      QMessageBox::Yes | QMessageBox::No,</span><br><span class="line">                                      QMessageBox::No) == QMessageBox::Yes;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">exit</span>) &#123;</span><br><span class="line">        event-&gt;accept();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        event-&gt;ignore();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>少的代码就自己写吧。记得修改主函数让其显示MainWindow。现在我们关闭主窗口时就会有对话框弹出来，选否（No）的话窗口就不会关闭了。</p>
 <h1 id="event"><a href="#event" class="headerlink" title="event()"></a>event()</h1><p>前面提到过一次，<code>event()</code>函数在<code>QObject</code>中，负责事件的分发工作。虽然这里在讲<code>event()</code>函数的相关内容，但是在实际应用中请注意不到万不得已绝对不要动这个函数，以免发生意外。</p>
@@ -213,20 +215,20 @@
 <p>其实还有一个更加危险的函数<code>QCoreApplication::notify()</code>，这里不做介绍。</p>
 <h1 id="事件过滤器"><a href="#事件过滤器" class="headerlink" title="事件过滤器"></a>事件过滤器</h1><p>前面我们提到，重载<code>event()</code>函数可以实现拦截事件的功能。由于这种操作的危险性，我们使用事件过滤器来实现事件的拦截。</p>
 <p>事件过滤器即<code>QObject</code>类的<code>eventFilter()</code>函数，其签名如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">bool</span> QObject::eventFilter ( QObject * watched, QEvent * event );</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">bool</span> <span class="title">QObject::eventFilter</span> <span class="params">( QObject * watched, QEvent * event )</span></span>;</span><br></pre></td></tr></table></figure>
 
 <p>事件过滤器会在<code>watched</code>接收到<code>event</code>之前被调用，返回值是一个布尔值，表示该事件是否被过滤。被过滤的事件就不会再进行传播了。也就是说，当返回<code>true</code>时，事件会被拦截下来。</p>
 <p>事件过滤器需要进行添加，其机制与swing中的Listener相似，即使用<code>installEventFilter</code>来添加一个事件过滤器对象。具体可以看教程中的例子。</p>
 <p>一个对象上可以安装多个过滤器，并且最后安装的会最先执行。</p>
 <p>另外，如果在过滤器中<code>delete</code>了组件，务必将返回值设为<code>true</code>，不然Qt会将事件发送给已经被delete的组件而导致程序崩溃。</p>
 <p>此外，过滤器与安装过滤器的组件必须处于同一个线程上，否则过滤器无效。</p>
-<p>关于事件中这么多函数的调用顺序，可以看<a href="https://www.devbean.net/2012/10/qt-study-road-2-event-summary/" target="_blank" rel="noopener">教程这里</a>给出的例子。</p>
+<p>关于事件中这么多函数的调用顺序，可以看<a target="_blank" rel="noopener" href="https://www.devbean.net/2012/10/qt-study-road-2-event-summary/">教程这里</a>给出的例子。</p>
 <h1 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h1><p>我们可以定义自己的事件。定义事件时要注意设置事件的type。设置时type的值（type是一个int）要在<code>QEvent::User</code>和<code>QEvent::MaxUser</code>之间，其它的值已经被系统的事件占用了，如果重复会发生不好的事情。为了避免这个值的重复，特别是几个自定义事件之间的重复，可以用<code>registerEventType()</code>来注册自定义事件。其签名如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> QEvent::registerEventType ( <span class="keyword">int</span> hint = <span class="number">-1</span> );</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">QEvent::registerEventType</span> <span class="params">( <span class="keyword">int</span> hint = <span class="number">-1</span> )</span></span>;</span><br></pre></td></tr></table></figure>
 
 <p>这个函数接收一个int值，表示你想要注册的type值。返回值也是一个int，表示最后注册的type值。如果hint值可用，则会直接注册hint值并返回；否则会由系统自动分配一个合法的值。</p>
 <p>发送事件有两个方式：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">bool</span> QCoreApplication::sendEvent(QObject *receiver, QEvent *event);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> QCoreApplication::postEvent(QObject *receiver, QEvent *event);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">QCoreApplication::sendEvent</span><span class="params">(QObject *receiver, QEvent *event)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">QCoreApplication::postEvent</span><span class="params">(QObject *receiver, QEvent *event)</span></span>;</span><br></pre></td></tr></table></figure>
 
 <p>send方式是同步进行的，它会通过<code>notify</code>函数直接发送事件并等待返回，一般可以直接在栈上建立事件对象。post方式是异步的，它把事件对象加入到事件队列中，并在post出去后自动delete，必须在堆上建立事件对象。</p>
 <p>Qt还提供了一些辅助用的函数，可以在教程中查看。</p>
@@ -280,11 +282,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CLion</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		
 		</ul>
@@ -355,7 +357,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/12/QT学习笔记（六）-事件系统/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/12/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89-%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -369,7 +371,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/12/27/开个小坑/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/12/27/%E5%BC%80%E4%B8%AA%E5%B0%8F%E5%9D%91/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -379,7 +381,7 @@
     </a>
   
   
-    <a href="/2019/11/08/QT学习笔记（五）-对话框/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/11/08/QT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89-%E5%AF%B9%E8%AF%9D%E6%A1%86/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">QT学习笔记（五）--对话框</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -407,7 +409,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#事件系统简介"><span class="toc-number">1.</span> <span class="toc-text">事件系统简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#事件的接受与忽略"><span class="toc-number">2.</span> <span class="toc-text">事件的接受与忽略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊情况"><span class="toc-number">2.1.</span> <span class="toc-text">特殊情况</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#event"><span class="toc-number">3.</span> <span class="toc-text">event()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#事件过滤器"><span class="toc-number">4.</span> <span class="toc-text">事件过滤器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义事件"><span class="toc-number">5.</span> <span class="toc-text">自定义事件</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">事件系统简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E7%9A%84%E6%8E%A5%E5%8F%97%E4%B8%8E%E5%BF%BD%E7%95%A5"><span class="toc-number">2.</span> <span class="toc-text">事件的接受与忽略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5"><span class="toc-number">2.1.</span> <span class="toc-text">特殊情况</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#event"><span class="toc-number">3.</span> <span class="toc-text">event()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">事件过滤器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">自定义事件</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -438,7 +440,7 @@
           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
       </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </section>
   
 
@@ -535,18 +537,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">QT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CLion</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
@@ -559,11 +549,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color3">QT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">CLion</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,6 +574,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OpenSeaDragon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Electron</a>
               </li>
             
             <div class="clearfix"></div>
