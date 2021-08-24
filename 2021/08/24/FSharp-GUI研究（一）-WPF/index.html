@@ -6,22 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>在Electron中完成React井字棋教程 | Silevilence&#39;s Blogs</title>
+  <title>FSharp GUI研究（一）----WPF | Silevilence&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近很忙，不过还是忙里偷闲学了一下 React 和 Electron。单纯的 React 或是 Electron 其实我都没有太大的兴趣，但它们组合起来我就很感兴趣了。">
+  <meta name="description" content="最近沉迷F#，但发现F#没什么关于GUI的文章。稍微研究了一下，没有太深入。这里留个总结。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在Electron中完成React井字棋教程">
-<meta property="og:url" content="http://yoursite.com/2020/09/23/%E5%9C%A8Electron%E4%B8%AD%E5%AE%8C%E6%88%90React%E4%BA%95%E5%AD%97%E6%A3%8B%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:title" content="FSharp GUI研究（一）----WPF">
+<meta property="og:url" content="http://yoursite.com/2021/08/24/FSharp-GUI%E7%A0%94%E7%A9%B6%EF%BC%88%E4%B8%80%EF%BC%89-WPF/index.html">
 <meta property="og:site_name" content="Silevilence&#39;s Blogs">
-<meta property="og:description" content="最近很忙，不过还是忙里偷闲学了一下 React 和 Electron。单纯的 React 或是 Electron 其实我都没有太大的兴趣，但它们组合起来我就很感兴趣了。">
+<meta property="og:description" content="最近沉迷F#，但发现F#没什么关于GUI的文章。稍微研究了一下，没有太深入。这里留个总结。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-23T09:58:20.000Z">
-<meta property="article:modified_time" content="2020-09-23T11:32:33.032Z">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/24/hAwFV1.md.gif">
+<meta property="article:published_time" content="2021-08-24T12:09:20.000Z">
+<meta property="article:modified_time" content="2021-08-24T13:40:51.958Z">
 <meta property="article:author" content="Silevilence">
-<meta property="article:tag" content="Javascript">
-<meta property="article:tag" content="React">
-<meta property="article:tag" content="Electron">
+<meta property="article:tag" content="F#">
+<meta property="article:tag" content="WPF">
+<meta property="article:tag" content=".Net">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/08/24/hAwFV1.md.gif">
   
     <link rel="alternative" href="/atom.xml" title="Silevilence&#39;s Blogs" type="application/atom+xml">
   
@@ -157,60 +159,61 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-在Electron中完成React井字棋教程" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-FSharp-GUI研究（一）-WPF" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      在Electron中完成React井字棋教程
+      FSharp GUI研究（一）----WPF
     </h1>
   
 
         
-        <a href="/2020/09/23/%E5%9C%A8Electron%E4%B8%AD%E5%AE%8C%E6%88%90React%E4%BA%95%E5%AD%97%E6%A3%8B%E6%95%99%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-09-23T09:58:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-23</time>
+        <a href="/2021/08/24/FSharp-GUI%E7%A0%94%E7%A9%B6%EF%BC%88%E4%B8%80%EF%BC%89-WPF/" class="archive-article-date">
+  	<time datetime="2021-08-24T12:09:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近很忙，不过还是忙里偷闲学了一下 React 和 Electron。单纯的 React 或是 Electron 其实我都没有太大的兴趣，但它们组合起来我就很感兴趣了。</p>
+        <p>最近沉迷F#，但发现F#没什么关于GUI的文章。稍微研究了一下，没有太深入。这里留个总结。</p>
 <a id="more"></a>
 
-<p>本次学习的目的是完成<a target="_blank" rel="noopener" href="https://react.docschina.org/tutorial/tutorial.html">React 官网上的井字棋教程</a>，但不是在浏览器中，而是在 Electron 窗口中完成。对 React 与 Electron 的结合先是学习了<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43294560/article/details/105907986">这篇教程</a>，随后在更换打包方法时改用了<a target="_blank" rel="noopener" href="https://medium.com/@kitze/%EF%B8%8F-from-react-to-an-electron-app-ready-for-production-a0468ecb1da3">这篇教程</a>。</p>
-<p>本文的最终代码上传到了<a target="_blank" rel="noopener" href="https://github.com/silevilence/learn-electron-react">Github</a>上。请注意其与本文中的代码有微小的出入。另外，因为懒癌发作，本文没有任何配图，请自己动手假装本文有配图。</p>
-<pre><code>注意：在完成教程后，本人改用了另一种打包方式，因而对项目结构和代码进行了调整。本文中写的步骤是结合本人旧的实践经验与结构调整推导出来的，不代表这样真的可行，请根据实情酌情参考。</code></pre><h2 id="建立项目框架"><a href="#建立项目框架" class="headerlink" title="建立项目框架"></a>建立项目框架</h2><h3 id="建立-React-项目"><a href="#建立-React-项目" class="headerlink" title="建立 React 项目"></a>建立 React 项目</h3><p>首先我们使用 Create React App 来建立一个 React 项目。</p>
-<figure class="highlight bash"><figcaption><span>使用 CRA 建立项目</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 CRA</span></span><br><span class="line">yarn global add create-react-app</span><br><span class="line"><span class="comment"># 建立项目</span></span><br><span class="line">npx create-react-app electron-react</span><br><span class="line"><span class="built_in">cd</span> electron-react</span><br></pre></td></tr></table></figure>
-
-<pre><code>按照我向来的命名习惯，项目应该叫 TicTacToe(或 tic-tac-toe) 才对。但因为我建立项目的时候还没想好写什么，只好这么起了。</code></pre><h3 id="使用-Electorn-打开-React-项目"><a href="#使用-Electorn-打开-React-项目" class="headerlink" title="使用 Electorn 打开 React 项目"></a>使用 Electorn 打开 React 项目</h3><p>在上面我们已经很有先见之明的把目录切换到了项目中，下面没有特别说明默认 <code>pwd</code> 都是这个目录。</p>
-<p>现在我们给项目添加 Electron 的依赖。</p>
-<figure class="highlight bash"><figcaption><span>添加 Electron 模块</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn add electron electron-builder wait-on concurrently --dev</span><br><span class="line">yarn add electron-is-dev</span><br></pre></td></tr></table></figure>
-
-<p>上面我们一共安装了5个包，其中前四个加了 <code>--dev</code>，表示只在开发模式中使用，打包时排除。这些包的作用如下：</p>
+<p>众所周知，WPF使用XAML作为UI文件。对于C#，微软提供了完善的模板和代码生成机制。但并没有F#的WPF模板。到网上搜索，大部分文章推荐使用FsXaml来加载XAML文档。但是FsXaml并没有对.Net5的支持，有个说是支持了.Net5的库，但试了并没有成功。</p>
+<p>这系列的文章（虽然可能就这一篇了）以在网上找的各种F# GUI库建立一个简单界面，使用的环境如下：</p>
 <ul>
-<li><code>electron</code>: Electron 包本体，不作解释了；</li>
-<li><code>electron-builder</code>: 将 Electron 打包发布用的工具，也有用 <code>electron-packager</code> 来打包的，但这个包功能更多，打包体积更小，速度更快，只是对文件的结构有奇怪的要求；</li>
-<li><code>wait-on</code>: 在执行命令时可以让命令满足一定条件后再执行；</li>
-<li><code>concurrently</code>: 将多条命令结合到一起执行；因为开发时 React 和 Electron 都要从命令行中启动，使用这两个包来将其组合启动；</li>
-<li><code>electron-is-dev</code>: 判断 Electorn 是否处于开发模式；在开发模式下，React 页面通过 http 协议从本地 3000 端口获得；打包后，React 页面直接访问 <code>build</code> 目录下的 <code>index.html</code> 获得。</li>
+<li>VS2019（其实考虑过Rider，但Rider对F#的支持太不稳定了；VS也不太稳定，但要好得多）</li>
+<li>.Net5(F# 5.0)</li>
 </ul>
-<p>接着，我们在 <code>public</code> 目录下建立一个名为 <code>electron.js</code> 的文件，并填入标准的 Electron 主文件内容。</p>
-<pre><code>注意：这里 Electron 必须使用 public/electron.js 作为入口，否则 electron-builder 就无法打包，原因不明（大概率是它的代码里写死了）。</code></pre><figure class="highlight js"><figcaption><span>一个标准的 Electron 主文件</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> electron = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = electron.app;</span><br><span class="line"><span class="keyword">const</span> BrowserWindow = electron.BrowserWindow;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">&#x27;url&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> isDev = <span class="built_in">require</span>(<span class="string">&#x27;electron-is-dev&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> mainWindow;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createWindow</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    mainWindow = <span class="keyword">new</span> BrowserWindow(&#123;</span><br><span class="line">        width: <span class="number">900</span>,</span><br><span class="line">        height: <span class="number">680</span>,</span><br><span class="line">        backgroundColor: <span class="string">&#x27;#586148&#x27;</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">    mainWindow.loadURL(isDev ? <span class="string">&#x27;http://localhost:3000&#x27;</span> : <span class="string">`file://<span class="subst">$&#123;path.join(__dirname, <span class="string">&#x27;../build/index.html&#x27;</span>)&#125;</span>`</span>);</span><br><span class="line">    mainWindow.on(<span class="string">&#x27;closed&#x27;</span>, <span class="function">() =&gt;</span> mainWindow = <span class="literal">null</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.on(<span class="string">&#x27;ready&#x27;</span>, createWindow);</span><br><span class="line"></span><br><span class="line">app.on(<span class="string">&#x27;window-all-closed&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (process.platform !== <span class="string">&#x27;darwin&#x27;</span>) &#123;</span><br><span class="line">        app.quit();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.on(<span class="string">&#x27;activate&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (mainWindow === <span class="literal">null</span>) &#123;</span><br><span class="line">        createWindow();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>同样因为懒，能不上图就不会上图，跟着做就可以假装有图了。</p>
+<h2 id="Elmish-WPF"><a href="#Elmish-WPF" class="headerlink" title="Elmish.WPF"></a>Elmish.WPF</h2><p>Nuget上的一个包，主要是提供了MVVM框架。以后没有意外的话还是用它来做后端。</p>
+<p>今天建立窗口主要通过直接加载XAML的方式实现。以后的文章（如果有）主要替换View层。因为今天的UI代码很少，主要是整个框架的搭建。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="建立项目"><a href="#建立项目" class="headerlink" title="建立项目"></a>建立项目</h3><p>首先，建立一个F#控制台项目，目标框架选 <code>.Net 5.0</code> 。</p>
+<p>项目建立后，进入项目属性（项目，不是解决方案），在 <code>应用程序</code> 栏改变输出类型为 <code>Windows 应用程序</code> 。</p>
+<pre><code>Note: 顺便一提，最好在生成里把“生成尾调用”勾上，函数式必备，不知道为什么不默认勾上的。</code></pre><p>可能需要的步骤：</p>
+<p>打开项目文件（ <code>编辑项目文件</code> 功能），在 <code>TargetFramework</code> 的值后面加上 <code>-windows</code>，如 <code>net5.0</code> 就要改成 <code>net5.0-windows</code> ；</p>
+<p>还是在项目文件里，在 <code>&lt;PropertyGroup&gt;</code> 里加上 <code>&lt;UseWPF&gt;true&lt;/UseWPF&gt;</code> （也就是和 <code>&lt;TargetFramework&gt;</code> 同级）。</p>
+<p>不然这项目还是不会被当成窗口应用。</p>
+<h3 id="建立窗口"><a href="#建立窗口" class="headerlink" title="建立窗口"></a>建立窗口</h3><p>新建一个 <code>文本文件</code> ，连着扩展名一起改名叫 <code>MainWindow.xaml</code> 。</p>
+<p>选中文件，打开其属性窗口，更改 <code>生成操作</code> 为 <code>资源</code> 。</p>
+<p>输入XAML文件的内容：</p>
+<figure class="highlight xml"><figcaption><span>MainWindow.xaml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Window</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns</span>=<span class="string">&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:x</span>=<span class="string">&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">Height</span>=<span class="string">&quot;120&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">Width</span>=<span class="string">&quot;400&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">WindowStartupLocation</span>=<span class="string">&quot;CenterScreen&quot;</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Grid</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">StackPanel</span> <span class="attr">Orientation</span>=<span class="string">&quot;Horizontal&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">TextBlock</span> <span class="attr">Width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">Text</span>=<span class="string">&quot;&#123;Binding CounterValue&#125;&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">Width</span>=<span class="string">&quot;50&quot;</span> <span class="attr">Command</span>=<span class="string">&quot;&#123;Binding Decrement&#125;&quot;</span> <span class="attr">Content</span>=<span class="string">&quot;-&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">Width</span>=<span class="string">&quot;50&quot;</span> <span class="attr">Command</span>=<span class="string">&quot;&#123;Binding Increment&#125;&quot;</span> <span class="attr">Content</span>=<span class="string">&quot;+&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">TextBlock</span> <span class="attr">Width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">Text</span>=<span class="string">&quot;&#123;Binding StepSize&#125;&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Slider</span> <span class="attr">Width</span>=<span class="string">&quot;100&quot;</span> <span class="attr">Value</span>=<span class="string">&quot;&#123;Binding StepSize&#125;&quot;</span> <span class="attr">TickFrequency</span>=<span class="string">&quot;1&quot;</span> <span class="attr">Minimum</span>=<span class="string">&quot;1&quot;</span> <span class="attr">Maximum</span>=<span class="string">&quot;10&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">StackPanel</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Window</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>注意第17行，这里根据是否处于开发模式采取不同的加载方式。由于我们的入口文件在 <code>public</code> 目录下，而 <code>build</code> 目录与 <code>public</code> 目录是同级的，故需要往回跳一级。</p>
-<p>编辑 <code>package.json</code>，设置 Electron 相关项。</p>
-<figure class="highlight json"><figcaption><span>package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;electron-react&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.1.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;private&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;public/electron.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;homepage&quot;</span>: <span class="string">&quot;.&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;build&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;appId&quot;</span>: <span class="string">&quot;your.id&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;files&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;build/**/*&quot;</span>,</span><br><span class="line">      <span class="string">&quot;node_modules/**/*&quot;</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: <span class="string">&quot;最好不要改&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;start&quot;</span>: <span class="string">&quot;react-scripts start&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;build&quot;</span>: <span class="string">&quot;react-scripts build&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;react-scripts test&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;eject&quot;</span>: <span class="string">&quot;react-scripts eject&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;electron-dev&quot;</span>: <span class="string">&quot;concurrently \&quot;yarn start\&quot; \&quot;wait-on http://localhost:3000 &amp;&amp; yarn electron\&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;electron&quot;</span>: <span class="string">&quot;electron .&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;epack&quot;</span>: <span class="string">&quot;electron-builder --dir&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;dist&quot;</span>: <span class="string">&quot;electron-builder&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;eslintConfig&quot;</span>: <span class="string">&quot;从这往下暂时不用管&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="MVVM-框架"><a href="#MVVM-框架" class="headerlink" title="MVVM 框架"></a>MVVM 框架</h3><h4 id="Nuget-包"><a href="#Nuget-包" class="headerlink" title="Nuget 包"></a>Nuget 包</h4><p>在 Nuget 里安装 <code>Elmish.WPF</code></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>在自动生成的 <code>Program.fs</code> 中写以下内容:</p>
+<figure class="highlight fs"><figcaption><span>Program.fs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> Elmish.WPF</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">type</span> <span class="title">Model</span> </span>= &#123; Count: int; StepSize: int &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> init () = &#123; Count = <span class="number">0</span>; StepSize = <span class="number">1</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">type</span> <span class="title">Msg</span> </span>=</span><br><span class="line">    | Increment</span><br><span class="line">    | Decrement</span><br><span class="line">    | SetStepSize <span class="keyword">of</span> int</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> update msg m =</span><br><span class="line">    <span class="keyword">match</span> msg <span class="keyword">with</span></span><br><span class="line">    | Increment -&gt; &#123; m <span class="keyword">with</span> Count = m.Count + m.StepSize &#125;</span><br><span class="line">    | Decrement -&gt; &#123; m <span class="keyword">with</span> Count = m.Count - m.StepSize &#125;</span><br><span class="line">    | SetStepSize x -&gt; &#123; m <span class="keyword">with</span> StepSize = x &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> bindings () =</span><br><span class="line">    [ <span class="string">&quot;CounterValue&quot;</span></span><br><span class="line">      |&gt; Binding.oneWay (<span class="keyword">fun</span> m -&gt; m.Count)</span><br><span class="line">      <span class="string">&quot;Increment&quot;</span> |&gt; Binding.cmd (<span class="keyword">fun</span> m -&gt; Increment)</span><br><span class="line">      <span class="string">&quot;Decrement&quot;</span> |&gt; Binding.cmd (<span class="keyword">fun</span> m -&gt; Decrement)</span><br><span class="line">      <span class="string">&quot;StepSize&quot;</span></span><br><span class="line">      |&gt; Binding.twoWay ((<span class="keyword">fun</span> m -&gt; float m.StepSize), (<span class="keyword">fun</span> newVal m -&gt; int newVal |&gt; SetStepSize)) ]</span><br></pre></td></tr></table></figure>
 
-<p>其中 <code>main</code> 项与 <code>homepage</code> 项是定死的，如果要使用 <code>electron-builder</code> 打包则必须要这么写。<code>build</code> 项中填写的是 <code>electron-builder</code> 相关的配置，请根据自己的状况酌情更改。<code>scripts</code> 中的填写的是 <code>yarn</code> 运行的脚本，之所以打包用 <code>epack</code> 而不是 <code>pack</code> 是因为 <code>pack</code> 被 <code>yarn</code> 本身占用了。</p>
-<p>现在，运行 <code>yarn electron-dev</code> 然后乖乖坐好。在浏览器跳出 React 页面后不久，Electron 窗口就会打开并显示与浏览器中相同的页面。在一次开发过程中，这个窗口可以一直开着，因为这个页面是热更新的。</p>
-<pre><code>如果不想看到浏览器窗口打开请自行上网搜索方案，因为根据本人的经验这个方法是shell相关的。注意这是React相关的配置，与Electron无关。</code></pre><h2 id="编写-React-页面"><a href="#编写-React-页面" class="headerlink" title="编写 React 页面"></a>编写 React 页面</h2><p>请自行跟随 React 官网的<a target="_blank" rel="noopener" href="https://react.docschina.org/tutorial/tutorial.html">教程</a>完成页面的编写，这里没有什么好说的。</p>
-<p>此外，教程后面的附加要求很有趣，建议做了。</p>
-<h2 id="打包及发布"><a href="#打包及发布" class="headerlink" title="打包及发布"></a>打包及发布</h2><h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><p>运行 <code>yarn epack</code> 打包项目，打包后的内容处于 <code>dist/win-unpacked</code> 下，理论上把这个目录给别人就能用了。但要是真想给别人用，建议发布为安装包。</p>
-<h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>运行 <code>yarn dist</code> 发布项目，会生成一堆各种格式的安装文件。有关发布的更多配置自行查找。</p>
-<p>（全文完）</p>
+<p>以上代码来自 <a target="_blank" rel="noopener" href="https://github.com/elmish/Elmish.WPF">项目的Github主页</a> 。</p>
+<p>最后加上程序的入口：</p>
+<figure class="highlight fs"><figcaption><span>Main</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> System.Windows</span><br><span class="line"><span class="keyword">open</span> System</span><br><span class="line"></span><br><span class="line"><span class="meta">[&lt;EntryPoint; STAThread&gt;]</span></span><br><span class="line"><span class="keyword">let</span> main argv =</span><br><span class="line">    <span class="keyword">let</span> window =</span><br><span class="line">        Application.LoadComponent(Uri(<span class="string">&quot;MainWindow.xaml&quot;</span>, UriKind.Relative)) :?&gt; Window</span><br><span class="line"></span><br><span class="line">    Program.mkSimpleWpf init update bindings</span><br><span class="line">    |&gt; Program.runWindow (window)</span><br></pre></td></tr></table></figure>
+
+<p>这里容易忘的点是要加上 <code>STAThread</code> 。</p>
+<p>可见真正的ui代码（不算XAML文件）就一句，其实还是直接调用了.net的方法，只是C#的话VS还帮着做了很多事。</p>
+<p>最终效果如下图：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/hAwFV1"><img src="https://z3.ax1x.com/2021/08/24/hAwFV1.md.gif" alt="hAwFV1.md.gif"></a></p>
 
       
 
@@ -255,15 +258,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">F#</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">WPF</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Electron</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">.Net</a>
         		</li>
       		
 		</ul>
@@ -330,7 +333,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/23/%E5%9C%A8Electron%E4%B8%AD%E5%AE%8C%E6%88%90React%E4%BA%95%E5%AD%97%E6%A3%8B%E6%95%99%E7%A8%8B/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/08/24/FSharp-GUI%E7%A0%94%E7%A9%B6%EF%BC%88%E4%B8%80%EF%BC%89-WPF/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -344,18 +347,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/08/24/FSharp-GUI%E7%A0%94%E7%A9%B6%EF%BC%88%E4%B8%80%EF%BC%89-WPF/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          FSharp GUI研究（一）----WPF
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/08/22/%E4%BD%BF%E7%94%A8SpringBoot%E5%81%9AOpenSeaDragon%E7%9A%84%E5%90%8E%E7%AB%AF/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">使用SpringBoot做OpenSeaDragon的后端</div>
+    <a href="/2020/09/23/%E5%9C%A8Electron%E4%B8%AD%E5%AE%8C%E6%88%90React%E4%BA%95%E5%AD%97%E6%A3%8B%E6%95%99%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">在Electron中完成React井字棋教程</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -382,7 +376,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B6"><span class="toc-number">1.</span> <span class="toc-text">建立项目框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B-React-%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">建立 React 项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Electorn-%E6%89%93%E5%BC%80-React-%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.2.</span> <span class="toc-text">使用 Electorn 打开 React 项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E5%86%99-React-%E9%A1%B5%E9%9D%A2"><span class="toc-number">2.</span> <span class="toc-text">编写 React 页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8C%85%E5%8F%8A%E5%8F%91%E5%B8%83"><span class="toc-number">3.</span> <span class="toc-text">打包及发布</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%8C%85"><span class="toc-number">3.1.</span> <span class="toc-text">打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83"><span class="toc-number">3.2.</span> <span class="toc-text">发布</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Elmish-WPF"><span class="toc-number">1.</span> <span class="toc-text">Elmish.WPF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.1.</span> <span class="toc-text">建立项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E7%AA%97%E5%8F%A3"><span class="toc-number">2.2.</span> <span class="toc-text">建立窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVVM-%E6%A1%86%E6%9E%B6"><span class="toc-number">2.3.</span> <span class="toc-text">MVVM 框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Nuget-%E5%8C%85"><span class="toc-number">2.3.1.</span> <span class="toc-text">Nuget 包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">2.3.2.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
