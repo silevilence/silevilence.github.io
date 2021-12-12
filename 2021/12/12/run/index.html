@@ -6,17 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Hexo | Silevilence&#39;s Blogs</title>
+  <title>Fsharp Builder 学习 —— Implementing a CE: Delay and Run | Silevilence&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nil">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Silevilence&#39;s Blogs">
-<meta property="og:url" content="http://yoursite.com/tags/Hexo/index.html">
+  <meta name="description" content="&amp;#x8FD9;&amp;#x662F;&amp;#x4E00;&amp;#x7BC7;&amp;#x7FFB;&amp;#x8BD1;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x539F;&amp;#x6587;&amp;#x5730;&amp;#x5740;&amp;#x662F;&amp;#x8FD9;&amp;#x91CC;&amp;#x3002;&amp;#x539F;&amp;#x6587;&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x7CFB;&amp;#x5217;&amp;#xFF0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fsharp Builder 学习 —— Implementing a CE: Delay and Run">
+<meta property="og:url" content="http://yoursite.com/2021/12/12/run/index.html">
 <meta property="og:site_name" content="Silevilence&#39;s Blogs">
-<meta property="og:description" content="nil">
+<meta property="og:description" content="&amp;#x8FD9;&amp;#x662F;&amp;#x4E00;&amp;#x7BC7;&amp;#x7FFB;&amp;#x8BD1;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x539F;&amp;#x6587;&amp;#x5730;&amp;#x5740;&amp;#x662F;&amp;#x8FD9;&amp;#x91CC;&amp;#x3002;&amp;#x539F;&amp;#x6587;&amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x7CFB;&amp;#x5217;&amp;#xFF0">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fsharpforfunandprofit.com/posts/computation-expressions-builder-part3/ce_delay.png">
+<meta property="og:image" content="https://fsharpforfunandprofit.com/posts/computation-expressions-builder-part3/ce_return.png">
+<meta property="og:image" content="https://fsharpforfunandprofit.com/posts/computation-expressions-builder-part3/ce_types.png">
+<meta property="article:published_time" content="2021-12-12T12:51:00.000Z">
+<meta property="article:modified_time" content="2021-12-12T13:05:36.968Z">
 <meta property="article:author" content="Silevilence">
+<meta property="article:tag" content="fsharp">
+<meta property="article:tag" content="translate">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fsharpforfunandprofit.com/posts/computation-expressions-builder-part3/ce_delay.png">
   
     <link rel="alternative" href="/atom.xml" title="Silevilence&#39;s Blogs" type="application/atom+xml">
   
@@ -152,56 +160,526 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-run" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/10/31/Emacs-Hexo-%E9%9D%9Eorg/" class="archive-article-date">
-  	<time datetime="2021-10-31T07:51:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/10/31/Emacs-Hexo-%E9%9D%9Eorg/">Emacs+Hexo(非org)</a>
+    <h1 class="article-title" itemprop="name">
+      Fsharp Builder 学习 —— Implementing a CE: Delay and Run
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/12/12/run/" class="archive-article-date">
+  	<time datetime="2021-12-12T12:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div id="content">
+<p>
+&#x8FD9;&#x662F;&#x4E00;&#x7BC7;&#x7FFB;&#x8BD1;&#x6587;&#x7AE0;&#xFF0C;&#x539F;&#x6587;&#x5730;&#x5740;&#x662F;<a target="_blank" rel="noopener" href="https://fsharpforfunandprofit.com/posts/computation-expressions-builder-part3/">&#x8FD9;&#x91CC;</a>&#x3002;&#x539F;&#x6587;&#x662F;&#x4E00;&#x4E2A;&#x7CFB;&#x5217;&#xFF0C;&#x524D;&#x9762;&#x7684;&#x6587;&#x7AE0;&#x7FFB;&#x8BD1;<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sjjsxl/category/760547.html">&#x8FD9;&#x91CC;</a>&#x5DF2;&#x7ECF;&#x6709;&#x4EBA;&#x505A;&#x4E86;&#x3002;
+</p>
+
+<p>
+&#x8FD9;&#x7CFB;&#x5217;&#x6587;&#x7AE0;&#x662F;&#x5173;&#x4E8E; Fsharp &#x7684; builder &#x529F;&#x80FD;&#x7684;&#x6559;&#x7A0B;&#x3002;&#x56E0;&#x4E3A;&#x5FAE;&#x8F6F;&#x8FD9;&#x90E8;&#x5206;&#x539F;&#x6765;&#x7684;&#x6559;&#x7A0B;&#x5B9E;&#x5728;&#x4E0D;&#x662F;&#x7ED9;&#x521D;&#x5B66;&#x8005;&#x770B;&#x7684;&#x4EBA;&#x8BDD;&#x3002;&#x5F53;&#x7136;&#x73B0;&#x5728;&#x5FAE;&#x8F6F;&#x7684;&#x6559;&#x7A0B;&#x5DF2;&#x7ECF;&#x53C2;&#x8003;&#x8FD9;&#x7CFB;&#x5217;&#x6587;&#x7AE0;&#x66F4;&#x65B0;&#x4E86;&#x3002;
+</p>
+
+<span id="more"></span>
+
+<p>
+&#x5728;&#x4E4B;&#x524D;&#x51E0;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5B9E;&#x73B0;&#x4E86;&#x5EFA;&#x7ACB;&#x81EA;&#x5DF1;&#x7684;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x6240;&#x6709;&#x7684;&#x57FA;&#x7840;&#x65B9;&#x6CD5;(Bind, Return, Zero, &#x548C; Combine)&#x3002;&#x5728;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5173;&#x6CE8;&#x4E00;&#x4E9B;&#x80FD;&#x8BA9;&#x5DE5;&#x4F5C;&#x6D41;&#x6548;&#x7387;&#x63D0;&#x5347;&#x7684;&#x989D;&#x5916;&#x7279;&#x6027;&#xFF0C;&#x5B83;&#x4EEC;&#x80FD;&#x63A7;&#x5236;&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;&#x7684;&#x65F6;&#x673A;&#x3002;
+</p>
+
+<blockquote>
+<p>
+&#x6CE8;&#x610F;&#x5728;&#x8BA8;&#x8BBA;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8BED;&#x5883;&#x4E2D;&#xFF0C;&#x5EFA;&#x9020;&#x5668;(builder)&#x548C;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x4E2D;&#x521B;&#x5EFA;&#x548C;&#x9A8C;&#x8BC1;&#x5BF9;&#x8C61;&#x7684;&#x5EFA;&#x9020;&#x8005;&#x6A21;&#x5F0F;(builder pattern)&#x4E0D;&#x540C;&#x3002;&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x7BC7;&#x5173;&#x4E8E;<a target="_blank" rel="noopener" href="https://fsharpforfunandprofit.com/posts/builder-pattern">&#x5EFA;&#x9020;&#x8005;&#x6A21;&#x5F0F;</a>&#x7684;&#x6587;&#x7AE0;&#x3002;
+</p>
+</blockquote>
+
+<div id="outline-container-org36cb456" class="outline-2">
+<h2 id="org36cb456">&#x95EE;&#x9898;&#xFF1A;&#x907F;&#x514D;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x6C42;&#x503C;</h2>
+<div class="outline-text-2" id="text-org36cb456">
+<p>
+&#x6211;&#x4EEC;&#x5148;&#x6765;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x50CF;&#x4E4B;&#x524D;&#x90A3;&#x6837;&#x7684; maybe &#x5DE5;&#x4F5C;&#x6D41;&#x3002;&#x4F46;&#x8FD9;&#x6B21;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x63D0;&#x524D; return &#x5E76;&#x963B;&#x6B62;&#x4E4B;&#x540E;&#x7684;&#x4EFB;&#x52A1;&#x5904;&#x7406;&#x3002;
+</p>
+
+<p>
+&#x4E0B;&#x9762;&#x662F;&#x6211;&#x4EEC;&#x7684;&#x5B8C;&#x6574;&#x5EFA;&#x9020;&#x5668;&#x3002;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x7684;&#x91CD;&#x70B9;&#x662F; <code>Combine</code> &#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x7B80;&#x5355;&#x5730;&#x5FFD;&#x7565;&#x7B2C;&#x4E00;&#x6B21; return &#x540E;&#x7684;&#x6240;&#x6709;&#x7B2C;&#x4E8C;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x3002;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">type</span> <span class="title">TraceBuilder</span></span>() =</span><br><span class="line">    <span class="keyword">member</span> this.Bind(m, f) =</span><br><span class="line">	<span class="keyword">match</span> m <span class="keyword">with</span></span><br><span class="line">	| None -&gt;</span><br><span class="line">	    printfn <span class="string">&quot;Binding with None. Exiting.&quot;</span></span><br><span class="line">	| Some a -&gt;</span><br><span class="line">	    printfn <span class="string">&quot;Binding with Some(%A). Continuing&quot;</span> a</span><br><span class="line">	Option.bind f m</span><br><span class="line"></span><br><span class="line">    <span class="keyword">member</span> this.Return(x) =</span><br><span class="line">	printfn <span class="string">&quot;Return an unwrapped %A as an option&quot;</span> x</span><br><span class="line">	Some x</span><br><span class="line"></span><br><span class="line">    <span class="keyword">member</span> this.Zero() =</span><br><span class="line">	printfn <span class="string">&quot;Zero&quot;</span></span><br><span class="line">	None</span><br><span class="line"></span><br><span class="line">    <span class="keyword">member</span> this.Combine (a,b) =</span><br><span class="line">	printfn <span class="string">&quot;Returning early with %A. Ignoring second part: %A&quot;</span> a b</span><br><span class="line">	a</span><br><span class="line"></span><br><span class="line">    <span class="keyword">member</span> this.Delay(f) =</span><br><span class="line">	printfn <span class="string">&quot;Delay&quot;</span></span><br><span class="line">	f()</span><br><span class="line"></span><br><span class="line"><span class="comment">// make an instance of the workflow</span></span><br><span class="line"><span class="keyword">let</span> trace = <span class="keyword">new</span> TraceBuilder()</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x6253;&#x5370;&#x3001;&#x8FD4;&#x56DE;&#x3001;&#x518D;&#x6253;&#x5370;&#x6765;&#x89C2;&#x5BDF;&#x5B83;&#x662F;&#x600E;&#x4E48;&#x5DE5;&#x4F5C;&#x7684;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">trace {</span><br><span class="line">    printfn <span class="string">&quot;Part 1: about to return 1&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    printfn <span class="string">&quot;Part 2: after return has happened&quot;</span></span><br><span class="line">    } |&gt; printfn <span class="string">&quot;Result for Part1 without Part2: %A&quot;</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<pre class="example">
+Delay
+Part 1: about to return 1
+Return an unwrapped 1 as an option
+Delay
+Part 2: after return has happened
+Zero
+Returning early with Some 1. Ignoring second part: None
+Result for Part1 without Part2: Some 1
+val it: unit = ()
+</pre>
+
+
+<p>
+&#x8C03;&#x8BD5;&#x8F93;&#x51FA;&#x5E94;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF0C;&#x4E0B;&#x65B9;&#x52A0;&#x4E86;&#x6CE8;&#x91CA;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// first expression, up to &quot;return&quot;</span><br><span class="line">Delay</span><br><span class="line">Part 1: about to return 1</span><br><span class="line">Return an unwrapped 1 as an option</span><br><span class="line"></span><br><span class="line">// second expression, up to last curly brace.</span><br><span class="line">Delay</span><br><span class="line">Part 2: after return has happened</span><br><span class="line">Zero   // zero here because no explicit return was given for this part</span><br><span class="line"></span><br><span class="line">// combining the two expressions</span><br><span class="line">Returning early with Some 1. Ignoring second part: &lt;null&gt;</span><br><span class="line"></span><br><span class="line">// final result</span><br><span class="line">Result for Part1 without Part2: Some 1</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x201C;Part 2: after return&#x201D; &#x88AB;&#x6253;&#x5370;&#x4E86;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x7684;&#x662F;&#x505C;&#x6B62;&#x6267;&#x884C;&#x4E0D;&#x6253;&#x5370;&#x3002;
+</p>
+
+<p>
+&#x4E3A;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#x6211;&#x6765;&#x91CD;&#x590D;&#x4E00;&#x4E0B;&#x6211;&#x4E0A;&#x7BC7;&#x6587;&#x7AE0;&#x8BF4;&#x8FC7;&#x7684;&#x8BDD;&#xFF1A; <b>return &#x548C; yield <i>&#x4E0D;</i> &#x4F1A;&#x6253;&#x65AD;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x6267;&#x884C;</b> &#x3002;&#x6574;&#x4E2A;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x4ECE;&#x5934;&#x5230;&#x5C3E;&#xFF0C;/&#x603B;&#x662F;/ &#x4F1A;&#x88AB;&#x6C42;&#x503C;&#x5E76;&#x6700;&#x540E;&#x8F93;&#x51FA;&#x4E00;&#x4E2A;&#x503C;&#x3002;
+</p>
+
+<p>
+&#x8FD9;&#x662F;&#x4E2A;&#x5927;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x53EF;&#x80FD;&#x4F1A;&#x4EA7;&#x751F;&#x4E0D;&#x60F3;&#x8981;&#x7684;&#x526F;&#x4F5C;&#x7528; (&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x91CC;&#x662F;&#x6253;&#x5370;&#x4E86;&#x6D88;&#x606F;) &#x4E14;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x505A;&#x4E86;&#x4E9B;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x4E8B;&#xFF0C;&#x8FD9;&#x53EF;&#x80FD;&#x4F1A;&#x9020;&#x6210;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x3002;
+</p>
+
+<p>
+&#x90A3;&#x4E48;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x5982;&#x4F55;&#x5728;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x65F6;&#x624D;&#x5BF9;&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#x6C42;&#x503C;&#x5462;&#xFF1F;
+</p>
+</div>
+
+<div id="outline-container-org8810b4b" class="outline-3">
+<h3 id="org8810b4b">Delay &#x7B80;&#x4ECB;</h3>
+<div class="outline-text-3" id="text-org8810b4b">
+<p>
+&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x89E3;&#x6CD5;&#x5F88;&#x76F4;&#x63A5;&#x2014;&#x2014;&#x628A;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x7B2C;2&#x90E8;&#x5206;&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x91CC;&#xFF0C;&#x53EA;&#x5728;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x53BB;&#x8C03;&#x7528;&#x5B83;&#xFF0C;&#x50CF;&#x4E0B;&#x9762;&#x90A3;&#x6837;&#x3002;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> part2 =</span><br><span class="line">    <span class="keyword">fun</span> () -&gt;</span><br><span class="line">	printfn <span class="string">&quot;Part 2: after return has happened&quot;</span></span><br><span class="line">	<span class="comment">// do other stuff</span></span><br><span class="line">	<span class="comment">// return Zero</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// only evaluate if needed</span></span><br><span class="line"><span class="keyword">if</span> needed <span class="keyword">then</span></span><br><span class="line">   <span class="keyword">let</span> result = part2()</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x6280;&#x672F;&#xFF0C;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x7B2C;2&#x90E8;&#x5206;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x88AB;&#x5904;&#x7406;&#xFF0C;&#x5E76;&#x4E14;&#x56E0;&#x4E3A;&#x8868;&#x8FBE;&#x5F0F;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5728;&#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#x524D;&#x4EC0;&#x4E48;&#x90FD;&#x4E0D;&#x4F1A;  <i>&#x53D1;&#x751F;</i> &#x3002;&#x4F46; <code>Combine</code> &#x65B9;&#x6CD5;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x91CC;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E5F;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x8FD0;&#x884C;&#x3002;
+</p>
+
+<p>
+&#x8FD9;&#x5C31;&#x662F; <code>Delay</code> &#x65B9;&#x6CD5;&#x5B58;&#x5728;&#x7684;&#x7406;&#x7531;&#x4E86;&#x3002;&#x4EFB;&#x4F55; <code>Return</code> &#x6216; <code>Yield</code> &#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x4F1A;&#x5148;&#x88AB; <code>Delay</code> &#x65B9;&#x6CD5;&#x50CF;&#x8FD9;&#x6837;&#x5904;&#x7406;&#xFF0C;&#x7136;&#x540E;&#x4F60;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x8C03;&#x7528;&#x6216;&#x4E0D;&#x8C03;&#x7528;&#x5B83;&#x3002;
+</p>
+
+<p>
+&#x6539;&#x53D8;&#x6211;&#x4EEC;&#x7684;&#x5EFA;&#x9020;&#x5668;&#x6765;&#x5B9E;&#x73B0; Delay&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">type</span> <span class="title">TraceBuilder</span></span>() =</span><br><span class="line">    <span class="comment">// other members as before</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">member</span> this.Delay(funcToDelay) =</span><br><span class="line">	<span class="keyword">let</span> delayed = <span class="keyword">fun</span> () -&gt;</span><br><span class="line">	    printfn <span class="string">&quot;%A - Starting Delayed Fn.&quot;</span> funcToDelay</span><br><span class="line">	    <span class="keyword">let</span> delayedResult = funcToDelay()</span><br><span class="line">	    printfn <span class="string">&quot;%A - Finished Delayed Fn. Result is %A&quot;</span> funcToDelay delayedResult</span><br><span class="line">	    delayedResult  <span class="comment">// return the result</span></span><br><span class="line"></span><br><span class="line">	printfn <span class="string">&quot;%A - Delaying using %A&quot;</span> funcToDelay delayed</span><br><span class="line">	delayed <span class="comment">// return the new function</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x5982;&#x4F60;&#x6240;&#x89C1;&#xFF0C; <code>Delay</code> &#x65B9;&#x6CD5;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x53EF;&#x8FD0;&#x884C;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x4E4B;&#x524D;&#x6211;&#x4EEC;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x6539;&#x4E3A;&#x628A;&#x5B83;&#x5305;&#x88C5;&#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x91CC;&#x5E76;&#x8FD4;&#x56DE;&#x5305;&#x88C5;&#x65B9;&#x6CD5;&#x3002;&#x6211;&#x4EEC;&#x5728;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x7684;&#x524D;&#x540E;&#x52A0;&#x4E0A;&#x4E86;&#x6253;&#x5370;&#x8F93;&#x51FA;&#x3002;
+</p>
+
+<p>
+&#x5982;&#x679C;&#x4F60;&#x7F16;&#x8BD1;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0; <code>Delay</code> &#x7684;&#x7B7E;&#x540D;&#x53D8;&#x4E86;&#x3002;&#x4E4B;&#x524D;&#x5B83;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x503C; (&#x672C;&#x6587;&#x4F8B;&#x4E2D;&#x662F;&#x4E00;&#x4E2A; Option &#x503C;)&#xFF0C;&#x4F46;&#x73B0;&#x5728;&#x5B83;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x3002;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// signature BEFORE the change</span></span><br><span class="line"><span class="keyword">member</span> Delay : f:(unit -&gt; <span class="symbol">&apos;a</span>) -&gt; <span class="symbol">&apos;a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// signature AFTER the change</span></span><br><span class="line"><span class="keyword">member</span> Delay : f:(unit -&gt; <span class="symbol">&apos;b</span>) -&gt; (unit -&gt; <span class="symbol">&apos;b</span>)</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x987A;&#x4FBF;&#x4E00;&#x63D0;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x5F88;&#x7B80;&#x5355;&#x7684; <code>Delay</code> &#xFF0C;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x6253;&#x5370;&#xFF0C;&#x53EA;&#x662F;&#x628A;&#x8F93;&#x5165;&#x7684;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#xFF0C;&#x5C31;&#x50CF;&#x4E0B;&#x9762;&#x90A3;&#x6837;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">member</span> this.Delay(f) =</span><br><span class="line">    f</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x5F88;&#x7B80;&#x6D01;&#x662F;&#x5427;&#xFF01;&#x4F46;&#x5728;&#x672C;&#x6587;&#x7684;&#x4F8B;&#x5B50;&#x91CC;&#xFF0C;&#x6211;&#x60F3;&#x8981;&#x4E00;&#x4E9B;&#x8BE6;&#x7EC6;&#x7684;&#x8F93;&#x51FA;&#x4FE1;&#x606F;&#x3002;
+</p>
+
+<p>
+&#x518D;&#x8BD5;&#x4E00;&#x4E0B;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">trace {</span><br><span class="line">    printfn <span class="string">&quot;Part 1: about to return 1&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    printfn <span class="string">&quot;Part 2: after return has happened&quot;</span></span><br><span class="line">    } |&gt; printfn <span class="string">&quot;Result for Part1 without Part2: %A&quot;</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x5662;&#x3002;&#x4EC0;&#x4E48;&#x90FD;&#x6CA1;&#x6709;&#x53D1;&#x751F;&#xFF01;&#x54EA;&#x4E0D;&#x5BF9;&#xFF1F;
+</p>
+
+<pre class="example">
+&#x8BD1;&#x6CE8;&#xFF1A;F# 6.0(.Net 6) interactive &#x91CC;&#x5B9E;&#x6D4B;&#x4F1A;&#x6709;&#x4E00;&#x4E2A; Delay &#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x4E0D;&#x80FD;&#x8BF4;&#x662F;&#x4EC0;&#x4E48;&#x90FD;&#x6CA1;&#x6709;&#x3002;
+</pre>
+
+
+<p>
+&#x6211;&#x4EEC;&#x5728;&#x8F93;&#x51FA;&#x91CC;&#x627E;&#x627E;&#xFF0C;&#x770B;&#x5230;&#x4E86;&#x8FD9;&#x4E2A;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Result for Part1 without Part2: &lt;fun:Delay@84-5&gt;</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x55EF;&#x3002;&#x6574;&#x4E2A; <code>trace</code> &#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8F93;&#x51FA;&#x73B0;&#x5728;&#x53D8;&#x6210;&#x4E86;&#x4E00;&#x4E2A; <i>&#x51FD;&#x6570;</i> &#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A; Option&#x3002;&#x4E3A;&#x5565;&#xFF1F;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x5EFA;&#x7ACB;&#x4E86;&#x8FD9;&#x4E9B; delay &#x51FD;&#x6570;&#xFF0C;&#x5374;&#x4ECE;&#x6765;&#x6CA1;&#x6709;&#x8C03;&#x7528;&#x5B83;&#x4EEC;&#xFF01;
+</p>
+
+<p>
+&#x8C03;&#x7528;&#x5B83;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x628A;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8F93;&#x51FA;&#x8D4B;&#x503C;&#x7ED9;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;&#x5B83;&#x6765;&#x6C42;&#x503C;&#x3002;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> f = trace {</span><br><span class="line">    printfn <span class="string">&quot;Part 1: about to return 1&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    printfn <span class="string">&quot;Part 2: after return has happened&quot;</span></span><br><span class="line">    }</span><br><span class="line">f() |&gt; printfn <span class="string">&quot;Result for Part1 without Part2: %A&quot;</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x80FD;&#x6309;&#x6211;&#x4EEC;&#x7684;&#x671F;&#x671B;&#x8FD0;&#x884C;&#xFF0C;&#x4F46;&#x6709;&#x6CA1;&#x6709;&#x5728;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x5185;&#x90E8;&#x6C42;&#x503C;&#x7684;&#x65B9;&#x6CD5;&#x5462;&#xFF1F;&#x5F53;&#x7136;&#x6709;&#x4E86;&#xFF01;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org652c30d" class="outline-3">
+<h3 id="org652c30d">Run &#x7B80;&#x4ECB;</h3>
+<div class="outline-text-3" id="text-org652c30d">
+<p>
+<code>Run</code> &#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x56E0;&#x6B64;&#x800C;&#x5B58;&#x5728;&#x7684;&#x3002;&#x5B83;&#x4F5C;&#x4E3A;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x5904;&#x7406;&#x7684;&#x6700;&#x540E;&#x4E00;&#x6B65;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;&#x7528;&#x6765;&#x8C03;&#x7528; delay &#x51FD;&#x6570;&#x3002;
+</p>
+
+<p>
+&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x79CD;&#x5B9E;&#x73B0;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">type</span> <span class="title">TraceBuilder</span></span>() =</span><br><span class="line">    <span class="comment">// other members as before</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">member</span> this.Run(funcToRun) =</span><br><span class="line">	printfn <span class="string">&quot;%A - Run Start.&quot;</span> funcToRun</span><br><span class="line">	<span class="keyword">let</span> runResult = funcToRun()</span><br><span class="line">	printfn <span class="string">&quot;%A - Run End. Result is %A&quot;</span> funcToRun runResult</span><br><span class="line">	runResult <span class="comment">// return the result of running the delayed function</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x518D;&#x6765;&#x8BD5;&#x9A8C;&#x4E00;&#x4E0B;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">trace {</span><br><span class="line">    printfn <span class="string">&quot;Part 1: about to return 1&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    printfn <span class="string">&quot;Part 2: after return has happened&quot;</span></span><br><span class="line">    } |&gt; printfn <span class="string">&quot;Result for Part1 without Part2: %A&quot;</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x8FD9;&#x6B21;&#x7684;&#x7ED3;&#x679C;&#x5B8C;&#x5168;&#x7B26;&#x5408;&#x6211;&#x4EEC;&#x7684;&#x9884;&#x671F;&#x3002;&#x7B2C;1&#x90E8;&#x5206;&#x88AB;&#x6C42;&#x503C;&#xFF0C;&#x4F46;&#x7B2C;2&#x90E8;&#x5206;&#x6CA1;&#x6709;&#x3002;&#x5E76;&#x4E14;&#x6574;&#x4E2A;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x662F;&#x4E00;&#x4E2A; Option&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x51FD;&#x6570;&#x3002;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfdbe06d" class="outline-3">
+<h3 id="orgfdbe06d">delay &#x7684;&#x8C03;&#x7528;&#x65F6;&#x70B9;&#xFF1F;</h3>
+<div class="outline-text-3" id="text-orgfdbe06d">
+<p>
+<code>Delay</code> &#x63D2;&#x5165;&#x5DE5;&#x4F5C;&#x6D41;&#x4E2D;&#x7684;&#x65B9;&#x5F0F;&#x5F88;&#x76F4;&#x63A5;&#xFF0C;&#x53EA;&#x8981;&#x4F60;&#x80FD;&#x7406;&#x89E3;&#x3002;
+</p>
+
+<ul class="org-ul">
+<li>&#x6700;&#x5E95;&#x4E0B;&#xFF08;&#x6216;&#x8005;&#x8BF4;&#x6700;&#x5185;&#x4FA7;&#xFF09;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x4F1A;&#x88AB;delay&#x3002;</li>
+<li>&#x5982;&#x679C;&#x4E0E;&#x5148;&#x524D;&#x7684;&#x8868;&#x8FBE;&#x5F0F; combine&#xFF0C;&#x5219; <code>Combine</code> &#x7684;&#x8F93;&#x51FA;&#x4E5F;&#x4F1A; delay&#x3002;</li>
+<li>&#x7EE7;&#x7EED;&#x8FD0;&#x7B97;&#xFF0C;&#x76F4;&#x5230;&#x6700;&#x540E;&#x4E00;&#x4E2A;delay&#x88AB;&#x6254;&#x8FDB; <code>Run</code> &#x3002;</li>
+</ul>
+
+<p>
+&#x4F7F;&#x7528;&#x4E0A;&#x9762;&#x7684;&#x77E5;&#x8BC6;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x590D;&#x76D8;&#x4E00;&#x4E0B;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x91CC;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;&#xFF1A;
+</p>
+
+<ul class="org-ul">
+<li>&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x7B2C;1&#x90E8;&#x5206;&#x662F; print &#x8BED;&#x53E5;&#x4EE5;&#x53CA; =return 1=&#x3002;</li>
+<li>&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x7B2C;2&#x90E8;&#x5206;&#x662F;&#x6CA1;&#x6709;&#x663E;&#x793A; return &#x7684; print &#x8BED;&#x53E5;&#xFF0C;&#x8FD9;&#x8868;&#x793A; <code>Zero()</code> &#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</li>
+<li><code>Zero</code> &#x8FD4;&#x56DE;&#x7684; <code>None</code> &#x4F20;&#x5165; <code>Delay</code> &#xFF0C;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x201C;delay&#x540E;&#x7684;option&#x201D;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; <code>option</code> &#x7684;&#x51FD;&#x6570;&#x3002;</li>
+<li>&#x7B2C;1&#x90E8;&#x5206;&#x8FD4;&#x56DE;&#x7684; option &#x548C;&#x7B2C;2&#x90E8;&#x5206;&#x8FD4;&#x56DE;&#x7684; delay &#x8FC7;&#x7684; option &#x8FDB;&#x884C; <code>Combine</code> &#xFF0C;&#x7B2C;2&#x4E2A;&#x503C;&#x88AB;&#x4E22;&#x5F03;&#x3002;</li>
+<li>combine &#x7684;&#x7ED3;&#x679C;&#x88AB;&#x8F6C;&#x6362;&#x6210;&#x53E6;&#x4E00;&#x4E2A; &#x201C;delay &#x8FC7;&#x7684; option&#x201D;&#x3002;</li>
+<li>&#x6700;&#x540E;&#xFF0C;delay &#x8FC7;&#x7684; option &#x4F20;&#x5165; <code>Run</code> &#x4E2D;&#xFF0C;&#x88AB;&#x6C42;&#x503C;&#x5E76;&#x8FD4;&#x56DE;&#x6B63;&#x5E38;&#x7684; option&#x3002;</li>
+</ul>
+
+<p>
+&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x5F20;&#x56FE;&#x6765;&#x8868;&#x793A;&#x4E0A;&#x8FF0;&#x8FC7;&#x7A0B;&#xFF1A;
+</p>
+
+
+<div id="orgbfca90b" class="figure">
+<p><img src="https://fsharpforfunandprofit.com/posts/computation-expressions-builder-part3/ce_delay.png">
+</p>
+<p><span class="figure-number">Figure 1: </span>Delay</p>
+</div>
+
+<p>
+&#x5982;&#x679C;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E0B;&#x4E0A;&#x9762;&#x4F8B;&#x5B50;&#x7684;&#x8C03;&#x8BD5;&#x8F93;&#x51FA;&#xFF0C;&#x6211;&#x4EEC;&#x80FD;&#x770B;&#x5230;&#x66F4;&#x591A;&#x7EC6;&#x8282;&#x3002;&#x8FD9;&#x770B;&#x7740;&#x6709;&#x70B9;&#x6655;&#x4EBA;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x52A0;&#x4E86;&#x6CE8;&#x91CA;&#x3002;&#x8BB0;&#x4F4F;&#xFF0C; <i>&#x4ECE;&#x4E0A;&#x5F80;&#x4E0B;</i> &#x770B;&#x8FD9;&#x4E2A;&#x8F93;&#x51FA;&#x76F8;&#x5F53;&#x4E8E; <i>&#x4ECE;&#x4E0B;&#x5F80;&#x4E0A;</i> &#x770B;&#x4E0A;&#x9762;&#x7684;&#x56FE;&#xFF0C;&#x56E0;&#x4E3A;&#x6700;&#x5916;&#x4FA7;&#x7684;&#x4EE3;&#x7801;&#x662F;&#x6700;&#x5148;&#x8FD0;&#x884C;&#x7684;&#x3002;
+</p>
+
+<pre class="example">
+&#x8BD1;&#x6CE8;&#xFF1A;&#x4E2A;&#x4EBA;&#x7406;&#x89E3;&#xFF1A;&#x6BCF;&#x6B21; delay &#x76F8;&#x5F53;&#x4E8E;&#x5728;&#x4EE3;&#x7801;&#x5916;&#x9762;&#x5305;&#x4E86;&#x4E00;&#x5C42;&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x7528;&#x4E86;&#x5185;&#x4FA7;&#x3001;&#x5916;&#x4FA7;&#x8FD9;&#x6837;&#x7684;&#x63CF;&#x8FF0;&#x3002;
+</pre>
+
+
+<div class="org-src-container">
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// delaying the overall expression (the output of Combine)</span><br><span class="line">&lt;fun:clo@160-66&gt; - Delaying using &lt;fun:delayed@141-3&gt;</span><br><span class="line"></span><br><span class="line">// running the outermost delayed expression (the output of Combine)</span><br><span class="line">&lt;fun:delayed@141-3&gt; - Run Start.</span><br><span class="line">&lt;fun:clo@160-66&gt; - Starting Delayed Fn.</span><br><span class="line"></span><br><span class="line">// the first expression results in Some(1)</span><br><span class="line">Part 1: about to return 1</span><br><span class="line">Return an unwrapped 1 as an option</span><br><span class="line"></span><br><span class="line">// the second expression is wrapped in a delay</span><br><span class="line">&lt;fun:clo@162-67&gt; - Delaying using &lt;fun:delayed@141-3&gt;</span><br><span class="line"></span><br><span class="line">// the first and second expressions are combined</span><br><span class="line">Combine. Returning early with Some 1. Ignoring &lt;fun:delayed@141-3&gt;</span><br><span class="line"></span><br><span class="line">// overall delayed expression (the output of Combine) is complete</span><br><span class="line">&lt;fun:clo@160-66&gt; - Finished Delayed Fn. Result is Some 1</span><br><span class="line">&lt;fun:delayed@141-3&gt; - Run End. Result is Some 1</span><br><span class="line"></span><br><span class="line">// the result is now an Option not a function</span><br><span class="line">Result for Part1 without Part2: Some 1</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org98dbf4f" class="outline-3">
+<h3 id="org98dbf4f">&#x201C;Delay&#x201D; &#x6539;&#x53D8;&#x4E86; &#x201C;Combine&#x201D; &#x7684;&#x7B7E;&#x540D;</h3>
+<div class="outline-text-3" id="text-org98dbf4f">
+<p>
+&#x5F53;&#x6211;&#x4EEC;&#x50CF;&#x4E0A;&#x9762;&#x90A3;&#x6837;&#x628A; <code>Delay</code> &#x5F15;&#x5165;&#x7BA1;&#x9053;&#x65F6;&#xFF0C;&#x5B83;&#x5F71;&#x54CD;&#x5230;&#x4E86; <code>Combine</code> &#x7684;&#x7B7E;&#x540D;&#x3002;
+</p>
+
+<p>
+&#x5F53;&#x6211;&#x4EEC;&#x4E00;&#x5F00;&#x59CB;&#x5199; <code>Combine</code> &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x7528;&#x5B83;&#x5904;&#x7406;&#x51E0;&#x4E2A; <code>option=&#x3002;&#x4F46;&#x73B0;&#x5728;&#x5B83;&#x5374;&#x9700;&#x8981;&#x5904;&#x7406; =Delay</code> &#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x90A3;&#x662F;&#x4E2A;&#x51FD;&#x6570;&#x3002;
+</p>
+
+<p>
+&#x5982;&#x679C;&#x6211;&#x4EEC;&#x50CF;&#x4E0B;&#x9762;&#x90A3;&#x6837;&#x628A; <code>Combine</code> &#x7684;&#x53C2;&#x6570;&#x9650;&#x5B9A;&#x6210;&#x4E24;&#x4E2A; <code>int option</code> &#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">member</span> this.Combine (a: int option,b: int option) =</span><br><span class="line">    printfn <span class="string">&quot;Returning early with %A. Ignoring %A&quot;</span> a b</span><br><span class="line">    a</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x7136;&#x540E;&#x6211;&#x4EEC;&#x5C31;&#x4F1A;&#x5728; &#x201C;return&#x201D; &#x90A3;&#x62FF;&#x5230;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">trace {</span><br><span class="line">    printfn <span class="string">&quot;Part 1: about to return 1&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    printfn <span class="string">&quot;Part 2: after return has happened&quot;</span></span><br><span class="line">    } |&gt; printfn <span class="string">&quot;Result for Part1 without Part2: %A&quot;</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x9519;&#x8BEF;&#x957F;&#x8FD9;&#x6837;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">error FS0001: This expression was expected to have type</span><br><span class="line">    int option</span><br><span class="line">but here has type</span><br><span class="line">    unit -&gt; &apos;a</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C; <code>Combine</code> &#x63A5;&#x6536;&#x5230;&#x4E86;&#x4E00;&#x4E2A; delay &#x8FC7;&#x7684;&#x51FD;&#x6570;( <code>unit -&gt; &apos;a</code> )&#xFF0C;&#x8FD9;&#x548C;&#x6211;&#x4EEC;&#x663E;&#x793A;&#x6307;&#x5B9A;&#x7684;&#x7B7E;&#x540D;&#x4E0D;&#x7B26;&#x3002;
+</p>
+
+<p>
+&#x6240;&#x4EE5;&#x8981;&#x662F;&#x6211;&#x4EEC; <i>&#x60F3;&#x8981;</i> &#x7EC4;&#x5408;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x4F46;&#x5374;&#x4F20;&#x8FDB;&#x6765;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x8BE5;&#x600E;&#x4E48;&#x529E;&#xFF1F;
+</p>
+
+<p>
+&#x529E;&#x6CD5;&#x5F88;&#x76F4;&#x63A5;&#xFF1A;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x6765;&#x62FF;&#x5230;&#x503C;&#x5C31;&#x597D;&#x4E86;&#x3002;
+</p>
+
+<p>
+&#x6211;&#x4EEC;&#x7528;&#x4E4B;&#x524D;&#x6587;&#x7AE0;&#x91CC;&#x7684;&#x76F8;&#x52A0;&#x7684;&#x4F8B;&#x5B50;&#x6765;&#x6F14;&#x793A;&#x4E00;&#x4E0B;&#x3002;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">type</span> <span class="title">TraceBuilder</span></span>() =</span><br><span class="line">    <span class="comment">// other members as before</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">member</span> this.Combine (m,f) =</span><br><span class="line">	printfn <span class="string">&quot;Combine. Starting second param %A&quot;</span> f</span><br><span class="line">	<span class="keyword">let</span> y = f()</span><br><span class="line">	printfn <span class="string">&quot;Combine. Finished second param %A. Result is %A&quot;</span> f y</span><br><span class="line"></span><br><span class="line">	<span class="keyword">match</span> m,y <span class="keyword">with</span></span><br><span class="line">	| Some a, Some b -&gt;</span><br><span class="line">	    printfn <span class="string">&quot;combining %A and %A&quot;</span> a b</span><br><span class="line">	    Some (a + b)</span><br><span class="line">	| Some a, None -&gt;</span><br><span class="line">	    printfn <span class="string">&quot;combining %A with None&quot;</span> a</span><br><span class="line">	    Some a</span><br><span class="line">	| None, Some b -&gt;</span><br><span class="line">	    printfn <span class="string">&quot;combining None with %A&quot;</span> b</span><br><span class="line">	    Some b</span><br><span class="line">	| None, None -&gt;</span><br><span class="line">	    printfn <span class="string">&quot;combining None with None&quot;</span></span><br><span class="line">	    None</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x5728;&#x8FD9;&#x7248; <code>Combine</code> &#x91CC;&#xFF0C;&#x7B2C; <i>&#x4E8C;</i> &#x4E2A;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x4E0D;&#x662F; <code>int option</code> &#x3002;&#x6240;&#x4EE5;&#x4E3A;&#x4E86;&#x7EC4;&#x5408;&#x5B83;&#x4EEC;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x6C42;&#x51FD;&#x6570;&#x7684;&#x503C;&#x7136;&#x540E;&#x518D;&#x8FDB;&#x884C;&#x7EC4;&#x5408;&#x903B;&#x8F91;&#x3002;
+</p>
+
+<p>
+&#x6765;&#x6D4B;&#x8BD5;&#x4E00;&#x4E0B;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">trace {</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line">    } |&gt; printfn <span class="string">&quot;Result for return then return: %A&quot;</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x6211;&#x4EEC;&#x5F97;&#x5230;&#x4EE5;&#x4E0B;&#x8F93;&#x51FA;&#xFF08;&#x52A0;&#x4E86;&#x6CE8;&#x91CA;&#xFF09;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">// entire expression is delayed</span><br><span class="line">&lt;fun:clo@318-69&gt; - Delaying using &lt;fun:delayed@295-6&gt;</span><br><span class="line"></span><br><span class="line">// entire expression is run</span><br><span class="line">&lt;fun:delayed@295-6&gt; - Run Start.</span><br><span class="line"></span><br><span class="line">// delayed entire expression is run</span><br><span class="line">&lt;fun:clo@318-69&gt; - Starting Delayed Fn.</span><br><span class="line"></span><br><span class="line">// first return</span><br><span class="line">Returning a unwrapped 1 as an option</span><br><span class="line"></span><br><span class="line">// delaying second return</span><br><span class="line">&lt;fun:clo@319-70&gt; - Delaying using &lt;fun:delayed@295-6&gt;</span><br><span class="line"></span><br><span class="line">// combine starts</span><br><span class="line">Combine. Starting second param &lt;fun:delayed@295-6&gt;</span><br><span class="line"></span><br><span class="line">    // delayed second return is run inside Combine</span><br><span class="line">    &lt;fun:clo@319-70&gt; - Starting Delayed Fn.</span><br><span class="line">    Returning a unwrapped 2 as an option</span><br><span class="line">    &lt;fun:clo@319-70&gt; - Finished Delayed Fn. Result is Some 2</span><br><span class="line">    // delayed second return is complete</span><br><span class="line"></span><br><span class="line">Combine. Finished second param &lt;fun:delayed@295-6&gt;. Result is Some 2</span><br><span class="line">combining 1 and 2</span><br><span class="line">// combine is complete</span><br><span class="line"></span><br><span class="line">&lt;fun:clo@318-69&gt; - Finished Delayed Fn. Result is Some 3</span><br><span class="line">// delayed entire expression is complete</span><br><span class="line"></span><br><span class="line">&lt;fun:delayed@295-6&gt; - Run End. Result is Some 3</span><br><span class="line">// Run is complete</span><br><span class="line"></span><br><span class="line">// final result is printed</span><br><span class="line">Result for return then return: Some 3</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5c9172b" class="outline-3">
+<h3 id="org5c9172b">&#x7406;&#x89E3;&#x7C7B;&#x578B;&#x7EA6;&#x675F;</h3>
+<div class="outline-text-3" id="text-org5c9172b">
+<p>
+&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x5EFA;&#x9020;&#x5668;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x53EA;&#x4F7F;&#x7528;&#x4E86;&#x6211;&#x4EEC;&#x7684;&#x201C;&#x5305;&#x88C5;&#x7C7B;&#x578B;&#x201D;(<code>int option</code>)&#x548C;&#x5B83;&#x7684; delay &#x7248;&#x672C;(<code>unit -&gt; int option</code>)&#x3002;
+</p>
+
+<p>
+&#x4F46;&#x5176;&#x5B9E;&#x5728;&#x4E00;&#x5B9A;&#x7684;&#x7EA6;&#x675F;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5176;&#x5B83;&#x7C7B;&#x578B;&#x3002;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x7406;&#x89E3;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x7684;&#x7C7B;&#x578B;&#x7EA6;&#x675F;&#x53EF;&#x4EE5;&#x4E86;&#x89E3;&#x4E00;&#x5207;&#x662F;&#x600E;&#x4E48;&#x7EC4;&#x5408;&#x5230;&#x4E00;&#x8D77;&#x7684;&#x3002;
+</p>
+
+<p>
+&#x6BD4;&#x5982;&#x8BF4;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF1A;
+</p>
+
+<ul class="org-ul">
+<li><code>Return</code> &#x7684;&#x8F93;&#x51FA;&#x8F93;&#x5165;&#x5230; <code>Delay</code> &#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x4EEC;&#x7684;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x517C;&#x5BB9;&#x3002;</li>
+<li><code>Delay</code> &#x7684;&#x8F93;&#x51FA;&#x8F93;&#x5165;&#x5230; <code>Combine</code> &#x7684;&#x7B2C;&#x4E8C;&#x53C2;&#x6570;&#x3002;</li>
+<li><code>Delay</code> &#x7684;&#x8F93;&#x51FA;&#x8FD8;&#x8981;&#x8F93;&#x5165;&#x5230; <code>Run</code> &#x3002;</li>
+</ul>
+
+<p>
+&#x4F46;&#x662F; <code>Return</code> &#x7684;&#x8F93;&#x51FA; <i>&#x4E0D;</i> &#x9700;&#x8981;&#x662F;&#x516C;&#x5F00;&#x7684;&#x5305;&#x88C5;&#x7C7B;&#x578B;&#x3002;&#x5B83;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x5185;&#x90E8;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x578B;&#x3002;
+</p>
+
+
+<div id="orgfe76ff9" class="figure">
+<p><img src="https://fsharpforfunandprofit.com/posts/computation-expressions-builder-part3/ce_return.png">
+</p>
+<p><span class="figure-number">Figure 2: </span>Delay</p>
+</div>
+
+<p>
+&#x7C7B;&#x4F3C;&#x7684;&#xFF0C;delay &#x7684;&#x7C7B;&#x578B;&#x4E5F;&#x4E0D;&#x4E00;&#x5B9A;&#x8981;&#x662F;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x4F55;&#x6EE1;&#x8DB3;&#x7EA6;&#x675F;&#x7684;&#x7C7B;&#x578B;&#x3002;
+</p>
+
+<p>
+&#x90A3;&#x4E48;&#xFF0C;&#x7ED9;&#x51FA;&#x50CF;&#x4E0B;&#x9762;&#x90A3;&#x6837;&#x7684;&#x4E00;&#x7EC4;return&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">trace {</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span></span><br><span class="line">    } |&gt; printfn <span class="string">&quot;Result for return x 3: %A&quot;</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x4E00;&#x4E2A;&#x8868;&#x793A;&#x7C7B;&#x578B;&#x7684;&#x6D41;&#x7A0B;&#x56FE;&#x5982;&#x4E0B;&#xFF1A;
+</p>
+
+
+<div id="org0a03111" class="figure">
+<p><img src="https://fsharpforfunandprofit.com/posts/computation-expressions-builder-part3/ce_types.png">
+</p>
+<p><span class="figure-number">Figure 3: </span>Delay</p>
+</div>
+
+<p>
+&#x4E3A;&#x4E86;&#x8BC1;&#x660E;&#x4E0A;&#x9762;&#x7684;&#x63CF;&#x8FF0;&#x65E0;&#x8BEF;&#xFF0C;&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x4F7F;&#x7528; <code>Internal</code> &#x548C; <code>Delayed</code> &#x7C7B;&#x578B;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">type</span> <span class="title">Internal</span> </span>= Internal <span class="keyword">of</span> int option</span><br><span class="line"><span class="class"><span class="keyword">type</span> <span class="title">Delayed</span> </span>= Delayed <span class="keyword">of</span> (unit -&gt; Internal)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">type</span> <span class="title">TraceBuilder</span></span>() =</span><br><span class="line">    <span class="keyword">member</span> this.Bind(m, f) =</span><br><span class="line">	<span class="keyword">match</span> m <span class="keyword">with</span></span><br><span class="line">	| None -&gt;</span><br><span class="line">	    printfn <span class="string">&quot;Binding with None. Exiting.&quot;</span></span><br><span class="line">	| Some a -&gt;</span><br><span class="line">	    printfn <span class="string">&quot;Binding with Some(%A). Continuing&quot;</span> a</span><br><span class="line">	Option.bind f m</span><br><span class="line"></span><br><span class="line">    <span class="keyword">member</span> this.Return(x) =</span><br><span class="line">	printfn <span class="string">&quot;Returning a unwrapped %A as an option&quot;</span> x</span><br><span class="line">	Internal (Some x)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">member</span> this.ReturnFrom(m) =</span><br><span class="line">	printfn <span class="string">&quot;Returning an option (%A) directly&quot;</span> m</span><br><span class="line">	Internal m</span><br><span class="line"></span><br><span class="line">    <span class="keyword">member</span> this.Zero() =</span><br><span class="line">	printfn <span class="string">&quot;Zero&quot;</span></span><br><span class="line">	Internal None</span><br><span class="line"></span><br><span class="line">    <span class="keyword">member</span> this.Combine (Internal x, Delayed g) : Internal =</span><br><span class="line">	printfn <span class="string">&quot;Combine. Starting %A&quot;</span> g</span><br><span class="line">	<span class="keyword">let</span> (Internal y) = g()</span><br><span class="line">	printfn <span class="string">&quot;Combine. Finished %A. Result is %A&quot;</span> g y</span><br><span class="line">	<span class="keyword">let</span> o =</span><br><span class="line">	    <span class="keyword">match</span> x,y <span class="keyword">with</span></span><br><span class="line">	    | Some a, Some b -&gt;</span><br><span class="line">		printfn <span class="string">&quot;Combining %A and %A&quot;</span> a b</span><br><span class="line">		Some (a + b)</span><br><span class="line">	    | Some a, None -&gt;</span><br><span class="line">		printfn <span class="string">&quot;combining %A with None&quot;</span> a</span><br><span class="line">		Some a</span><br><span class="line">	    | None, Some b -&gt;</span><br><span class="line">		printfn <span class="string">&quot;combining None with %A&quot;</span> b</span><br><span class="line">		Some b</span><br><span class="line">	    | None, None -&gt;</span><br><span class="line">		printfn <span class="string">&quot;combining None with None&quot;</span></span><br><span class="line">		None</span><br><span class="line">	<span class="comment">// return the new value wrapped in a Internal</span></span><br><span class="line">	Internal o</span><br><span class="line"></span><br><span class="line">    <span class="keyword">member</span> this.Delay(funcToDelay) =</span><br><span class="line">	<span class="keyword">let</span> delayed = <span class="keyword">fun</span> () -&gt;</span><br><span class="line">	    printfn <span class="string">&quot;%A - Starting Delayed Fn.&quot;</span> funcToDelay</span><br><span class="line">	    <span class="keyword">let</span> delayedResult = funcToDelay()</span><br><span class="line">	    printfn <span class="string">&quot;%A - Finished Delayed Fn. Result is %A&quot;</span> funcToDelay delayedResult</span><br><span class="line">	    delayedResult  <span class="comment">// return the result</span></span><br><span class="line"></span><br><span class="line">	printfn <span class="string">&quot;%A - Delaying using %A&quot;</span> funcToDelay delayed</span><br><span class="line">	Delayed delayed <span class="comment">// return the new function wrapped in a Delay</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">member</span> this.Run(Delayed funcToRun) =</span><br><span class="line">	printfn <span class="string">&quot;%A - Run Start.&quot;</span> funcToRun</span><br><span class="line">	<span class="keyword">let</span> (Internal runResult) = funcToRun()</span><br><span class="line">	printfn <span class="string">&quot;%A - Run End. Result is %A&quot;</span> funcToRun runResult</span><br><span class="line">	runResult <span class="comment">// return the result of running the delayed function</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// make an instance of the workflow</span></span><br><span class="line"><span class="keyword">let</span> trace = <span class="keyword">new</span> TraceBuilder()</span><br></pre></td></tr></table></figure>
+</div>
+
+<pre class="example">
+type Internal = | Internal of int option
+type Delayed = | Delayed of (unit -&gt; Internal)
+type TraceBuilder =
+  new: unit -&gt; TraceBuilder
+  member Bind: m: &apos;a option * f: (&apos;a -&gt; &apos;b option) -&gt; &apos;b option
+  member Combine: Internal * Delayed -&gt; Internal
+  member Delay: funcToDelay: (unit -&gt; Internal) -&gt; Delayed
+  member Return: x: int -&gt; Internal
+  member ReturnFrom: m: int option -&gt; Internal
+  member Run: Delayed -&gt; int option
+  member Zero: unit -&gt; Internal
+val trace: TraceBuilder</pre>
+
+<p>
+&#x4E0A;&#x9762;&#x5EFA;&#x9020;&#x5668;&#x91CC;&#x7684;&#x65B9;&#x6CD5;&#x7B7E;&#x540D;&#x5982;&#x4E0B;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">type</span> <span class="title">Internal</span> </span>= | Internal <span class="keyword">of</span> int option</span><br><span class="line"><span class="class"><span class="keyword">type</span> <span class="title">Delayed</span> </span>= | Delayed <span class="keyword">of</span> (unit -&gt; Internal)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">type</span> <span class="title">TraceBuilder</span> </span>=</span><br><span class="line"><span class="keyword">class</span></span><br><span class="line">  <span class="keyword">new</span> : unit -&gt; TraceBuilder</span><br><span class="line">  <span class="keyword">member</span> Bind : m:<span class="symbol">&apos;a</span> option * f:(<span class="symbol">&apos;a</span> -&gt; <span class="symbol">&apos;b</span> option) -&gt; <span class="symbol">&apos;b</span> option</span><br><span class="line">  <span class="keyword">member</span> Combine : Internal * Delayed -&gt; Internal</span><br><span class="line">  <span class="keyword">member</span> Delay : funcToDelay:(unit -&gt; Internal) -&gt; Delayed</span><br><span class="line">  <span class="keyword">member</span> Return : x:int -&gt; Internal</span><br><span class="line">  <span class="keyword">member</span> ReturnFrom : m:int option -&gt; Internal</span><br><span class="line">  <span class="keyword">member</span> Run : Delayed -&gt; int option</span><br><span class="line">  <span class="keyword">member</span> Zero : unit -&gt; Internal</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x624B;&#x5199;&#x8FD9;&#x4E2A;&#x5EFA;&#x9020;&#x5668;&#x5F53;&#x7136;&#x5C5E;&#x4E8E;&#x8FC7;&#x5EA6;&#x8BBE;&#x8BA1;&#xFF0C;&#x4F46;&#x8FD9;&#x4E9B;&#x7B7E;&#x540D;&#x53EF;&#x4EE5;&#x6E05;&#x695A;&#x5730;&#x5C55;&#x793A;&#x4E0D;&#x540C;&#x65B9;&#x6CD5;&#x662F;&#x5982;&#x4F55;&#x7EC4;&#x5408;&#x5230;&#x4E00;&#x8D77;&#x7684;&#x3002;
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc99a3f1" class="outline-3">
+<h3 id="orgc99a3f1">&#x603B;&#x7ED3;</h3>
+<div class="outline-text-3" id="text-orgc99a3f1">
+<p>
+&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5B66;&#x5230;&#x4E86;&#xFF1A;
+</p>
+
+<ul class="org-ul">
+<li>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x5728;&#x4E00;&#x4E2A;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x5185;&#x90E8;&#x5EF6;&#x8FDF;&#x8BA1;&#x7B97;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5B9E;&#x73B0; <code>Delay</code> &#x548C; <code>Run</code> &#x3002;</li>
+<li>&#x4F7F;&#x7528; <code>Delay</code> &#x4F1A;&#x6539;&#x53D8; <code>Combine</code> &#x7684;&#x7B7E;&#x540D;&#x3002;</li>
+<li><code>Delay</code> &#x548C; <code>Combine</code> &#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0D;&#x4F1A;&#x66B4;&#x9732;&#x7ED9;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x5BA2;&#x6237;&#x7684;&#x5185;&#x90E8;&#x7C7B;&#x578B;&#x3002;</li>
+</ul>
+
+<p>
+&#x4E0B;&#x4E00;&#x6B65;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x5728;&#x8BA1;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x5916;&#x90E8;&#x5EF6;&#x8FDF;&#x6267;&#x884C;&#xFF0C;&#x8FD9;&#x5C06;&#x662F;&#x4E0B;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x7684;&#x4E3B;&#x9898;&#x3002;&#x4F46;&#x9996;&#x5148;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x5148;&#x7ED5;&#x9053;&#x8BA8;&#x8BBA;&#x4E00;&#x4E0B;&#x65B9;&#x6CD5;&#x91CD;&#x8F7D;&#x3002;
+</p>
+</div>
+</div>
+</div>
+</div>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>很惭愧，只做了一点微小的工作<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Emacs</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">fsharp</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">translate</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -214,17 +692,133 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/12/12/run/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2021/10/31/Emacs-Hexo-%E9%9D%9Eorg/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Emacs+Hexo(非org)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#org36cb456"><span class="toc-number">1.</span> <span class="toc-text">问题：避免不必要的求值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#org8810b4b"><span class="toc-number">1.1.</span> <span class="toc-text">Delay 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#org652c30d"><span class="toc-number">1.2.</span> <span class="toc-text">Run 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#orgfdbe06d"><span class="toc-number">1.3.</span> <span class="toc-text">delay 的调用时点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#org98dbf4f"><span class="toc-number">1.4.</span> <span class="toc-text">“Delay” 改变了 “Combine” 的签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#org5c9172b"><span class="toc-number">1.5.</span> <span class="toc-text">理解类型约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#orgc99a3f1"><span class="toc-number">1.6.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'silevilence'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
+
+  
 
 
           </div>
@@ -247,9 +841,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
