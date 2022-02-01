@@ -16,7 +16,7 @@
 <meta property="og:description" content="Implementing a CE: Overloading   Stupid method tricks     &amp;#x5728;&amp;#x672C;&amp;#x6587;&amp;#x4E2D;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC;&amp;#x7A0D;&amp;#x5FAE;&amp;#x7ED5;&amp;#x4E0B;&amp;#x8FDC;&amp;#x8DEF;&amp;#xFF0C;&amp;#x6765;&amp;#x770B;&amp;#x4E0B;&amp;#x">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-19T06:05:00.000Z">
-<meta property="article:modified_time" content="2021-12-19T06:29:10.534Z">
+<meta property="article:modified_time" content="2021-12-19T13:38:02.550Z">
 <meta property="article:author" content="Silevilence">
 <meta property="article:tag" content="fsharp">
 <meta property="article:tag" content="translate">
@@ -178,9 +178,9 @@
       
         <div id="content">
 
-<div id="outline-container-org9054d6a" class="outline-2">
-<h2 id="org9054d6a">Implementing a CE: Overloading</h2>
-<div class="outline-text-2" id="text-org9054d6a">
+<div id="outline-container-orgde4854c" class="outline-2">
+<h2 id="orgde4854c">Implementing a CE: Overloading</h2>
+<div class="outline-text-2" id="text-orgde4854c">
 <pre class="example">
 Stupid method tricks
 </pre>
@@ -204,9 +204,9 @@ Stupid method tricks
 </div>
 
 
-<div id="outline-container-orgf6970fe" class="outline-3">
-<h3 id="orgf6970fe">&#x5C0F;&#x77E5;&#x8BC6;&#xFF1A; builder &#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x88AB;&#x91CD;&#x8F7D; (overload)</h3>
-<div class="outline-text-3" id="text-orgf6970fe">
+<div id="outline-container-org3a8f19b" class="outline-3">
+<h3 id="org3a8f19b">&#x5C0F;&#x77E5;&#x8BC6;&#xFF1A; builder &#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x88AB;&#x91CD;&#x8F7D; (overload)</h3>
+<div class="outline-text-3" id="text-org3a8f19b">
 <p>
 &#x5728;&#x67D0;&#x79CD;&#x7A0B;&#x5EA6;&#x4E0A;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x4EE5;&#x4E0B;&#x89C2;&#x70B9;&#xFF1A;
 </p>
@@ -221,9 +221,9 @@ Stupid method tricks
 </div>
 </div>
 
-<div id="outline-container-orgb214981" class="outline-3">
-<h3 id="orgb214981">&#x91CD;&#x8F7D; &quot;return&quot;</h3>
-<div class="outline-text-3" id="text-orgb214981">
+<div id="outline-container-org513f799" class="outline-3">
+<h3 id="org513f799">&#x91CD;&#x8F7D; &quot;return&quot;</h3>
+<div class="outline-text-3" id="text-org513f799">
 <p>
 &#x73B0;&#x5728;&#x4F60;&#x6709;&#x4E00;&#x4E2A;&#x8054;&#x5408;&#x7C7B;&#x578B; (union type) &#x3002;&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x60F3;&#x7740;&#x4E3A;&#x8054;&#x5408;&#x7684;&#x6BCF;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x91CD;&#x8F7D; <code>Return</code> &#x6216; <code>Yield</code> &#x3002;
 </p>
@@ -257,7 +257,7 @@ Result for error: Error &quot;error for step 1&quot;
 </p>
 
 <p>
-&#x90A3;&#x4E48;&#xFF0C;&#x9996;&#x5148;&#x8BA9;&#x6211;&#x4EEC;&#x56DE;&#x987E;&#x4E00;&#x4E0B; <a target="_blank" rel="noopener" href="https://fsharpforfunandprofit.com/posts/computation-expressions-wrapper-types-part2/)%20%E9%87%8C%E7%9A%84%E8%A7%82%E7%82%B9%EF%BC%9A%E6%88%91%E4%BB%AC%E6%8F%90%E5%87%BA%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B%E5%BA%94%E5%BD%93%E6%98%AF%20_%E6%B3%9B%E5%8C%96%20(generic">discussion on wrapper types</a> &#x91CC;&#x7684;&#x89C2;&#x70B9;&#xFF1A;&#x5305;&#x88C5;&#x7C7B;&#x578B;&#x5E94;&#x5F53;&#x662F; <i>&#x6CDB;&#x5316; (generic)</i> &#x7684;&#x3002;&#x5DE5;&#x4F5C;&#x6D41;&#x5E94;&#x5F53;&#x5C3D;&#x53EF;&#x80FD;&#x4F5C;&#x6210;&#x53EF;&#x590D;&#x7528;&#x7684;&#x2014;&#x2014;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x628A;&#x5B9E;&#x73B0;&#x7ED1;&#x5B9A;&#x5728;&#x67D0;&#x4E2A;&#x5177;&#x4F53;&#x7C7B;&#x578B;&#x4E0A;&#x5462;&#xFF1F;
+&#x90A3;&#x4E48;&#xFF0C;&#x9996;&#x5148;&#x8BA9;&#x6211;&#x4EEC;&#x56DE;&#x987E;&#x4E00;&#x4E0B; <a target="_blank" rel="noopener" href="https://fsharpforfunandprofit.com/posts/computation-expressions-wrapper-types-part2/">discussion on wrapper types</a> &#x91CC;&#x7684;&#x89C2;&#x70B9;&#xFF1A;&#x5305;&#x88C5;&#x7C7B;&#x578B;&#x5E94;&#x5F53;&#x662F; <i>&#x6CDB;&#x5316; (generic)</i> &#x7684;&#x3002;&#x5DE5;&#x4F5C;&#x6D41;&#x5E94;&#x5F53;&#x5C3D;&#x53EF;&#x80FD;&#x4F5C;&#x6210;&#x53EF;&#x590D;&#x7528;&#x7684;&#x2014;&#x2014;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x628A;&#x5B9E;&#x73B0;&#x7ED1;&#x5B9A;&#x5728;&#x67D0;&#x4E2A;&#x5177;&#x4F53;&#x7C7B;&#x578B;&#x4E0A;&#x5462;&#xFF1F;
 </p>
 
 <p>
@@ -301,9 +301,9 @@ val it: unit = ()
 </div>
 </div>
 
-<div id="outline-container-orge5f197a" class="outline-3">
-<h3 id="orge5f197a">&#x591A;&#x4E2A; Combine &#x5B9E;&#x73B0;</h3>
-<div class="outline-text-3" id="text-orge5f197a">
+<div id="outline-container-org43692cd" class="outline-3">
+<h3 id="org43692cd">&#x591A;&#x4E2A; Combine &#x5B9E;&#x73B0;</h3>
+<div class="outline-text-3" id="text-org43692cd">
 <p>
 &#x53E6;&#x4E00;&#x4E2A;&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x5C1D;&#x8BD5;&#x91CD;&#x8F7D;&#x7684;&#x65F6;&#x70B9;&#x662F;&#x5B9E;&#x73B0; <code>Combine</code> &#x7684;&#x65F6;&#x5019;&#x3002;
 </p>
@@ -483,9 +483,9 @@ Result for yield then None: Some [1]
 </div>
 </div>
 
-<div id="outline-container-org5bbedee" class="outline-3">
-<h3 id="org5bbedee">&#x91CD;&#x8F7D; &quot;For&quot;</h3>
-<div class="outline-text-3" id="text-org5bbedee">
+<div id="outline-container-orgeeaa075" class="outline-3">
+<h3 id="orgeeaa075">&#x91CD;&#x8F7D; &quot;For&quot;</h3>
+<div class="outline-text-3" id="text-orgeeaa075">
 <p>
 &#x4E00;&#x79CD;&#x53EF;&#x80FD;&#x786E;&#x5B9E;&#x9700;&#x8981;&#x7528;&#x5230;&#x91CD;&#x8F7D;&#x7684;&#x60C5;&#x51B5;&#x662F; <code>For</code> &#x65B9;&#x6CD5;&#x3002;&#x53EF;&#x80FD;&#x7684;&#x539F;&#x56E0;&#x6709;&#xFF1A;
 </p>
@@ -547,9 +547,9 @@ val it: unit = ()
 </div>
 </div>
 
-<div id="outline-container-org742a020" class="outline-3">
-<h3 id="org742a020">&#x603B;&#x7ED3;</h3>
-<div class="outline-text-3" id="text-org742a020">
+<div id="outline-container-org9402d47" class="outline-3">
+<h3 id="org9402d47">&#x603B;&#x7ED3;</h3>
+<div class="outline-text-3" id="text-org9402d47">
 <p>
 &#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5FC5;&#x8981;&#xFF0C;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x88AB;&#x91CD;&#x8F7D;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x65F6;&#x8981;&#x5C0F;&#x5FC3;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x65F6;&#x66F4;&#x5927;&#x7684;&#x53EF;&#x80FD;&#x6027;&#x662F;&#x8BBE;&#x8BA1;&#x6CA1;&#x6709;&#x505A;&#x597D;&#x3002;
 </p>
@@ -690,6 +690,15 @@ val it: unit = ()
   
 <nav id="article-nav">
   
+    <a href="/2022/02/01/Rest/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Implementing a CE: The rest of the standard methods
+        
+      </div>
+    </a>
+  
   
     <a href="/2021/12/13/emacs-rime-in-windows/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">在 Windows 下安装 emacs-rime</div>
@@ -719,7 +728,7 @@ val it: unit = ()
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#org9054d6a"><span class="toc-number">1.</span> <span class="toc-text">Implementing a CE: Overloading</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#orgf6970fe"><span class="toc-number">1.1.</span> <span class="toc-text">小知识： builder 方法可以被重载 (overload)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#orgb214981"><span class="toc-number">1.2.</span> <span class="toc-text">重载 &quot;return&quot;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#orge5f197a"><span class="toc-number">1.3.</span> <span class="toc-text">多个 Combine 实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#org5bbedee"><span class="toc-number">1.4.</span> <span class="toc-text">重载 &quot;For&quot;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#org742a020"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#orgde4854c"><span class="toc-number">1.</span> <span class="toc-text">Implementing a CE: Overloading</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#org3a8f19b"><span class="toc-number">1.1.</span> <span class="toc-text">小知识： builder 方法可以被重载 (overload)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#org513f799"><span class="toc-number">1.2.</span> <span class="toc-text">重载 &quot;return&quot;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#org43692cd"><span class="toc-number">1.3.</span> <span class="toc-text">多个 Combine 实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#orgeeaa075"><span class="toc-number">1.4.</span> <span class="toc-text">重载 &quot;For&quot;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#org9402d47"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -764,7 +773,7 @@ val it: unit = ()
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 Silevilence
+    		&copy; 2022 Silevilence
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
